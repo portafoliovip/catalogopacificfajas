@@ -992,275 +992,150 @@ footer{
 
 <div class="main-tab-panel" id="panel-mayorista">
 <style>
-  /* ===== MAYORISTA PANEL ===== */
-  .may-wrap{font-family:'Inter',-apple-system,sans-serif;color:#1a202c;overflow-x:hidden;margin:0;background:#fff;}
+  .pf-wrap{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a202c;overflow-x:hidden;margin:0}
 
   /* HERO */
-  .may-hero{background:linear-gradient(150deg,#0E2726 0%,#173C3B 60%,#1F4E4C 100%);padding:64px 20px 56px;text-align:center;position:relative;overflow:hidden;}
-  .may-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(199,168,107,.12),transparent);pointer-events:none;}
-  .may-badge{display:inline-block;background:rgba(199,168,107,.18);border:1px solid rgba(199,168,107,.45);color:#E9D6B0;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;padding:5px 16px;border-radius:20px;margin-bottom:20px;}
-  .may-hero h2{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,52px);font-weight:700;color:#fff;line-height:1.08;margin:0 0 16px;}
-  .may-hero h2 em{font-style:italic;color:#C7A86B;}
-  .may-hero p{font-size:clamp(14px,2.2vw,17px);color:rgba(255,255,255,.72);max-width:480px;margin:0 auto 44px;line-height:1.7;}
+  .pf-hero{background:linear-gradient(150deg,#0E2726 0%,#173C3B 55%,#1F4E4C 100%);padding:60px 20px 52px;text-align:center;position:relative}
+  .pf-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+  .pf-logo-circle{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:12px}
+  .pf-logo-name{color:#fff;font-weight:900;font-size:17px}
+  .pf-badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#E9D6B0;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;padding:5px 14px;border-radius:20px;margin-bottom:18px}
+  .pf-hero h2{font-size:clamp(28px,6vw,50px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:14px}
+  .pf-hero h2 span{color:#C7A86B}
+  .pf-hero p{font-size:clamp(14px,2.5vw,17px);color:rgba(255,255,255,.75);max-width:460px;margin:0 auto 36px;line-height:1.65}
 
-  /* NIVELES CARDS */
-  .may-levels{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:720px;margin:0 auto 40px;}
-  @media(min-width:640px){.may-levels{grid-template-columns:repeat(4,1fr);}}
-  .may-level{border-radius:16px;padding:20px 14px 18px;text-align:center;position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;}
-  .may-level:hover{transform:translateY(-3px);}
-  .may-level-icon{font-size:24px;margin-bottom:10px;line-height:1;}
-  .may-level-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-  .may-level-pct{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px;}
-  .may-level-off{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;opacity:.75;}
-  .may-level-range{font-size:11px;font-weight:600;border-radius:20px;padding:3px 10px;display:inline-block;}
-  .may-level-desc{font-size:10.5px;margin-top:8px;line-height:1.45;opacity:.8;}
+  /* PILLS DESCUENTO */
+  .pf-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+  .pf-pill{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 18px;text-align:center;min-width:100px}
+  .pf-pill-pct{font-size:26px;font-weight:900;color:#C7A86B;line-height:1}
+  .pf-pill-label{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+  .pf-pill-range{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
 
-  /* Nivel 1 – Emprendedor */
-  .may-lv1{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);color:#fff;}
-  .may-lv1 .may-level-pct{color:#a8c5c4;}
-  .may-lv1 .may-level-range{background:rgba(255,255,255,.12);color:rgba(255,255,255,.75);}
-  /* Nivel 2 – Mayorista */
-  .may-lv2{background:rgba(199,168,107,.12);border:1.5px solid rgba(199,168,107,.35);color:#fff;}
-  .may-lv2 .may-level-pct{color:#C7A86B;}
-  .may-lv2 .may-level-range{background:rgba(199,168,107,.2);color:#E9D6B0;}
-  /* Nivel 3 – Mayorista + */
-  .may-lv3{background:rgba(199,168,107,.2);border:2px solid rgba(199,168,107,.55);color:#fff;}
-  .may-lv3 .may-level-pct{color:#E8C96A;}
-  .may-lv3 .may-level-range{background:rgba(199,168,107,.28);color:#EDD98A;}
-  /* Nivel 4 – Distribuidor */
-  .may-lv4{background:linear-gradient(135deg,rgba(199,168,107,.35),rgba(199,168,107,.15));border:2px solid #C7A86B;color:#fff;box-shadow:0 0 24px rgba(199,168,107,.25);}
-  .may-lv4 .may-level-pct{color:#FFE082;}
-  .may-lv4 .may-level-range{background:rgba(199,168,107,.4);color:#FFF3B0;}
-  .may-lv4::after{content:'★ TOP';position:absolute;top:10px;right:10px;font-size:8px;font-weight:800;color:#C7A86B;letter-spacing:.08em;}
-
-  /* CTA PRINCIPAL */
-  .may-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;}
-  .may-btn-main{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#173C3B;font-weight:800;font-size:15px;padding:17px 34px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:all .2s;text-decoration:none;}
-  .may-btn-main:hover{background:#F7F5F1;transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,0,0,.3);}
-  .may-hint{font-size:11px;color:rgba(255,255,255,.32);letter-spacing:.04em;}
-
-  /* BARRA PROGRESO NIVELES */
-  .may-path{background:#F7F5F1;padding:52px 20px;}
-  .may-path-inner{max-width:860px;margin:0 auto;}
-  .may-stag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#173C3B;margin-bottom:8px;}
-  .may-path-title{font-family:'Playfair Display',serif;font-size:clamp(20px,3.2vw,28px);font-weight:600;color:#1a202c;margin-bottom:36px;line-height:1.3;}
-  .may-steps{display:flex;flex-direction:column;gap:0;}
-  .may-step{display:grid;grid-template-columns:56px 4px 1fr;gap:0 16px;align-items:stretch;}
-  .may-step-num{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;flex-shrink:0;margin-top:6px;}
-  .may-step-line-col{display:flex;flex-direction:column;align-items:center;padding-top:50px;}
-  .may-step-line{flex:1;width:2px;background:var(--line);min-height:30px;}
-  .may-step:last-child .may-step-line{display:none;}
-  .may-step-body{padding-bottom:28px;padding-top:4px;}
-  .may-step-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;}
-  .may-step-head{font-size:16px;font-weight:700;color:#1a202c;margin-bottom:4px;}
-  .may-step-desc{font-size:13px;color:#6b7280;line-height:1.55;}
-  .may-step-tag{display:inline-block;font-size:11px;font-weight:700;border-radius:20px;padding:3px 12px;margin-top:8px;}
+  /* BOTÓN PRINCIPAL */
+  .pf-btn-main{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#173C3B;font-weight:900;font-size:15px;padding:17px 32px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.2);transition:all .2s;text-decoration:none;cursor:pointer}
+  .pf-btn-main:hover{background:#F7F5F1;transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.28)}
+  .pf-hint{font-size:11px;color:rgba(255,255,255,.35);margin-top:12px}
 
   /* FEATURES */
-  .may-features{background:#fff;padding:52px 20px;}
-  .may-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:860px;margin:24px auto 0;}
-  @media(min-width:600px){.may-feat-grid{grid-template-columns:repeat(4,1fr);}}
-  .may-feat{background:#F7F5F1;border-radius:14px;padding:20px 14px;text-align:center;border:1px solid rgba(34,34,34,.08);}
-  .may-feat-icon{font-size:26px;margin-bottom:8px;}
-  .may-feat-title{font-size:12px;font-weight:700;color:#1a202c;margin-bottom:3px;}
-  .may-feat-desc{font-size:10.5px;color:#6b7280;line-height:1.5;}
+  .pf-features{background:#fafafa;padding:56px 20px}
+  .pf-section-tag{text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#173C3B;margin-bottom:8px}
+  .pf-section-title{text-align:center;font-size:clamp(20px,3.5vw,28px);font-weight:900;color:#1a202c;margin-bottom:32px;line-height:1.3}
+  .pf-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:860px;margin:0 auto}
+  @media(min-width:600px){.pf-feat-grid{grid-template-columns:repeat(4,1fr)}}
+  .pf-feat{background:#fff;border-radius:14px;padding:20px 14px;text-align:center;border:1px solid #e5e7eb;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .pf-feat-icon{font-size:28px;margin-bottom:8px}
+  .pf-feat-title{font-size:12px;font-weight:900;color:#1a202c;margin-bottom:3px}
+  .pf-feat-desc{font-size:10px;color:#6b7280;line-height:1.5}
 
   /* NÚMEROS */
-  .may-nums{background:linear-gradient(135deg,#0E2726,#173C3B);padding:44px 20px;}
-  .may-num-grid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center;}
-  .may-num-val{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,40px);font-weight:700;color:#C7A86B;line-height:1;}
-  .may-num-label{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em;margin-top:5px;}
+  .pf-nums{background:#173C3B;padding:44px 20px}
+  .pf-num-grid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+  .pf-num-val{font-size:clamp(26px,5vw,40px);font-weight:900;color:#C7A86B;line-height:1}
+  .pf-num-label{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
 
   /* FINAL CTA */
-  .may-final{background:#fff;padding:56px 20px;text-align:center;}
-  .may-final h2{font-family:'Playfair Display',serif;font-size:clamp(20px,3.5vw,30px);font-weight:700;color:#1a202c;margin-bottom:10px;}
-  .may-final p{font-size:14px;color:#6b7280;max-width:420px;margin:0 auto 28px;line-height:1.7;}
-  .may-btn-green{display:inline-flex;align-items:center;gap:10px;background:#173C3B;color:#fff;font-weight:800;font-size:14px;padding:17px 34px;border-radius:14px;box-shadow:0 6px 20px rgba(23,60,59,.25);transition:all .2s;text-decoration:none;}
-  .may-btn-green:hover{background:#C7A86B;color:#1a1208;transform:translateY(-2px);box-shadow:0 10px 28px rgba(199,168,107,.35);}
-  .may-foot{background:#0E2726;padding:16px 20px;text-align:center;}
-  .may-foot p{font-size:11px;color:rgba(255,255,255,.3);margin:0;}
+  .pf-final{background:#fff;padding:56px 20px;text-align:center}
+  .pf-final h2{font-size:clamp(20px,3.5vw,28px);font-weight:900;color:#1a202c;margin-bottom:10px}
+  .pf-final p{font-size:14px;color:#6b7280;max-width:400px;margin:0 auto 28px;line-height:1.65}
+  .pf-btn-green{display:inline-flex;align-items:center;gap:10px;background:#173C3B;color:#fff;font-weight:900;font-size:14px;padding:17px 32px;border-radius:14px;box-shadow:0 6px 20px rgba(23,60,59,.25);transition:all .2s;text-decoration:none}
+  .pf-btn-green:hover{background:#AD8E56;transform:translateY(-2px);box-shadow:0 10px 28px rgba(173,142,86,.35)}
+
+  .pf-footer{background:#0E2726;padding:18px 20px;text-align:center}
+  .pf-footer p{font-size:11px;color:rgba(255,255,255,.3)}
 </style>
 
-<div class="may-wrap">
+<div class="pf-wrap">
 
   <!-- HERO -->
-  <div class="may-hero">
-    <div class="may-badge">✦ Programa de Revendedores 2026</div>
-    <h2>Crece con Pacific Fajas<br>y <em>gana en serio</em></h2>
-    <p>Cuatro niveles de descuento directo de fábrica. Elige el tuyo según cuánto quieres mover y empieza a ganar desde el primer pedido.</p>
+  <div class="pf-hero">
+    <div class="pf-logo">
+      <div class="pf-logo-circle">PF</div>
+      <span class="pf-logo-name">PACIFIC FAJAS</span>
+    </div>
+    <div class="pf-badge">✦ Programa Mayoristas 2026</div>
+    <h2>Vende fajas colombianas<br>y <span>gana en grande</span></h2>
+    <p>Precios de fábrica desde 6 unidades. Sin local, sin inversión enorme. Solo tú, tu red y nuestras fajas.</p>
 
-    <div class="may-levels">
-
-      <div class="may-level may-lv1">
-        <div class="may-level-icon">🌱</div>
-        <div class="may-level-name">Emprendedor</div>
-        <div class="may-level-pct">10%</div>
-        <div class="may-level-off">descuento</div>
-        <div class="may-level-range">6 – 11 uds</div>
-        <div class="may-level-desc">Ideal para empezar a vender en tu círculo cercano.</div>
+    <div class="pf-pills">
+      <div class="pf-pill">
+        <div class="pf-pill-pct">20%</div>
+        <div class="pf-pill-label">Descuento</div>
+        <div class="pf-pill-range">6 – 49 und</div>
       </div>
-
-      <div class="may-level may-lv2">
-        <div class="may-level-icon">📦</div>
-        <div class="may-level-name">Mayorista</div>
-        <div class="may-level-pct">20%</div>
-        <div class="may-level-off">descuento</div>
-        <div class="may-level-range">12 – 49 uds</div>
-        <div class="may-level-desc">Para quien vende con constancia y quiere margen real.</div>
+      <div class="pf-pill">
+        <div class="pf-pill-pct">25%</div>
+        <div class="pf-pill-label">Descuento</div>
+        <div class="pf-pill-range">50 – 399 und</div>
       </div>
-
-      <div class="may-level may-lv3">
-        <div class="may-level-icon">🚀</div>
-        <div class="may-level-name">Mayorista +</div>
-        <div class="may-level-pct">25%</div>
-        <div class="may-level-off">descuento</div>
-        <div class="may-level-range">50 – 100 uds</div>
-        <div class="may-level-desc">Volumen alto y precio competitivo para escalar tu negocio.</div>
+      <div class="pf-pill">
+        <div class="pf-pill-pct">28%</div>
+        <div class="pf-pill-label">Descuento</div>
+        <div class="pf-pill-range">400+ und</div>
       </div>
-
-      <div class="may-level may-lv4">
-        <div class="may-level-icon">👑</div>
-        <div class="may-level-name">Distribuidor</div>
-        <div class="may-level-pct">28%</div>
-        <div class="may-level-off">descuento</div>
-        <div class="may-level-range">+100 uds</div>
-        <div class="may-level-desc">El mejor precio de la fábrica. Para distribuidores y tiendas.</div>
-      </div>
-
     </div>
 
-    <div class="may-cta-wrap">
-      <a href="https://wa.me/573172335456" target="_blank" class="may-btn-main">
-        Escríbenos y recibe tu lista de precios &nbsp;→
-      </a>
-      <p class="may-hint">Sin registro · Sin compromiso · Respuesta inmediata</p>
-    </div>
+    <a href="https://wa.link/fxv6r9" target="_blank" class="pf-btn-main">
+      Escríbenos por WhatsApp y recibe precios &nbsp;→
+    </a>
+    <p class="pf-hint">Sin registro · Sin compromiso · Respuesta inmediata</p>
   </div>
 
-  <!-- RUTA / PASOS -->
-  <div class="may-path">
-    <div class="may-path-inner">
-      <p class="may-stag">Tu camino como revendedor</p>
-      <h2 class="may-path-title">De emprendedor a distribuidor,<br>paso a paso</h2>
-
-      <div class="may-steps">
-
-        <div class="may-step">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="may-step-num" style="background:#5FA3A8;">1</div>
-            <div class="may-step-line"></div>
-          </div>
-          <div></div>
-          <div class="may-step-body">
-            <div class="may-step-label" style="color:#5FA3A8;">Emprendedor · 10%</div>
-            <div class="may-step-head">Empieza con 6 unidades</div>
-            <div class="may-step-desc">Pide 6 a 11 unidades, surtido libre en referencias y tallas. Sin local ni inversión grande. Ideal para probar en tu círculo.</div>
-            <span class="may-step-tag" style="background:#e8f4f5;color:#3a7f85;">6 – 11 uds · 10% dto</span>
-          </div>
-        </div>
-
-        <div class="may-step">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="may-step-num" style="background:#C7A86B;">2</div>
-            <div class="may-step-line"></div>
-          </div>
-          <div></div>
-          <div class="may-step-body">
-            <div class="may-step-label" style="color:#AD8E56;">Mayorista · 20%</div>
-            <div class="may-step-head">De 12 a 49 unidades y duplica tu margen</div>
-            <div class="may-step-desc">De 12 a 49 unidades ya eres mayorista. Un margen del 20% te permite vender al detal y ganar bien en cada pieza.</div>
-            <span class="may-step-tag" style="background:#fdf4e3;color:#8a6830;">12 – 49 uds · 20% dto</span>
-          </div>
-        </div>
-
-        <div class="may-step">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="may-step-num" style="background:#E8C96A;color:#1a1208;">3</div>
-            <div class="may-step-line"></div>
-          </div>
-          <div></div>
-          <div class="may-step-body">
-            <div class="may-step-label" style="color:#b89030;">Mayorista + · 25%</div>
-            <div class="may-step-head">De 50 a 100 unidades, precio mayorista premium</div>
-            <div class="may-step-desc">De 50 a 100 unidades con precio mayorista premium. Con 25% de descuento puedes manejar catálogos, tienda online o punto físico.</div>
-            <span class="may-step-tag" style="background:#fdf4d0;color:#7a6010;">50 – 100 uds · 25% dto</span>
-          </div>
-        </div>
-
-        <div class="may-step">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div class="may-step-num" style="background:linear-gradient(135deg,#C9A84C,#E8C96A);color:#1a1208;">4</div>
-            <div class="may-step-line"></div>
-          </div>
-          <div></div>
-          <div class="may-step-body">
-            <div class="may-step-label" style="color:#9a7a20;">Distribuidor · 28%</div>
-            <div class="may-step-head">+100 unidades, el mejor precio de fábrica</div>
-            <div class="may-step-desc">El nivel más alto. Más de 100 unidades al precio más bajo de fábrica. Para distribuidores regionales, tiendas establecidas y revendedores con red propia.</div>
-            <span class="may-step-tag" style="background:linear-gradient(90deg,#fdf0c0,#fdf4d0);color:#6a5010;font-weight:800;">+100 uds · 28% dto ★</span>
-          </div>
-        </div>
-
+  <!-- FEATURES -->
+  <div class="pf-features">
+    <p class="pf-section-tag">¿Por qué Pacific Fajas?</p>
+    <h2 class="pf-section-title">Todo lo que necesitas<br>para emprender con fajas</h2>
+    <div class="pf-feat-grid">
+      <div class="pf-feat">
+        <div class="pf-feat-icon">🏭</div>
+        <div class="pf-feat-title">Fabricación propia</div>
+        <div class="pf-feat-desc">Producción 100% colombiana con control de calidad en cada prenda.</div>
       </div>
-    </div>
-  </div>
-
-  <!-- BENEFICIOS -->
-  <div class="may-features">
-    <p class="may-stag" style="text-align:center;">¿Por qué Pacific Fajas?</p>
-    <h2 class="may-path-title" style="text-align:center;margin-bottom:0;">Todo lo que necesitas<br>para emprender con fajas</h2>
-    <div class="may-feat-grid">
-      <div class="may-feat">
-        <div class="may-feat-icon">🏭</div>
-        <div class="may-feat-title">Fabricación propia</div>
-        <div class="may-feat-desc">Producción 100% colombiana con control de calidad en cada prenda.</div>
+      <div class="pf-feat">
+        <div class="pf-feat-icon">📦</div>
+        <div class="pf-feat-title">Desde 6 unidades</div>
+        <div class="pf-feat-desc">Empieza sin arriesgar. Surtido libre en referencias y tallas.</div>
       </div>
-      <div class="may-feat">
-        <div class="may-feat-icon">📦</div>
-        <div class="may-feat-title">Surtido libre</div>
-        <div class="may-feat-desc">Combina referencias y tallas como quieras para completar tu pedido.</div>
+      <div class="pf-feat">
+        <div class="pf-feat-icon">🚚</div>
+        <div class="pf-feat-title">Envíos nacionales e internacionales</div>
+        <div class="pf-feat-desc">Despachamos desde Cali a toda Colombia y el mundo.</div>
       </div>
-      <div class="may-feat">
-        <div class="may-feat-icon">🚚</div>
-        <div class="may-feat-title">Envíos a todo el mundo</div>
-        <div class="may-feat-desc">Despachamos desde Cali a toda Colombia y también hacemos envíos internacionales.</div>
-      </div>
-      <div class="may-feat">
-        <div class="may-feat-icon">💳</div>
-        <div class="may-feat-title">Múltiples pagos</div>
-        <div class="may-feat-desc">Nequi, Bancolombia, tarjeta, PSE y confirmación directa por WhatsApp.</div>
+      <div class="pf-feat">
+        <div class="pf-feat-icon">💳</div>
+        <div class="pf-feat-title">Múltiples formas de pago</div>
+        <div class="pf-feat-desc">Nequi, Bancolombia, tarjeta, PSE y confirmación por WhatsApp.</div>
       </div>
     </div>
   </div>
 
   <!-- NÚMEROS -->
-  <div class="may-nums">
-    <div class="may-num-grid">
+  <div class="pf-nums">
+    <div class="pf-num-grid">
       <div>
-        <div class="may-num-val">80+</div>
-        <div class="may-num-label">Referencias disponibles</div>
+        <div class="pf-num-val">80+</div>
+        <div class="pf-num-label">Referencias disponibles</div>
       </div>
       <div>
-        <div class="may-num-val">28%</div>
-        <div class="may-num-label">Descuento máximo</div>
+        <div class="pf-num-val">28%</div>
+        <div class="pf-num-label">Descuento máximo</div>
       </div>
       <div>
-        <div class="may-num-val">🌎</div>
-        <div class="may-num-label">Envíos internacionales</div>
+        <div class="pf-num-val">🌎</div>
+        <div class="pf-num-label">Envíos internacionales</div>
       </div>
     </div>
   </div>
 
   <!-- FINAL CTA -->
-  <div class="may-final">
+  <div class="pf-final">
     <h2>¿Lista para ver cuánto puedes ganar?</h2>
-    <p>Escríbenos por WhatsApp, cuéntanos cuántas unidades quieres manejar y te enviamos tu lista de precios al instante.</p>
-    <a href="https://wa.me/573172335456" target="_blank" class="may-btn-green">
-      Quiero ser revendedora — Escríbeme &nbsp;→
+    <p>Escríbenos por WhatsApp, cuéntanos cuántas unidades quieres manejar y te enviamos tu lista de precios mayoristas al instante.</p>
+    <a href="https://wa.link/fxv6r9" target="_blank" class="pf-btn-green">
+      Quiero ser mayorista — Escríbeme &nbsp;→
     </a>
   </div>
 
-  <div class="may-foot">
+  <div class="pf-footer">
     <p>📍 Pacific Fajas · Cali, Valle del Cauca · Envíos a toda Colombia y el mundo</p>
   </div>
 
@@ -1286,17 +1161,32 @@ footer{
         #vc-wrap .vc-hero h2{font-family:'Playfair Display',serif; font-size:clamp(26px,4.5vw,42px); font-weight:700; line-height:1.15; margin:0 0 14px;}
         #vc-wrap .vc-hero h2 em{font-style:italic; color:var(--coral);}
         #vc-wrap .vc-hero p{font-size:14.5px; color:rgba(255,255,255,.78); max-width:480px; margin:0 auto 30px; line-height:1.7;}
+        #vc-wrap .vc-hero-btns{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
         #vc-wrap .vc-btn{
           display:inline-flex; align-items:center; gap:10px; background:#1DA851; color:#fff; font-weight:700;
           font-size:14.5px; padding:16px 30px; border-radius:12px; text-decoration:none; transition:all .2s ease;
-          box-shadow:0 8px 24px rgba(0,0,0,.25);
+          box-shadow:0 8px 24px rgba(0,0,0,.25); border:none; cursor:pointer; font-family:'Inter',sans-serif;
         }
         #vc-wrap .vc-btn:hover{background:#178f45; transform:translateY(-2px);}
+        #vc-wrap .vc-btn.outline{background:transparent; border:1.5px solid rgba(255,255,255,.5); box-shadow:none;}
+        #vc-wrap .vc-btn.outline:hover{background:rgba(255,255,255,.12); transform:translateY(-2px);}
         #vc-wrap .vc-hint{font-size:11px; color:rgba(255,255,255,.45); margin-top:12px;}
 
         #vc-wrap .vc-section-tag{text-align:center; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--coral); margin:34px 0 6px;}
         #vc-wrap .vc-section-title{text-align:center; font-family:'Playfair Display',serif; font-size:clamp(19px,3vw,25px); font-weight:700; color:var(--ink); margin:0 0 26px;}
 
+        /* pasos */
+        #vc-wrap .vc-steps{display:grid; grid-template-columns:1fr; gap:14px; margin-bottom:10px;}
+        @media(min-width:700px){#vc-wrap .vc-steps{grid-template-columns:repeat(3,1fr);}}
+        #vc-wrap .vc-step{background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px 18px; text-align:center; position:relative;}
+        #vc-wrap .vc-step-num{
+          display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%;
+          background:var(--tide); color:#fff; font-family:'Playfair Display',serif; font-weight:700; font-size:16px; margin-bottom:12px;
+        }
+        #vc-wrap .vc-step h4{font-size:14.5px; margin:0 0 6px; color:var(--ink);}
+        #vc-wrap .vc-step p{font-size:12px; color:rgba(34,34,34,0.62); line-height:1.55; margin:0;}
+
+        /* ventajas */
         #vc-wrap .vc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:10px;}
         @media(min-width:600px){#vc-wrap .vc-grid{grid-template-columns:repeat(4,1fr);}}
         #vc-wrap .vc-card{background:var(--sand); border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;}
@@ -1304,19 +1194,163 @@ footer{
         #vc-wrap .vc-card h3{font-size:12.5px; font-weight:700; margin:0 0 4px; color:var(--ink);}
         #vc-wrap .vc-card p{font-size:11px; color:rgba(34,34,34,0.62); line-height:1.5; margin:0;}
 
+        /* calculadora */
+        #vc-wrap .vc-calc{background:linear-gradient(150deg, var(--tide-deep) 0%, var(--tide) 100%); border-radius:20px; padding:34px 22px; text-align:center; color:#fff;}
+        #vc-wrap .vc-calc-label{font-size:13px; color:rgba(255,255,255,.75); margin:0 0 16px;}
+        #vc-wrap .vc-calc-btns{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:22px;}
+        #vc-wrap .vc-calc-btn{
+          background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.35); color:#fff;
+          border-radius:999px; padding:10px 20px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+        }
+        #vc-wrap .vc-calc-btn.active{background:var(--coral); border-color:var(--coral); color:#1a1208;}
+        #vc-wrap .vc-calc-result{font-size:13px; color:rgba(255,255,255,.75); line-height:1.8;}
+        #vc-wrap .vc-calc-result span{display:block; font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,40px); font-weight:700; color:var(--coral); margin-top:4px;}
+        #vc-wrap .vc-calc-note{font-size:10.5px; color:rgba(255,255,255,.4); margin:18px 0 0;}
+
+        /* formulario */
+        #vc-wrap .vc-form-card{background:var(--sand); border:1px solid var(--line); border-radius:18px; padding:30px 24px;}
+        #vc-wrap .vc-form-row{display:grid; grid-template-columns:1fr; gap:14px;}
+        @media(min-width:640px){#vc-wrap .vc-form-row.two{grid-template-columns:1fr 1fr;}}
+        #vc-wrap .vc-field{display:flex; flex-direction:column; gap:6px; margin-bottom:14px;}
+        #vc-wrap .vc-field label{font-size:12px; font-weight:600; color:var(--ink);}
+        #vc-wrap .vc-field label .req{color:var(--coral);}
+        #vc-wrap .vc-field input[type="text"],
+        #vc-wrap .vc-field input[type="email"],
+        #vc-wrap .vc-field input[type="tel"],
+        #vc-wrap .vc-field select,
+        #vc-wrap .vc-field textarea{
+          border:1px solid var(--line); border-radius:10px; padding:11px 13px; font-size:13.5px;
+          font-family:'Inter',sans-serif; background:#fff; outline:none; width:100%;
+        }
+        #vc-wrap .vc-field input:focus,
+        #vc-wrap .vc-field select:focus,
+        #vc-wrap .vc-field textarea:focus{border-color:var(--coral);}
+        #vc-wrap .vc-field textarea{resize:vertical; min-height:64px;}
+        #vc-wrap .vc-check{display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(34,34,34,0.75); line-height:1.5; margin:6px 0 20px;}
+        #vc-wrap .vc-check input{margin-top:3px; flex-shrink:0;}
+        #vc-wrap .vc-form-error{color:#B23B3B; font-size:12px; margin:-8px 0 14px; display:none;}
+        #vc-wrap .vc-form-success{
+          display:none; background:#E7F1EA; border:1px solid #B9DAC4; color:#2C5A41; border-radius:12px;
+          padding:16px 18px; font-size:13px; line-height:1.6; margin-top:6px;
+        }
+
+        /* faq */
+        #vc-wrap .vc-faq{max-width:720px; margin:0 auto;}
+        #vc-wrap .vc-faq details{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px;}
+        #vc-wrap .vc-faq summary{font-size:13.5px; font-weight:600; cursor:pointer; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center;}
+        #vc-wrap .vc-faq summary::-webkit-details-marker{display:none;}
+        #vc-wrap .vc-faq summary::after{content:'+'; font-size:18px; color:var(--coral); font-weight:400;}
+        #vc-wrap .vc-faq details[open] summary::after{content:'–';}
+        #vc-wrap .vc-faq p{font-size:12.5px; color:rgba(34,34,34,0.65); line-height:1.6; margin:10px 0 0;}
+
         #vc-wrap .vc-final{text-align:center; padding:10px 10px 50px;}
         #vc-wrap .vc-final h3{font-family:'Playfair Display',serif; font-size:clamp(19px,3vw,25px); margin:0 0 10px; color:var(--ink);}
         #vc-wrap .vc-final p{font-size:13.5px; color:rgba(34,34,34,0.65); max-width:420px; margin:0 auto 22px; line-height:1.65;}
         #vc-wrap .vc-final .vc-btn{background:var(--tide);}
         #vc-wrap .vc-final .vc-btn:hover{background:var(--coral);}
+
+        /* stats bar */
+        #vc-wrap .vc-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:-6px 0 0;}
+        @media(min-width:640px){#vc-wrap .vc-stats{grid-template-columns:repeat(4,1fr);}}
+        #vc-wrap .vc-stat{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 10px; text-align:center;}
+        #vc-wrap .vc-stat .num{font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(19px,3vw,24px); color:var(--tide);}
+        #vc-wrap .vc-stat .lbl{font-size:10.5px; color:rgba(34,34,34,0.55); text-transform:uppercase; letter-spacing:.06em; margin-top:2px;}
+
+        /* testimonios */
+        #vc-wrap .vc-testimonials{display:grid; grid-template-columns:1fr; gap:16px;}
+        @media(min-width:700px){#vc-wrap .vc-testimonials{grid-template-columns:repeat(3,1fr);}}
+        #vc-wrap .vc-testi-card{
+          background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 20px;
+          display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden;
+        }
+        #vc-wrap .vc-testi-card::before{
+          content:'"'; position:absolute; top:-14px; right:14px; font-family:'Playfair Display',serif;
+          font-size:88px; color:var(--sand-deep); line-height:1; z-index:0;
+        }
+        #vc-wrap .vc-testi-head{display:flex; align-items:center; gap:12px; position:relative; z-index:1;}
+        #vc-wrap .vc-testi-avatar{
+          width:44px; height:44px; border-radius:50%; background:var(--tide); color:#fff;
+          display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px;
+          font-family:'Playfair Display',serif; flex-shrink:0;
+        }
+        #vc-wrap .vc-testi-name{font-weight:700; font-size:13.5px; color:var(--ink);}
+        #vc-wrap .vc-testi-city{font-size:11px; color:rgba(34,34,34,0.55);}
+        #vc-wrap .vc-testi-stars{color:var(--coral); font-size:12px; letter-spacing:1px;}
+        #vc-wrap .vc-testi-quote{font-size:12.5px; color:rgba(34,34,34,0.7); line-height:1.6; position:relative; z-index:1; margin:0;}
+
+        /* niveles de comisión */
+        #vc-wrap .vc-tiers{display:grid; grid-template-columns:1fr; gap:14px; margin-bottom:26px;}
+        @media(min-width:700px){#vc-wrap .vc-tiers{grid-template-columns:repeat(3,1fr);}}
+        #vc-wrap .vc-tier-card{
+          background:#fff; border:2px solid var(--line); border-radius:16px; padding:22px 18px; text-align:center;
+          transition:border-color .2s ease, transform .2s ease; position:relative;
+        }
+        #vc-wrap .vc-tier-card.top{border-color:var(--coral);}
+        #vc-wrap .vc-tier-card.match{border-color:var(--tide); transform:translateY(-3px); box-shadow:0 10px 26px -14px rgba(23,60,59,0.35);}
+        #vc-wrap .vc-tier-badge{
+          position:absolute; top:-11px; left:50%; transform:translateX(-50%); background:var(--coral); color:#1a1208;
+          font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; padding:3px 12px; border-radius:999px;
+        }
+        #vc-wrap .vc-tier-name{font-size:13px; font-weight:700; color:var(--ink); margin-top:4px;}
+        #vc-wrap .vc-tier-range{font-size:11.5px; color:rgba(34,34,34,0.55); margin:4px 0 12px;}
+        #vc-wrap .vc-tier-rate{font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(26px,4vw,32px); color:var(--tide);}
+        #vc-wrap .vc-tier-rate span{display:block; font-family:'Inter',sans-serif; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:rgba(34,34,34,0.5); margin-top:2px;}
+
+        #vc-wrap .vc-calc{background:linear-gradient(150deg, var(--tide-deep) 0%, var(--tide) 100%); border-radius:20px; padding:34px 22px; text-align:center; color:#fff;}
+        #vc-wrap .vc-calc-label{font-size:13px; color:rgba(255,255,255,.75); margin:0 0 18px;}
+        #vc-wrap .vc-calc-slider-row{display:flex; align-items:center; gap:14px; max-width:420px; margin:0 auto 22px;}
+        #vc-wrap .vc-calc-slider-row input[type="range"]{flex:1; accent-color:var(--coral); height:4px;}
+        #vc-wrap .vc-calc-slider-val{
+          font-family:'Playfair Display',serif; font-weight:700; font-size:18px; color:var(--coral);
+          min-width:38px; text-align:center;
+        }
+        #vc-wrap .vc-calc-tier-tag{
+          display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+          color:var(--coral); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+          padding:4px 14px; border-radius:999px; margin-bottom:16px;
+        }
+        #vc-wrap .vc-calc-result{font-size:13px; color:rgba(255,255,255,.75); line-height:1.8;}
+        #vc-wrap .vc-calc-result span{display:block; font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,40px); font-weight:700; color:var(--coral); margin-top:4px;}
+        #vc-wrap .vc-calc-result .sub{font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,.6); margin-top:6px;}
+        #vc-wrap .vc-calc-note{font-size:10.5px; color:rgba(255,255,255,.4); margin:18px 0 0;}
       </style>
 
       <div class="vc-hero">
         <div class="vc-badge">✦ Sin inversión · Sin inventario</div>
         <h2>Vende por catálogo<br>y genera tus <em>propios ingresos</em></h2>
         <p>No necesitas comprar stock ni tener un local. Comparte nuestro catálogo, toma pedidos y gana dinero desde tu celular, a tu ritmo y desde cualquier ciudad.</p>
-        <a href="https://wa.link/gd45f7" target="_blank" class="vc-btn">💬 Quiero vender por catálogo &nbsp;→</a>
+        <div class="vc-hero-btns">
+          <a href="#vc-form-anchor" class="vc-btn">📝 Regístrate ahora &nbsp;→</a>
+          <a href="https://wa.link/gd45f7" target="_blank" class="vc-btn outline">💬 Prefiero escribir por WhatsApp</a>
+        </div>
         <p class="vc-hint">Respuesta inmediata por WhatsApp · Sin costo de inscripción</p>
+      </div>
+
+      <div class="vc-stats">
+        <div class="vc-stat"><div class="num">10–20%</div><div class="lbl">Comisión por venta</div></div>
+        <div class="vc-stat"><div class="num">$0</div><div class="lbl">Inversión inicial</div></div>
+        <div class="vc-stat"><div class="num">Cada sábado</div><div class="lbl">Te pagamos</div></div>
+        <div class="vc-stat"><div class="num">82+</div><div class="lbl">Referencias en catálogo</div></div>
+      </div>
+
+      <p class="vc-section-tag">¿Cómo funciona?</p>
+      <h3 class="vc-section-title">Empieza en 3 pasos simples</h3>
+      <div class="vc-steps">
+        <div class="vc-step">
+          <span class="vc-step-num">1</span>
+          <h4>Regístrate</h4>
+          <p>Diligencia el formulario aquí mismo con tus datos. Te confirmamos por WhatsApp en minutos.</p>
+        </div>
+        <div class="vc-step">
+          <span class="vc-step-num">2</span>
+          <h4>Comparte el catálogo</h4>
+          <p>Te enviamos fotos, videos y guía de tallas para que muestres los productos por WhatsApp o redes.</p>
+        </div>
+        <div class="vc-step">
+          <span class="vc-step-num">3</span>
+          <h4>Recibe tus ganancias</h4>
+          <p>Toma pedidos, compras a precio de vendedora y cada sábado te pagamos tus comisiones.</p>
+        </div>
       </div>
 
       <p class="vc-section-tag">Ventajas</p>
@@ -1344,9 +1378,143 @@ footer{
         </div>
       </div>
 
+      <p class="vc-section-tag">Testimonios</p>
+      <h3 class="vc-section-title">Historias reales de nuestras embajadoras</h3>
+      <div class="vc-testimonials">
+        <div class="vc-testi-card">
+          <div class="vc-testi-head">
+            <div class="vc-testi-avatar">M</div>
+            <div>
+              <div class="vc-testi-name">María, embajadora</div>
+              <div class="vc-testi-city">Bogotá</div>
+            </div>
+          </div>
+          <div class="vc-testi-stars">★★★★★</div>
+          <p class="vc-testi-quote">Empecé compartiendo el catálogo con mis contactos y en el primer mes ya tenía clientas fijas. Ahora vendo desde el celular en mis tiempos libres.</p>
+        </div>
+        <div class="vc-testi-card">
+          <div class="vc-testi-head">
+            <div class="vc-testi-avatar">C</div>
+            <div>
+              <div class="vc-testi-name">Carolina, embajadora +10</div>
+              <div class="vc-testi-city">Medellín</div>
+            </div>
+          </div>
+          <div class="vc-testi-stars">★★★★★</div>
+          <p class="vc-testi-quote">Lo que más me gusta es que no tengo que invertir en inventario. Subí de nivel en pocas semanas y ahora mi comisión es más alta.</p>
+        </div>
+        <div class="vc-testi-card">
+          <div class="vc-testi-head">
+            <div class="vc-testi-avatar">D</div>
+            <div>
+              <div class="vc-testi-name">Daniela, Top Embajadora</div>
+              <div class="vc-testi-city">Cali</div>
+            </div>
+          </div>
+          <div class="vc-testi-stars">★★★★★</div>
+          <p class="vc-testi-quote">Pacific me acompañó desde el primer día con fotos y guía de tallas. Hoy vender por catálogo es mi ingreso extra de cada semana.</p>
+        </div>
+      </div>
+
+      <p class="vc-section-tag">Niveles de embajadora</p>
+      <h3 class="vc-section-title">Entre más vendes, más ganas</h3>
+      <div class="vc-tiers">
+        <div class="vc-tier-card" data-min="1" data-max="9" data-rate="0.10">
+          <div class="vc-tier-name">Embajadora</div>
+          <div class="vc-tier-range">1 a 9 ventas / semana</div>
+          <div class="vc-tier-rate">10%<span>Comisión</span></div>
+        </div>
+        <div class="vc-tier-card" data-min="10" data-max="19" data-rate="0.15">
+          <div class="vc-tier-name">Embajadora +10</div>
+          <div class="vc-tier-range">10 a 19 ventas / semana</div>
+          <div class="vc-tier-rate">15%<span>Comisión</span></div>
+        </div>
+        <div class="vc-tier-card top" data-min="20" data-max="9999" data-rate="0.20">
+          <div class="vc-tier-badge">🔥 Mejor nivel</div>
+          <div class="vc-tier-name">Top Embajadora</div>
+          <div class="vc-tier-range">Desde 20 ventas / semana</div>
+          <div class="vc-tier-rate">20%<span>Comisión</span></div>
+        </div>
+      </div>
+
+      <div class="vc-calc">
+        <p class="vc-calc-label">¿Cuántas ventas haces (o quieres hacer) a la semana?</p>
+        <div class="vc-calc-slider-row">
+          <input type="range" id="vcCalcSlider" min="1" max="40" value="10">
+          <div class="vc-calc-slider-val"><span id="vcCalcSliderVal">10</span></div>
+        </div>
+        <div class="vc-calc-tier-tag" id="vcCalcTierTag">Embajadora · 10%</div>
+        <div class="vc-calc-result">
+          Tu comisión estimada sería de
+          <span id="vcCalcResult">$150.000 / semana</span>
+          <div class="sub" id="vcCalcResultMonth">≈ $600.000 al mes</div>
+        </div>
+        <p class="vc-calc-note">*Cálculo de referencia con un ticket promedio de venta de $150.000. Tu ganancia real depende de los productos y cantidades que vendas.</p>
+      </div>
+
+      <div id="vc-form-anchor"></div>
+      <p class="vc-section-tag">Registro</p>
+      <h3 class="vc-section-title">Diligencia tus datos para empezar</h3>
+      <div class="vc-form-card">
+        <form id="vcForm">
+          <div class="vc-form-row two">
+            <div class="vc-field">
+              <label>Nombre y apellidos <span class="req">*</span></label>
+              <input type="text" id="vcName" required>
+            </div>
+            <div class="vc-field">
+              <label>Correo electrónico <span class="req">*</span></label>
+              <input type="email" id="vcEmail" required>
+            </div>
+          </div>
+          <div class="vc-form-row two">
+            <div class="vc-field">
+              <label>Número de WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="vcPhone" placeholder="Ej: 3001234567" required>
+            </div>
+            <div class="vc-field">
+              <label>Ciudad y dirección <span class="req">*</span></label>
+              <input type="text" id="vcAddress" required>
+            </div>
+          </div>
+          <div class="vc-field">
+            <label>¿Has vendido por catálogo antes? ¿Qué marcas? <span class="req">*</span></label>
+            <textarea id="vcExperience" required></textarea>
+          </div>
+          <label class="vc-check">
+            <input type="checkbox" id="vcAgree" required>
+            <span>He leído el acuerdo de vendedora por comisión y estoy de acuerdo con las condiciones del acuerdo y de pago semanal.</span>
+          </label>
+          <p class="vc-form-error" id="vcFormError">Por favor completa todos los campos obligatorios.</p>
+          <button type="submit" class="vc-btn" style="width:100%; justify-content:center; background:var(--tide);">💬 Enviar registro por WhatsApp &nbsp;→</button>
+          <div class="vc-form-success" id="vcFormSuccess">✅ ¡Listo! Se abrió WhatsApp con tu registro. Solo dale enviar y te confirmamos muy pronto.</div>
+        </form>
+      </div>
+
+      <p class="vc-section-tag">Preguntas frecuentes</p>
+      <h3 class="vc-section-title">Resolvemos tus dudas</h3>
+      <div class="vc-faq">
+        <details>
+          <summary>¿Cuánto tengo que invertir para empezar?</summary>
+          <p>Nada. No hay costo de inscripción ni pedido mínimo: compras a precio de vendedora solo lo que ya vendiste.</p>
+        </details>
+        <details>
+          <summary>¿Cuándo recibo mis ganancias?</summary>
+          <p>Cada sábado hacemos el corte y te pagamos las comisiones de todas las ventas de la semana.</p>
+        </details>
+        <details>
+          <summary>¿Necesito experiencia previa vendiendo por catálogo?</summary>
+          <p>No es necesario. Te acompañamos con fotos, videos y guía de tallas para que vendas con seguridad desde el primer día.</p>
+        </details>
+        <details>
+          <summary>¿Desde qué ciudad puedo vender?</summary>
+          <p>Desde cualquier ciudad de Colombia. Todo el proceso lo haces desde tu celular por WhatsApp.</p>
+        </details>
+      </div>
+
       <div class="vc-final">
         <h3>¿Lista para empezar a vender?</h3>
-        <p>Escríbenos ahora mismo y te explicamos todo el proceso para que hagas tu primera venta esta semana.</p>
+        <p>Diligencia el formulario de arriba o escríbenos ahora mismo y te explicamos todo el proceso para que hagas tu primera venta esta semana.</p>
         <a href="https://wa.link/gd45f7" target="_blank" class="vc-btn">💬 Escríbenos por WhatsApp &nbsp;→</a>
       </div>
     </div>
@@ -1608,14 +1776,12 @@ function renderGrid(){
 
           <div class="tier-divider">Precio por cantidad</div>
           <div class="tier-table">
-            <div class="trow">
-              <span class="tname">Lleva 1</span>
-              <span class="tprice">${fmt(v.detal)}</span>
-            </div>
-            <div class="trow">
-              <span class="tname">Lleva 2 <span class="trange">c/u</span></span>
-              <span class="tprice">${fmt(v.detal * 0.95)}</span>
-            </div>
+            <div class="trow"><span class="tname">1 ud</span><span class="tprice">${fmt(v.detal)}</span></div>
+            <div class="trow"><span class="tname">2–5 uds <span class="trange">−5%</span></span><span class="tprice">${fmt(v.detal*0.95)}</span></div>
+            <div class="trow"><span class="tname">6–11 uds <span class="trange">−10%</span></span><span class="tprice">${fmt(v.detal*0.90)}</span></div>
+            <div class="trow"><span class="tname">12–49 uds <span class="trange">−20%</span></span><span class="tprice">${fmt(v.detal*0.80)}</span></div>
+            <div class="trow"><span class="tname">50–100 uds <span class="trange">−25%</span></span><span class="tprice">${fmt(v.detal*0.75)}</span></div>
+            <div class="trow"><span class="tname">+100 uds <span class="trange">−28%</span></span><span class="tprice">${fmt(v.detal*0.72)}</span></div>
           </div>
 
           <div class="opt-label">Talla</div>
@@ -1689,7 +1855,7 @@ function updateCardBody(id){
 
   cardEl.querySelector('.price-line').innerHTML = `<span class="now mono">${fmt(now)}</span>`;
 
-  const qtyPrices = [v.detal, v.detal * 0.95];
+  const qtyPrices = [v.detal, v.detal*0.95, v.detal*0.90, v.detal*0.80, v.detal*0.75, v.detal*0.72];
   const trows = cardEl.querySelectorAll('.tier-table .trow');
   trows.forEach((row,i)=>{
     const priceSpan = row.querySelector('.tprice');
@@ -1842,6 +2008,86 @@ document.querySelectorAll('.main-tab-btn').forEach(btn=>{
     document.getElementById(`panel-${btn.dataset.tab}`).classList.add('active');
   });
 });
+
+/* ============ VENDE POR CATÁLOGO: calculadora de niveles ============ */
+(function(){
+  const slider = document.getElementById('vcCalcSlider');
+  const sliderVal = document.getElementById('vcCalcSliderVal');
+  const tierTag = document.getElementById('vcCalcTierTag');
+  const resultEl = document.getElementById('vcCalcResult');
+  const resultMonthEl = document.getElementById('vcCalcResultMonth');
+  const tierCards = document.querySelectorAll('#vc-wrap .vc-tier-card');
+  if(!slider || !resultEl) return;
+
+  const AVG_TICKET = 150000; // ticket promedio de referencia por venta
+
+  function paint(){
+    const ventas = Number(slider.value);
+    sliderVal.textContent = ventas;
+
+    let matched = tierCards[0];
+    tierCards.forEach(card=>{
+      const min = Number(card.dataset.min), max = Number(card.dataset.max);
+      card.classList.remove('match');
+      if(ventas >= min && ventas <= max){ matched = card; }
+    });
+    matched.classList.add('match');
+
+    const rate = Number(matched.dataset.rate);
+    const tierName = matched.querySelector('.vc-tier-name').textContent;
+    tierTag.textContent = `${tierName} · ${Math.round(rate*100)}%`;
+
+    const weekly = ventas * AVG_TICKET * rate;
+    resultEl.textContent = `${fmt(weekly)} / semana`;
+    resultMonthEl.textContent = `≈ ${fmt(weekly*4)} al mes`;
+  }
+
+  slider.addEventListener('input', paint);
+  paint();
+})();
+
+/* ============ VENDE POR CATÁLOGO: registro por WhatsApp ============ */
+(function(){
+  const form = document.getElementById('vcForm');
+  if(!form) return;
+  const errorEl = document.getElementById('vcFormError');
+  const successEl = document.getElementById('vcFormSuccess');
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+
+    const name = document.getElementById('vcName').value.trim();
+    const email = document.getElementById('vcEmail').value.trim();
+    const phone = document.getElementById('vcPhone').value.trim();
+    const address = document.getElementById('vcAddress').value.trim();
+    const experience = document.getElementById('vcExperience').value.trim();
+    const agree = document.getElementById('vcAgree').checked;
+
+    if(!name || !email || !phone || !address || !experience || !agree){
+      errorEl.style.display = 'block';
+      successEl.style.display = 'none';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    const lines = [];
+    lines.push("📝 *NUEVO REGISTRO — VENDEDORA POR CATÁLOGO PACIFIC*");
+    lines.push("");
+    lines.push(`Nombre y apellidos: ${name}`);
+    lines.push(`Correo electrónico: ${email}`);
+    lines.push(`WhatsApp: ${phone}`);
+    lines.push(`Ciudad y dirección: ${address}`);
+    lines.push(`¿Ha vendido por catálogo antes?: ${experience}`);
+    lines.push("");
+    lines.push("✅ Leyó el acuerdo de vendedora por comisión y está de acuerdo con las condiciones del acuerdo y de pago semanal.");
+
+    const text = encodeURIComponent(lines.join("\n"));
+    window.open(`https://wa.me/573172335456?text=${text}`, "_blank");
+
+    successEl.style.display = 'block';
+    form.reset();
+  });
+})();
 
 /* ============ INIT ============ */
 buildChips();
