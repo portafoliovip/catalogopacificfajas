@@ -49,11 +49,12 @@ header.top{
 .brand .tag{font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:0.55;}
 .cart-btn{
   display:flex; align-items:center; gap:8px;
-  background:var(--tide); color:#fff; border:none; border-radius:999px;
-  padding:10px 18px; font-family:'Inter',sans-serif; font-weight:600; font-size:14px;
-  cursor:pointer; transition:transform .15s ease, background .15s ease;
+  background:linear-gradient(135deg,#C9A84C,#E8C96A,#B8922E); color:#1a1208; border:none; border-radius:999px;
+  padding:10px 18px; font-family:'Inter',sans-serif; font-weight:700; font-size:14px;
+  cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 2px 10px rgba(200,160,60,0.4);
 }
-.cart-btn:hover{background:var(--coral); transform:translateY(-1px);}
+.cart-btn:hover{background:linear-gradient(135deg,#D4B45A,#F0D97A,#C9A840); transform:translateY(-1px); box-shadow:0 4px 16px rgba(200,160,60,0.55);}
 .cart-count{
   background:rgba(0,0,0,0.25); border-radius:999px; padding:1px 8px; font-size:12px; font-family:'Inter',monospace;
 }
@@ -1362,15 +1363,28 @@ const cardState = {}; // per product: {size, color, qty}
 let cart = []; // {productId, size, color, qty}
 const fmt = n => "$" + Math.round(n).toLocaleString("es-CO");
 
-// Descuento por cantidad: llevando 2 o más unidades del MISMO producto
-// (sin importar talla/color/variante), cada unidad de ese producto baja 5%.
-function productQtyInCart(productId){
-  return cart.filter(i=>i.productId===productId).reduce((s,i)=>s+i.qty,0);
+// Descuento por cantidad total en el carrito:
+// 1 ud      → precio detal (0%)
+// 2–5 uds   → 5% descuento
+// 6–11 uds  → 10% descuento
+// 12–49 uds → 20% descuento
+// 50–100 uds→ 25% descuento
+// +100 uds  → 28% descuento
+function totalCartQty(){
+  return cart.reduce((s,i)=>s+i.qty, 0);
+}
+function getDiscountRate(qty){
+  if(qty >= 101) return 0.28;
+  if(qty >= 50)  return 0.25;
+  if(qty >= 12)  return 0.20;
+  if(qty >= 6)   return 0.10;
+  if(qty >= 2)   return 0.05;
+  return 0;
 }
 function unitPriceInCart(p, item){
   const v = getVariant(p, item.variant);
-  const totalQty = productQtyInCart(p.id);
-  return totalQty >= 2 ? v.detal * 0.95 : v.detal;
+  const qty = totalCartQty();
+  return v.detal * (1 - getDiscountRate(qty));
 }
 
 /* ============ RENDER CATALOG ============ */
@@ -1671,8 +1685,10 @@ document.getElementById('sendBtn').addEventListener('click', ()=>{
     lines.push(`   Talla: ${item.size} | Color: ${item.color}${vTxt} | Cant: ${item.qty} | ${fmt(unit)} c/u = ${fmt(sub)}`);
   });
   lines.push("");
+  const disc = getDiscountRate(totalQty);
+  const discLabel = disc > 0 ? ` (descuento ${Math.round(disc*100)}% por ${totalQty} uds)` : "";
   lines.push(`Unidades totales: ${totalQty}`);
-  lines.push(`*TOTAL: ${fmt(total)} COP (precio detal)*`);
+  lines.push(`*TOTAL: ${fmt(total)} COP${discLabel}*`);
 
   const text = encodeURIComponent(lines.join("\n"));
   window.open(`https://wa.me/573172335456?text=${text}`, "_blank");
