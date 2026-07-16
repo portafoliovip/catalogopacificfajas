@@ -1776,12 +1776,14 @@ function renderGrid(){
 
           <div class="tier-divider">Precio por cantidad</div>
           <div class="tier-table">
-            <div class="trow"><span class="tname">1 ud</span><span class="tprice">${fmt(v.detal)}</span></div>
-            <div class="trow"><span class="tname">2–5 uds <span class="trange">−5%</span></span><span class="tprice">${fmt(v.detal*0.95)}</span></div>
-            <div class="trow"><span class="tname">6–11 uds <span class="trange">−10%</span></span><span class="tprice">${fmt(v.detal*0.90)}</span></div>
-            <div class="trow"><span class="tname">12–49 uds <span class="trange">−20%</span></span><span class="tprice">${fmt(v.detal*0.80)}</span></div>
-            <div class="trow"><span class="tname">50–100 uds <span class="trange">−25%</span></span><span class="tprice">${fmt(v.detal*0.75)}</span></div>
-            <div class="trow"><span class="tname">+100 uds <span class="trange">−28%</span></span><span class="tprice">${fmt(v.detal*0.72)}</span></div>
+            <div class="trow">
+              <span class="tname">Lleva 1</span>
+              <span class="tprice">${fmt(v.detal)}</span>
+            </div>
+            <div class="trow">
+              <span class="tname">Lleva 2 <span class="trange">c/u</span></span>
+              <span class="tprice">${fmt(v.detal * 0.95)}</span>
+            </div>
           </div>
 
           <div class="opt-label">Talla</div>
@@ -1855,7 +1857,7 @@ function updateCardBody(id){
 
   cardEl.querySelector('.price-line').innerHTML = `<span class="now mono">${fmt(now)}</span>`;
 
-  const qtyPrices = [v.detal, v.detal*0.95, v.detal*0.90, v.detal*0.80, v.detal*0.75, v.detal*0.72];
+  const qtyPrices = [v.detal, v.detal * 0.95];
   const trows = cardEl.querySelectorAll('.tier-table .trow');
   trows.forEach((row,i)=>{
     const priceSpan = row.querySelector('.tprice');
