@@ -123,6 +123,12 @@ header.top{
 }
 .chip.active{background:var(--tide); color:var(--pearl); border-color:var(--tide);}
 .chip:hover{border-color:var(--tide);}
+a.chip{text-decoration:none; display:inline-block;}
+.copy-link{font-family:'Inter',sans-serif; font-size:12px; font-weight:500; opacity:.5; margin-left:6px; text-decoration:none; color:inherit; white-space:nowrap;}
+.copy-link:hover{opacity:1;}
+.card{scroll-margin-top:90px;}
+.card.flash{animation:cardFlash 2.2s ease;}
+@keyframes cardFlash{0%,65%{box-shadow:0 0 0 3px var(--coral);}100%{box-shadow:0 0 0 0 transparent;}}
 
 /* ===== GRID ===== */
 .grid-wrap{max-width:1240px; margin:0 auto; padding:0 24px 80px;}
@@ -1768,7 +1774,7 @@ function PV(id,name,desc,cat,cierre,abrochadura,colors,sizes,img){
 }
 
 // ⚠️ PON AQUÍ LOS PRECIOS AL DETAL DE LOS COMPLEMENTOS (83 al 88)
-const PRECIO_COMP = {83:25000, 84:37000, 85:37000, 86:57000, 87:57000, 88:65000, 89:89000};
+const PRECIO_COMP = {83:25000, 84:37000, 85:37000, 86:57000, 87:57000, 88:67000, 89:89000};
 
 // Complemento: un solo precio (detal) y solo 5% por llevar 2+ complementos.
 // No participa en los descuentos por volumen del resto del catálogo.
@@ -1789,80 +1795,80 @@ const CATS = [
 ];
 
 const PRODUCTS = [
-  P(1,"PACIFIC PERLA","Faja Reloj de arena con brassier media pierna",CATS[0],237000,189600,177750,170640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/8.jpeg"),
-  P(2,"PACIFIC PERLA NEGRA","Faja reloj de arena larga con brassier",CATS[0],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/9.jpeg"),
-  P(3,"ESMERALDA","Faja reloj de arena media pierna",CATS[0],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/10.jpeg"),
-  P(4,"PACIFIC CORAL","Faja reloj de arena 2 en 1 media pierna",CATS[0],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/12.jpeg"),
-  P(5,"PACIFIC MARFIL","Faja reloj de arena larga",CATS[0],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/11.jpeg"),
+  P(1,"PACIFIC PERLA","Faja Reloj de arena con brassier media pierna",CATS[0],267000,213600,200250,192240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/8.jpeg"),
+  P(2,"PACIFIC PERLA NEGRA","Faja reloj de arena larga con brassier",CATS[0],282475,225980,211856,203382,BCN,null,"VENDE -CATALOGO Edición mundial 2026/9.jpeg"),
+  P(3,"ESMERALDA","Faja reloj de arena media pierna",CATS[0],257725,206180,193294,185562,BCN,null,"VENDE -CATALOGO Edición mundial 2026/10.jpeg"),
+  P(4,"PACIFIC CORAL","Faja reloj de arena 2 en 1 media pierna",CATS[0],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/12.jpeg"),
+  P(5,"PACIFIC MARFIL","Faja reloj de arena larga",CATS[0],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/11.jpeg"),
 
-  PV(6,"PACIFIC NACÁR","Faja moldeadora 3/4",CATS[1],[197000,157600,147750,141840],[187000,149600,140250,134640],BCN,SIZES_3XL,"VENDE -CATALOGO Edición mundial 2026/14.jpeg"),
-  PV(8,"PACIFIC ZAFIRO","Faja moldeadora larga con brassier",CATS[1],[207000,165600,155250,149040],[197000,157600,147750,141840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/15.jpeg"),
-  PV(10,"PACIFIC JADE","Faja moldeadora larga tira ancha",CATS[1],[197000,157600,147750,141840],[187000,149600,140250,134640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/16.jpeg"),
-  PV(12,"PACIFIC CRISTAL","Faja moldeadora larga tira removible",CATS[1],[197000,157600,147750,141840],[187000,149600,140250,134640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/17.jpeg"),
-  PV(14,"PACIFIC DIAMANTE","Faja moldeadora larga con mangas",CATS[1],[207000,165600,155250,149040],[197000,157600,147750,141840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/18.jpeg"),
-  PV(16,"PACIFIC MAREA","Faja moldeadora con mangas y brassier",CATS[1],[257000,205600,192750,185040],[247000,197600,185250,177840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/19.jpeg"),
+  PV(6,"PACIFIC NACÁR","Faja moldeadora 3/4",CATS[1],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,SIZES_3XL,"VENDE -CATALOGO Edición mundial 2026/14.jpeg"),
+  PV(8,"PACIFIC ZAFIRO","Faja moldeadora larga con brassier",CATS[1],[237000,189600,177750,170640],[237000,189600,177750,170640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/15.jpeg"),
+  PV(10,"PACIFIC JADE","Faja moldeadora larga tira ancha",CATS[1],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/16.jpeg"),
+  PV(12,"PACIFIC CRISTAL","Faja moldeadora larga tira removible",CATS[1],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/17.jpeg"),
+  PV(14,"PACIFIC DIAMANTE","Faja moldeadora larga con mangas",CATS[1],[237000,189600,177750,170640],[237000,189600,177750,170640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/18.jpeg"),
+  PV(16,"PACIFIC MAREA","Faja moldeadora con mangas y brassier",CATS[1],[277000,221600,207750,199440],[271675,217340,203756,195606],BCN,null,"VENDE -CATALOGO Edición mundial 2026/19.jpeg"),
 
-  PV(18,"PACIFIC BRISA","Faja media pierna tira ancha",CATS[2],[187000,149600,140250,134640],[177000,141600,132750,127440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/20.jpeg"),
-  PV(20,"PACIFIC BAHÍA","Faja moldeadora strapless",CATS[2],[167000,133600,125250,120240],[157000,125600,117750,113040],BCNW,SIZES_3XL,"VENDE -CATALOGO Edición mundial 2026/21.jpeg"),
-  PV(22,"PACIFIC OLEAJE","Faja tira removible",CATS[2],[187000,149600,140250,134640],[177000,141600,132750,127440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/22.jpeg"),
-  PV(24,"PACIFIC AURORA","Faja corta con brassier",CATS[2],[197000,157600,147750,141840],[187000,149600,140250,134640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/23.jpeg"),
-  P(26,"PACIFIC MAREJADA","Faja corta con brassier y mangas · abrochadura",CATS[2],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/24.jpeg"),
-  PV(27,"PACIFIC OCÉANO","Faja corta con mangas",CATS[2],[197000,157600,147750,141840],[187000,149600,140250,134640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/25.jpeg"),
-  PV(29,"PACIFIC AMANECER","Faja corta brassier y manga corta",CATS[2],[227000,181600,170250,163440],[217000,173600,162750,156240],BCN,null,"VENDE -CATALOGO Edición mundial 2026/26.jpeg"),
-  P(31,"PACIFIC SIRENA","Faja body cachetera · cierre o abrochadura",CATS[2],157000,125600,117750,113040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/27.jpeg"),
+  PV(18,"PACIFIC BRISA","Faja media pierna tira ancha",CATS[2],[227000,181600,170250,163440],[217000,173600,162750,156240],BCN,null,"VENDE -CATALOGO Edición mundial 2026/20.jpeg"),
+  PV(20,"PACIFIC BAHÍA","Faja moldeadora strapless",CATS[2],[207000,165600,155250,149040],[207000,165600,155250,149040],BCNW,SIZES_3XL,"VENDE -CATALOGO Edición mundial 2026/21.jpeg"),
+  PV(22,"PACIFIC OLEAJE","Faja tira removible",CATS[2],[227000,181600,170250,163440],[217000,173600,162750,156240],BCN,null,"VENDE -CATALOGO Edición mundial 2026/22.jpeg"),
+  PV(24,"PACIFIC AURORA","Faja corta con brassier",CATS[2],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/23.jpeg"),
+  P(26,"PACIFIC MAREJADA","Faja corta con brassier y mangas · abrochadura",CATS[2],267000,213600,200250,192240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/24.jpeg"),
+  PV(27,"PACIFIC OCÉANO","Faja corta con mangas",CATS[2],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/25.jpeg"),
+  PV(29,"PACIFIC AMANECER","Faja corta brassier y manga corta",CATS[2],[257000,205600,192750,185040],[247000,197600,185250,177840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/26.jpeg"),
+  P(31,"PACIFIC SIRENA","Faja body cachetera · cierre o abrochadura",CATS[2],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/27.jpeg"),
 
-  P(32,"PACIFIC EMPERATRIZ","Panty faja control abdomen",CATS[3],137000,109600,102750,98640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/28.jpeg"),
-  P(33,"PACIFIC ESTRELLA","Faja cachetera con brassier",CATS[3],177000,141600,132750,127440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/29.jpeg"),
-  P(34,"PACIFIC TESORO","Panty faja postquirúrgico",CATS[3],97000,77600,72750,69840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/30.jpeg"),
-  P(35,"PACIFIC DELFINA","Faja brasilera estraple",CATS[3],107000,85600,80250,77040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/31.jpeg"),
+  P(32,"PACIFIC EMPERATRIZ","Panty faja control abdomen",CATS[3],187000,149600,140250,134640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/28.jpeg"),
+  P(33,"PACIFIC ESTRELLA","Faja cachetera con brassier",CATS[3],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/29.jpeg"),
+  P(34,"PACIFIC TESORO","Panty faja postquirúrgico",CATS[3],157000,125600,117750,113040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/30.jpeg"),
+  P(35,"PACIFIC DELFINA","Faja brasilera estraple",CATS[3],167000,133600,125250,120240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/31.jpeg"),
 
-  PV(36,"PACIFIC JAGUAR","Cinturilla moldeadora",CATS[4],[107000,85600,80250,77040],[97000,77600,72750,69840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/33.jpeg"),
-  P(38,"PACIFIC COLIBRÍ","Chaleco reloj de arena con brassier",CATS[4],167000,133600,125250,120240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/34.jpeg"),
-  P(39,"PACIFIC MARIPOSA","Chaleco reloj de arena 2 en 1 con brassier",CATS[4],187000,149600,140250,134640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/35.jpeg"),
-  P(40,"PACIFIC PANTERA","Cinturilla látex",CATS[4],87000,69600,65250,62640,N,null,"VENDE -CATALOGO Edición mundial 2026/36.jpeg"),
-  P(41,"PACIFIC TUCÁN","Chaleco moldeador con mangas",CATS[4],167000,133600,125250,120240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/37.jpeg"),
-  PV(42,"PACIFIC GARZA","Chaleco tira removible",CATS[4],[157000,125600,117750,113040],[147000,117600,110250,105840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/38.jpeg"),
-  P(44,"PACIFIC QUETZAL","Cinturilla 2 en 1 reloj de arena",CATS[4],167000,133600,125250,120240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/39.jpeg"),
-  PV(45,"PACIFIC DANTA","Chaleco corrector de postura",CATS[4],[157000,125600,117750,113040],[147000,117600,110250,105840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/40.jpeg"),
-  P(47,"PACIFIC TIGRESA","Chaleco moldeador tira ancha",CATS[4],157000,125600,117750,113040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/41.jpeg"),
-  P(48,"PACIFIC TIGRESA","Chaleco moldeador tira ancha (variante)",CATS[4],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/41.jpeg"),
-  P(49,"PACIFIC PUMA","Chaleco 2 en 1 reloj de arena",CATS[4],177000,141600,132750,127440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/42.jpeg"),
+  PV(36,"PACIFIC JAGUAR","Cinturilla moldeadora",CATS[4],[182700,146160,137025,131544],[180200,144160,135150,129744],BCN,null,"VENDE -CATALOGO Edición mundial 2026/33.jpeg"),
+  P(38,"PACIFIC COLIBRÍ","Chaleco reloj de arena con brassier",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/34.jpeg"),
+  P(39,"PACIFIC MARIPOSA","Chaleco reloj de arena 2 en 1 con brassier",CATS[4],227000,181600,170250,163440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/35.jpeg"),
+  P(40,"PACIFIC PANTERA","Cinturilla látex",CATS[4],147000,117600,110250,105840,N,null,"VENDE -CATALOGO Edición mundial 2026/36.jpeg"),
+  P(41,"PACIFIC TUCÁN","Chaleco moldeador con mangas",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/37.jpeg"),
+  PV(42,"PACIFIC GARZA","Chaleco tira removible",CATS[4],[207000,165600,155250,149040],[197000,157600,147750,141840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/38.jpeg"),
+  P(44,"PACIFIC QUETZAL","Cinturilla 2 en 1 reloj de arena",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/39.jpeg"),
+  PV(45,"PACIFIC DANTA","Chaleco corrector de postura",CATS[4],[207000,165600,155250,149040],[197000,157600,147750,141840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/40.jpeg"),
+  P(47,"PACIFIC TIGRESA","Chaleco moldeador tira ancha",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/41.jpeg"),
+  P(48,"PACIFIC TIGRESA","Chaleco moldeador tira ancha (variante)",CATS[4],197000,157600,147750,141840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/41.jpeg"),
+  P(49,"PACIFIC PUMA","Chaleco 2 en 1 reloj de arena",CATS[4],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/42.jpeg"),
 
-  P(50,"PACIFIC ORQUÍDEA","Short levantacola cachetero",CATS[5],67000,53600,50250,48240,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/44.jpeg"),
-  P(51,"PACIFIC AZUCENA","Short levantacola control abdomen",CATS[5],97000,77600,72750,69840,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/45.jpeg"),
-  P(52,"PACIFIC MAGNOLIA","Short levantacola con abrochadura",CATS[5],107000,85600,80250,77040,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/46.jpeg"),
-  P(53,"PACIFIC CAMELIA","Short levantacola",CATS[5],67000,53600,50250,48240,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/47.jpeg"),
-  P(54,"PACIFIC ROSA","Short levantacola pescador",CATS[5],107000,85600,80250,77040,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/48.jpeg"),
+  P(50,"PACIFIC ORQUÍDEA","Short levantacola cachetero",CATS[5],137000,109600,102750,98640,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/44.jpeg"),
+  P(51,"PACIFIC AZUCENA","Short levantacola control abdomen",CATS[5],157000,125600,117750,113040,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/45.jpeg"),
+  P(52,"PACIFIC MAGNOLIA","Short levantacola con abrochadura",CATS[5],167000,133600,125250,120240,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/46.jpeg"),
+  P(53,"PACIFIC CAMELIA","Short levantacola",CATS[5],137000,109600,102750,98640,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/47.jpeg"),
+  P(54,"PACIFIC ROSA","Short levantacola pescador",CATS[5],167000,133600,125250,120240,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/48.jpeg"),
 
-  P(55,"PACIFIC MORPHO","Faja postquirúrgica larga con brassier",CATS[6],207000,165600,155250,149040,BC,null,"VENDE -CATALOGO Edición mundial 2026/50.jpeg"),
-  P(56,"PACIFIC LIBÉLULA","Faja de descanso",CATS[6],117000,93600,87750,84240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/51.jpeg"),
-  P(57,"PACIFIC CEIBA","Faja postquirúrgica corta con brassier",CATS[6],197000,157600,147750,141840,BC,null,"VENDE -CATALOGO Edición mundial 2026/52.jpeg"),
-  P(58,"PACIFIC YARUMO","Faja postquirúrgica larga con brassier y mangas",CATS[6],247000,197600,185250,177840,BC,null,"VENDE -CATALOGO Edición mundial 2026/53.jpeg"),
-  P(59,"PACIFIC TIGRILLO","Faja postquirúrgica larga",CATS[6],197000,157600,147750,141840,BC,null,"VENDE -CATALOGO Edición mundial 2026/54.jpeg"),
-  P(60,"PACIFIC GARCETA","Faja postquirúrgica corta tira ancha",CATS[6],187000,149600,140250,134640,BC,null,"VENDE -CATALOGO Edición mundial 2026/55.jpeg"),
-  P(61,"PACIFIC HALCÓN","Faja postquirúrgica corta tira removible",CATS[6],187000,149600,140250,134640,BC,null,"VENDE -CATALOGO Edición mundial 2026/56.jpeg"),
-  P(62,"PACIFIC TÁNGARA","Faja postquirúrgica larga · cierre atrás",CATS[6],197000,157600,147750,141840,BC,null,"VENDE -CATALOGO Edición mundial 2026/57.jpeg"),
-  P(63,"PACIFIC LUCIÉRNAGA","Faja postquirúrgica larga con mangas",CATS[6],207000,165600,155250,149040,BC,null,"VENDE -CATALOGO Edición mundial 2026/58.jpeg"),
+  P(55,"PACIFIC MORPHO","Faja postquirúrgica larga con brassier",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/50.jpeg"),
+  P(56,"PACIFIC LIBÉLULA","Faja de descanso",CATS[6],177000,141600,132750,127440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/51.jpeg"),
+  P(57,"PACIFIC CEIBA","Faja postquirúrgica corta con brassier",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/52.jpeg"),
+  P(58,"PACIFIC YARUMO","Faja postquirúrgica larga con brassier y mangas",CATS[6],267000,213600,200250,192240,BC,null,"VENDE -CATALOGO Edición mundial 2026/53.jpeg"),
+  P(59,"PACIFIC TIGRILLO","Faja postquirúrgica larga",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/54.jpeg"),
+  P(60,"PACIFIC GARCETA","Faja postquirúrgica corta tira ancha",CATS[6],227000,181600,170250,163440,BC,null,"VENDE -CATALOGO Edición mundial 2026/55.jpeg"),
+  P(61,"PACIFIC HALCÓN","Faja postquirúrgica corta tira removible",CATS[6],227000,181600,170250,163440,BC,null,"VENDE -CATALOGO Edición mundial 2026/56.jpeg"),
+  P(62,"PACIFIC TÁNGARA","Faja postquirúrgica larga · cierre atrás",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/57.jpeg"),
+  P(63,"PACIFIC LUCIÉRNAGA","Faja postquirúrgica larga con mangas",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/58.jpeg"),
 
-  P(64,"REF 0110","Brassier postquirúrgico tira removible",CATS[7],77000,61600,57750,55440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/60.jpeg"),
-  P(65,"REF 0106","Brassier postquirúrgico",CATS[7],77000,61600,57750,55440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/61.jpeg"),
-  P(66,"REF 01061","Brassier postquirúrgico corrector de postura",CATS[7],87000,69600,65250,62640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/63.jpeg"),
-  P(67,"REF 0107","Brassier postquirúrgico tira removible",CATS[7],77000,61600,57750,55440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/64.jpeg"),
-  P(68,"REF 0108","Brassier postquirúrgico con mangas",CATS[7],97000,77600,72750,69840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/65.jpeg"),
+  P(64,"REF 0110","Brassier postquirúrgico tira removible",CATS[7],192950,154360,144712,138924,BCN,null,"VENDE -CATALOGO Edición mundial 2026/60.jpeg"),
+  P(65,"REF 0106","Brassier postquirúrgico",CATS[7],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/61.jpeg"),
+  P(66,"REF 01061","Brassier postquirúrgico corrector de postura",CATS[7],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/63.jpeg"),
+  P(67,"REF 0107","Brassier postquirúrgico tira removible",CATS[7],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/64.jpeg"),
+  P(68,"REF 0108","Brassier postquirúrgico con mangas",CATS[7],157000,125600,117750,113040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/65.jpeg"),
 
-  P(69,"REF 2018","Cinturilla deportiva hombre",CATS[8],97000,77600,72750,69840,N,null,"VENDE -CATALOGO Edición mundial 2026/67.jpeg"),
-  PV(70,"REF 2016 / 2017","Cinturilla men",CATS[8],[97000,77600,72750,69840],[97000,77600,72750,69840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/68.jpeg"),
-  PV(72,"PACIFIC OCELOTE","Chaleco moldeador hombre",CATS[8],[137000,109600,102750,98640],[127000,101600,95250,91440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/69.jpeg"),
-  P(74,"REF 2017","Faja postquirúrgica men",CATS[8],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/70.jpeg"),
-  P(75,"REF 2019","Fajón abdominal",CATS[8],87000,69600,65250,62640,N,null,"VENDE -CATALOGO Edición mundial 2026/71.jpeg"),
-  P(76,"REF 1252","Chaleco light men",CATS[8],67000,53600,50250,48240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/74.jpeg"),
-  P(77,"REF 2011","Boxer levantacola",CATS[8],67000,53600,50250,48240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/75.jpeg"),
-  P(78,"REF 1255","Chaleco en neopreno men",CATS[8],77000,61600,57750,55440,N,null,"VENDE -CATALOGO Edición mundial 2026/76.jpeg"),
+  P(69,"REF 2018","Cinturilla deportiva hombre",CATS[8],180200,144160,135150,129744,N,null,"VENDE -CATALOGO Edición mundial 2026/67.jpeg"),
+  PV(70,"REF 2016 / 2017","Cinturilla men",CATS[8],[180200,144160,135150,129744],[157750,126200,118312,113580],BCN,null,"VENDE -CATALOGO Edición mundial 2026/68.jpeg"),
+  PV(72,"PACIFIC OCELOTE","Chaleco moldeador hombre",CATS[8],[187000,149600,140250,134640],[177000,141600,132750,127440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/69.jpeg"),
+  P(74,"REF 2017","Faja postquirúrgica men",CATS[8],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/70.jpeg"),
+  P(75,"REF 2019","Fajón abdominal",CATS[8],177700,142160,133275,127944,N,null,"VENDE -CATALOGO Edición mundial 2026/71.jpeg"),
+  P(76,"REF 1252","Chaleco light men",CATS[8],137000,109600,102750,98640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/74.jpeg"),
+  P(77,"REF 2011","Boxer levantacola",CATS[8],148000,118400,111000,106560,BCN,null,"VENDE -CATALOGO Edición mundial 2026/75.jpeg"),
+  P(78,"REF 1255","Chaleco en neopreno men",CATS[8],152750,122200,114562,109980,N,null,"VENDE -CATALOGO Edición mundial 2026/76.jpeg"),
 
-  P(79,"REF 1257","Chaleco dama en neopreno",CATS[9],77000,61600,57750,55440,N,null,"VENDE -CATALOGO Edición mundial 2026/78.jpeg"),
-  P(80,"REF 0726","Cinturilla deportiva mujer",CATS[9],97000,77600,72750,69840,N,null,"VENDE -CATALOGO Edición mundial 2026/79.jpeg"),
-  P(81,"REF 1253","Short deportivo neopreno",CATS[9],77000,61600,57750,55440,N,null,"VENDE -CATALOGO Edición mundial 2026/80.jpeg"),
-  P(82,"REF 1254","Leggins con faja en neopreno",CATS[9],97000,77600,72750,69840,N,null,"VENDE -CATALOGO Edición mundial 2026/81.jpeg"),
+  P(79,"REF 1257","Chaleco dama en neopreno",CATS[9],152750,122200,114562,109980,N,null,"VENDE -CATALOGO Edición mundial 2026/78.jpeg"),
+  P(80,"REF 0726","Cinturilla deportiva mujer",CATS[9],157000,125600,117750,113040,N,null,"VENDE -CATALOGO Edición mundial 2026/79.jpeg"),
+  P(81,"REF 1253","Short deportivo neopreno",CATS[9],147000,117600,110250,105840,N,null,"VENDE -CATALOGO Edición mundial 2026/80.jpeg"),
+  P(82,"REF 1254","Leggins con faja en neopreno",CATS[9],157000,125600,117750,113040,N,null,"VENDE -CATALOGO Edición mundial 2026/81.jpeg"),
 
   /* ===== COMPLEMENTOS (solo 5% por cantidad, sin descuentos por volumen) ===== */
   PC(83,"TABLA COXIS","Tabla de compresión para coxis",PRECIO_COMP[83],[],[],"VENDE -CATALOGO Edición mundial 2026/83.jpeg"),
@@ -1870,576 +1876,4 @@ const PRODUCTS = [
   PC(85,"TABLA PERA","Tabla de compresión pera",PRECIO_COMP[85],[],[],"VENDE -CATALOGO Edición mundial 2026/85.jpeg"),
   PC(86,"MENTONERA BICHECTOMÍA","Mentonera para postoperatorio de bichectomía",PRECIO_COMP[86],[],[],"VENDE -CATALOGO Edición mundial 2026/86.jpeg"),
   PC(87,"MENTONERA OTOPLASTIA","Mentonera para postoperatorio de otoplastia",PRECIO_COMP[87],[],[],"VENDE -CATALOGO Edición mundial 2026/87.jpeg"),
-  PC(88,"MANGAS INDIVIDUALES","Mangas de compresión individuales",PRECIO_COMP[88],SIZES_STD,BCN,"VENDE -CATALOGO Edición mundial 2026/88.jpeg"),
-  PC(89,"TABLA EPIFOAM","Tabla de espuma Epifoam",PRECIO_COMP[89],[],[],"VENDE -CATALOGO Edición mundial 2026/89.jpeg"),
-];
-
-/* ============ STATE ============ */
-const cardState = {}; // per product: {size, color, qty}
-let cart = []; // {productId, size, color, qty}
-const fmt = n => "$" + Math.round(n).toLocaleString("es-CO");
-
-// Descuento por cantidad total en el carrito (SIN contar complementos):
-// 1 ud      → precio detal (0%)
-// 2–5 uds   → 5% descuento
-// 6–11 uds  → 10% descuento
-// 12–49 uds → 20% descuento
-// 50–100 uds→ 25% descuento
-// +100 uds  → 28% descuento
-const isCompItem = i => !!PRODUCTS.find(x=>x.id===i.productId).comp;
-
-// Unidades que cuentan para los descuentos por volumen (SIN complementos)
-function totalCartQty(){
-  return cart.filter(i=>!isCompItem(i)).reduce((s,i)=>s+i.qty, 0);
-}
-// Unidades de complementos
-function totalCompQty(){
-  return cart.filter(isCompItem).reduce((s,i)=>s+i.qty, 0);
-}
-function getDiscountRate(qty){
-  if(qty >= 101) return 0.28;
-  if(qty >= 50)  return 0.25;
-  if(qty >= 12)  return 0.20;
-  if(qty >= 6)   return 0.10;
-  if(qty >= 2)   return 0.05;
-  return 0;
-}
-function unitPriceInCart(p, item){
-  const v = getVariant(p, item.variant);
-  if(p.comp){
-    // Complementos: solo 5% al llevar 2 o más complementos
-    return v.detal * (totalCompQty() >= 2 ? 0.95 : 1);
-  }
-  const qty = totalCartQty();
-  return v.detal * (1 - getDiscountRate(qty));
-}
-
-/* ============ RENDER CATALOG ============ */
-const gridWrap = document.getElementById('gridWrap');
-const chipRow = document.getElementById('chipRow');
-let activeCat = "Todos";
-let searchTerm = "";
-
-function initCardState(p){
-  if(!cardState[p.id]){
-    cardState[p.id] = {size:p.sizes[0], color:p.colors[0], qty:1, variant:p.variants[0].key};
-  }
-}
-function getVariant(p, variantKey){
-  return p.variants.find(v=>v.key===variantKey) || p.variants[0];
-}
-PRODUCTS.forEach(initCardState);
-
-function buildChips(){
-  const allCats = ["Todos", ...CATS];
-  chipRow.innerHTML = allCats.map(c =>
-    `<button class="chip ${c===activeCat?'active':''}" data-cat="${c}">${c}</button>`
-  ).join("");
-  chipRow.querySelectorAll('.chip').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ activeCat = btn.dataset.cat; buildChips(); renderGrid(); });
-  });
-}
-
-/* ============ IMAGE FALLBACK SYSTEM ============ */
-// Intenta varias combinaciones de carpeta/extensión automáticamente
-// antes de mostrar el color de respaldo. Así no depende de adivinar
-// el nombre exacto de la carpeta o la extensión del archivo.
-function buildCandidates(imgPath){
-  if(!imgPath) return [];
-  const m = imgPath.match(/^(.*)\/(\d+)\.[a-zA-Z]+$/);
-  if(!m) return [imgPath];
-  const folder = m[1], num = m[2];
-  const exts = ['jpeg','jpg','JPEG','JPG','png','PNG','webp'];
-  const cands = [];
-  exts.forEach(e=> cands.push(`${folder}/${num}.${e}`));   // dentro de la carpeta
-  exts.forEach(e=> cands.push(`${num}.${e}`));              // junto al HTML, sin carpeta
-  return cands;
-}
-window.imgFallback = function(img){
-  let candidates;
-  try{ candidates = JSON.parse(img.dataset.candidates); }catch(e){ img.remove(); return; }
-  let idx = parseInt(img.dataset.idx || "0") + 1;
-  if(idx < candidates.length){
-    img.dataset.idx = idx;
-    img.src = candidates[idx];
-  } else {
-    img.remove();
-  }
-};
-
-function renderGrid(){
-  const term = searchTerm.trim().toLowerCase();
-  const filtered = PRODUCTS.filter(p=>{
-    const matchCat = activeCat==="Todos" || p.cat===activeCat;
-    const matchTerm = !term || p.name.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term);
-    return matchCat && matchTerm;
-  });
-
-  const groups = {};
-  filtered.forEach(p=>{ (groups[p.cat] = groups[p.cat]||[]).push(p); });
-
-  let html = "";
-  const catsInOrder = CATS.filter(c=>groups[c]);
-  if(catsInOrder.length===0){ html = `<p style="padding:40px 0; text-align:center; color:rgba(34,34,34,0.5);">Sin resultados para tu búsqueda.</p>`; }
-
-  catsInOrder.forEach(cat=>{
-    html += `<div class="section-title">${cat}</div><div class="grid">`;
-    groups[cat].forEach(p=>{
-      const st = cardState[p.id];
-      const v = getVariant(p, st.variant);
-      const now = v.detal;
-
-      html += `
-      <div class="card" data-id="${p.id}">
-        <div class="card-swatch" style="background-image:linear-gradient(135deg, ${COLORS[st.color]}, ${COLORS[st.color]}CC);">
-          ${p.img ? `<img src="${buildCandidates(p.img)[0]}" data-candidates='${JSON.stringify(buildCandidates(p.img)).replace(/'/g,"&#39;")}' data-idx="0" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">` : ``}
-          <span class="id">#${String(p.id).padStart(2,'0')}</span>
-        </div>
-        <div class="card-body">
-          <h3>${p.name}</h3>
-          <p class="desc">${p.desc}</p>
-          <div class="price-line">
-            <span class="now mono">${fmt(now)}</span>
-          </div>
-          <div class="gain-line mono" style="font-size:11px; opacity:0.6; letter-spacing:1px;">DETAL</div>
-
-          ${p.hasVariant ? `
-          <div class="opt-row variant-row">
-            ${p.variants.map(vr=>`<button class="opt-btn ${st.variant===vr.key?'sel':''}" data-type="variant" data-val="${vr.key}">${vr.label}</button>`).join("")}
-          </div>` : ``}
-
-          <div class="tier-divider">Precio por cantidad</div>
-          <div class="tier-table">
-            <div class="trow">
-              <span class="tname">Lleva 1</span>
-              <span class="tprice">${fmt(v.detal)}</span>
-            </div>
-            <div class="trow">
-              <span class="tname">Lleva 2 <span class="trange">c/u</span></span>
-              <span class="tprice">${fmt(v.detal * 0.95)}</span>
-            </div>
-          </div>
-
-          <div class="opt-label">Talla</div>
-          <div class="opt-row size-row">
-            ${p.sizes.map(s=>`<button class="opt-btn ${st.size===s?'sel':''}" data-type="size" data-val="${s}">${s}</button>`).join("")}
-          </div>
-
-          <div class="opt-label">Color</div>
-          <div class="opt-row color-row">
-            ${p.colors.map(c=>`<button class="swatch-btn ${st.color===c?'sel':''}" data-type="color" data-val="${c}" style="background:${COLORS[c]}" title="${c}"></button>`).join("")}
-          </div>
-
-          <div class="qty-row">
-            <div class="stepper">
-              <button data-step="-1">−</button>
-              <span class="qty-display">${st.qty}</span>
-              <button data-step="1">+</button>
-            </div>
-            <button class="add-btn">Agregar</button>
-          </div>
-        </div>
-      </div>`;
-    });
-    html += `</div>`;
-  });
-
-  gridWrap.innerHTML = html;
-
-  gridWrap.querySelectorAll('.card').forEach(cardEl=>{
-    const id = Number(cardEl.dataset.id);
-    const p = PRODUCTS.find(x=>x.id===id);
-    const st = cardState[id];
-
-    cardEl.querySelectorAll('[data-type="variant"]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{ st.variant = btn.dataset.val; updateCardBody(id); });
-    });
-    cardEl.querySelectorAll('[data-type="size"]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{ st.size = btn.dataset.val; updateCardBody(id); });
-    });
-    cardEl.querySelectorAll('[data-type="color"]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{ st.color = btn.dataset.val; updateCardBody(id); });
-    });
-    cardEl.querySelectorAll('[data-step]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const delta = Number(btn.dataset.step);
-        st.qty = Math.max(1, st.qty + delta);
-        cardEl.querySelector('.qty-display').textContent = st.qty;
-      });
-    });
-    cardEl.querySelector('.add-btn').addEventListener('click', (e)=>{
-      addToCart(p, st.size, st.color, st.qty, st.variant);
-      e.target.textContent = "Agregado ✓";
-      e.target.classList.add('added');
-      setTimeout(()=>{ e.target.textContent="Agregar"; e.target.classList.remove('added'); }, 900);
-    });
-  });
-}
-
-/* ============ RENDER COMPLEMENTOS ============ */
-const gridComp = document.getElementById('gridComplementos');
-function renderComplementos(){
-  const items = PRODUCTS.filter(p=>p.comp);
-  gridComp.innerHTML = `<div class="section-title">Complementos</div><div class="grid">` + items.map(p=>{
-    const st = cardState[p.id];
-    const v = getVariant(p, st.variant);
-    const bg = COLORS[st.color] ? `background-image:linear-gradient(135deg, ${COLORS[st.color]}, ${COLORS[st.color]}CC);` : "";
-    const sizesHTML = p.sizes.length ? `
-          <div class="opt-label">Talla</div>
-          <div class="opt-row size-row">${p.sizes.map(s=>`<button class="opt-btn ${st.size===s?'sel':''}" data-type="size" data-val="${s}">${s}</button>`).join("")}</div>` : "";
-    const colorsHTML = p.colors.length ? `
-          <div class="opt-label">Color</div>
-          <div class="opt-row color-row">${p.colors.map(c=>`<button class="swatch-btn ${st.color===c?'sel':''}" data-type="color" data-val="${c}" style="background:${COLORS[c]}" title="${c}"></button>`).join("")}</div>` : "";
-    return `
-      <div class="card" data-id="${p.id}">
-        <div class="card-swatch" style="${bg}">
-          ${p.img ? `<img src="${buildCandidates(p.img)[0]}" data-candidates='${JSON.stringify(buildCandidates(p.img)).replace(/'/g,"&#39;")}' data-idx="0" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">` : ``}
-          <span class="id">#${String(p.id).padStart(2,'0')}</span>
-        </div>
-        <div class="card-body">
-          <h3>${p.name}</h3>
-          <p class="desc">${p.desc}</p>
-          <div class="price-line"><span class="now mono">${fmt(v.detal)}</span></div>
-          <div class="gain-line mono" style="font-size:11px; opacity:0.6; letter-spacing:1px;">DETAL</div>
-          <div class="tier-divider">Precio por cantidad</div>
-          <div class="tier-table">
-            <div class="trow"><span class="tname">Lleva 1</span><span class="tprice">${fmt(v.detal)}</span></div>
-            <div class="trow"><span class="tname">Lleva 2 <span class="trange">c/u</span></span><span class="tprice">${fmt(v.detal*0.95)}</span></div>
-          </div>
-          ${sizesHTML}
-          ${colorsHTML}
-          <div class="qty-row">
-            <div class="stepper">
-              <button data-step="-1">−</button>
-              <span class="qty-display">${st.qty}</span>
-              <button data-step="1">+</button>
-            </div>
-            <button class="add-btn">Agregar</button>
-          </div>
-        </div>
-      </div>`;
-  }).join("") + `</div>`;
-
-  gridComp.querySelectorAll('.card').forEach(cardEl=>{
-    const id = Number(cardEl.dataset.id);
-    const p = PRODUCTS.find(x=>x.id===id);
-    const st = cardState[id];
-    cardEl.querySelectorAll('[data-type="size"]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{ st.size = btn.dataset.val; updateCardBody(id); });
-    });
-    cardEl.querySelectorAll('[data-type="color"]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{ st.color = btn.dataset.val; updateCardBody(id); });
-    });
-    cardEl.querySelectorAll('[data-step]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        st.qty = Math.max(1, st.qty + Number(btn.dataset.step));
-        cardEl.querySelector('.qty-display').textContent = st.qty;
-      });
-    });
-    cardEl.querySelector('.add-btn').addEventListener('click', (e)=>{
-      addToCart(p, st.size, st.color, st.qty, st.variant);
-      e.target.textContent = "Agregado ✓";
-      e.target.classList.add('added');
-      setTimeout(()=>{ e.target.textContent="Agregar"; e.target.classList.remove('added'); }, 900);
-    });
-  });
-}
-
-// Actualiza SOLO la variante/talla/color de una tarjeta puntual,
-// sin reconstruir el grid completo (evita el parpadeo de las imágenes).
-function updateCardBody(id){
-  const cardEl = document.querySelector(`.card[data-id="${id}"]`);
-  if(!cardEl) return;
-  const p = PRODUCTS.find(x=>x.id===id);
-  const st = cardState[id];
-  const v = getVariant(p, st.variant);
-  const now = v.detal;
-
-  const swatchEl = cardEl.querySelector('.card-swatch');
-  if(swatchEl && COLORS[st.color]) swatchEl.style.backgroundImage = `linear-gradient(135deg, ${COLORS[st.color]}, ${COLORS[st.color]}CC)`;
-
-  cardEl.querySelector('.price-line').innerHTML = `<span class="now mono">${fmt(now)}</span>`;
-
-  const qtyPrices = [v.detal, v.detal * 0.95];
-  const trows = cardEl.querySelectorAll('.tier-table .trow');
-  trows.forEach((row,i)=>{
-    const priceSpan = row.querySelector('.tprice');
-    if(priceSpan) priceSpan.textContent = fmt(qtyPrices[i]);
-  });
-
-  cardEl.querySelectorAll('[data-type="variant"]').forEach(btn=>{
-    btn.classList.toggle('sel', btn.dataset.val===st.variant);
-  });
-  cardEl.querySelectorAll('[data-type="size"]').forEach(btn=>{
-    btn.classList.toggle('sel', btn.dataset.val===st.size);
-  });
-  cardEl.querySelectorAll('[data-type="color"]').forEach(btn=>{
-    btn.classList.toggle('sel', btn.dataset.val===st.color);
-  });
-
-  const qtyDisplay = cardEl.querySelector('.qty-display');
-  if(qtyDisplay) qtyDisplay.textContent = st.qty;
-}
-
-// Actualiza todas las tarjetas visibles (usado cuando cambia el nivel de
-// descuento por el carrito) sin reconstruir el grid ni las imágenes.
-function updateAllCardBodies(){
-  PRODUCTS.forEach(p=>{
-    if(document.querySelector(`.card[data-id="${p.id}"]`)) updateCardBody(p.id);
-  });
-}
-
-/* ============ CART LOGIC ============ */
-function addToCart(p, size, color, qty, variant){
-  const existing = cart.find(i=>i.productId===p.id && i.size===size && i.color===color && i.variant===variant);
-  if(existing){ existing.qty += qty; }
-  else{ cart.push({productId:p.id, size, color, qty, variant}); }
-  renderAll();
-}
-function removeFromCart(idx){ cart.splice(idx,1); renderAll(); }
-function changeQty(idx, delta){
-  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
-  renderAll();
-}
-
-function renderAll(){
-  updateAllCardBodies();
-  renderCart();
-}
-
-function renderCart(){
-  const itemsWrap = document.getElementById('drawerItems');
-  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
-
-  document.getElementById('cartCount').textContent = `${totalQty} uds`;
-
-  if(cart.length===0){
-    itemsWrap.innerHTML = `<div class="empty-cart">Tu pedido está vacío.<br>Agrega productos desde el catálogo.</div>`;
-  } else {
-    itemsWrap.innerHTML = cart.map((item, idx)=>{
-      const p = PRODUCTS.find(x=>x.id===item.productId);
-      const unit = unitPriceInCart(p, item);
-      const vLabel = p.hasVariant ? ` · ${getVariant(p, item.variant).label}` : "";
-      const meta = [item.size ? `Talla ${item.size}` : "", item.color || ""].filter(Boolean).join(" · ");
-      return `
-      <div class="line-item">
-        <div>
-          <div class="li-name">${p.name}</div>
-          <div class="li-meta">${meta}${vLabel}</div>
-          <div class="li-qty-ctrl">
-            <div class="stepper">
-              <button data-idx="${idx}" data-d="-1">−</button>
-              <span>${item.qty}</span>
-              <button data-idx="${idx}" data-d="1">+</button>
-            </div>
-          </div>
-        </div>
-        <div class="li-price">${fmt(unit*item.qty)}<br><span style="opacity:0.5; font-size:11px;">${fmt(unit)} c/u</span></div>
-        <button class="li-remove" data-remove="${idx}">Quitar</button>
-      </div>`;
-    }).join("");
-
-    itemsWrap.querySelectorAll('[data-d]').forEach(btn=>{
-      btn.addEventListener('click', ()=>changeQty(Number(btn.dataset.idx), Number(btn.dataset.d)));
-    });
-    itemsWrap.querySelectorAll('[data-remove]').forEach(btn=>{
-      btn.addEventListener('click', ()=>removeFromCart(Number(btn.dataset.remove)));
-    });
-  }
-
-  // totals (precio detal, con descuento del 5% en productos con 2+ unidades)
-  const total = cart.reduce((s,i)=>{
-    const p = PRODUCTS.find(x=>x.id===i.productId);
-    return s + unitPriceInCart(p, i)*i.qty;
-  },0);
-
-  document.getElementById('footUnits').textContent = totalQty;
-  document.getElementById('footTotal').textContent = fmt(total);
-
-  document.getElementById('sendBtn').disabled = cart.length===0;
-}
-
-/* ============ WHATSAPP ============ */
-document.getElementById('sendBtn').addEventListener('click', ()=>{
-  if(cart.length===0) return;
-  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
-  const name = document.getElementById('custName').value.trim();
-  const city = document.getElementById('custCity').value.trim();
-
-  let lines = [];
-  lines.push("🛍️ *NUEVO PEDIDO CATALOGO PACIFIC FAJAS*");
-  if(name) lines.push(`Cliente: ${name}`);
-  if(city) lines.push(`Dirección y ciudad: ${city}`);
-  lines.push("");
-  let total = 0;
-  cart.forEach(item=>{
-    const p = PRODUCTS.find(x=>x.id===item.productId);
-    const unit = unitPriceInCart(p, item);
-    const sub = unit*item.qty;
-    total += sub;
-    const parts = [];
-    if(item.size) parts.push(`Talla: ${item.size}`);
-    if(item.color) parts.push(`Color: ${item.color}`);
-    if(p.hasVariant) parts.push(`Opción: ${getVariant(p, item.variant).label}`);
-    parts.push(`Cant: ${item.qty}`);
-    parts.push(`${fmt(unit)} c/u = ${fmt(sub)}`);
-    lines.push(`• ${p.name} (${p.desc})`);
-    lines.push(`   ${parts.join(" | ")}`);
-  });
-  lines.push("");
-  const regQty = totalCartQty();
-  const disc = getDiscountRate(regQty);
-  const discLabel = (disc > 0 ? ` (descuento ${Math.round(disc*100)}% por ${regQty} uds)` : "")
-    + (totalCompQty() >= 2 ? " (complementos con 5% desc.)" : "");
-  lines.push(`Unidades totales: ${totalQty}`);
-  lines.push(`*TOTAL: ${fmt(total)} COP${discLabel}*`);
-
-  const text = encodeURIComponent(lines.join("\n"));
-  window.open(`https://wa.me/573172335456?text=${text}`, "_blank");
-});
-
-/* ============ DRAWER TOGGLE ============ */
-const drawer = document.getElementById('drawer');
-const overlay = document.getElementById('overlay');
-function openDrawer(){ drawer.classList.add('show'); overlay.classList.add('show'); }
-function closeDrawer(){ drawer.classList.remove('show'); overlay.classList.remove('show'); }
-document.getElementById('openCart').addEventListener('click', openDrawer);
-document.getElementById('closeCart').addEventListener('click', closeDrawer);
-overlay.addEventListener('click', closeDrawer);
-
-/* ============ SEARCH ============ */
-document.getElementById('searchBox').addEventListener('input', (e)=>{
-  searchTerm = e.target.value; renderGrid();
-});
-
-/* ============ TABS ============ */
-// Enlace propio de cada pestaña (ej: tusitio.com/#guiadetallas)
-const TAB_SLUGS = {
-  quienes:'quienessomos',
-  catalogo:'catalogo',
-  complementos:'complementos',
-  tallas:'guiadetallas',
-  mayorista:'mayorista',
-  vende:'vendeporcatalogo',
-  politicas:'politicas'
-};
-const SLUG_TO_TAB = {};
-Object.keys(TAB_SLUGS).forEach(t=>{ SLUG_TO_TAB[TAB_SLUGS[t]] = t; });
-SLUG_TO_TAB['vc-form-anchor'] = 'vende'; // el botón "Regístrate ahora" abre la pestaña Vende
-
-function showTab(tab){
-  if(!document.getElementById(`panel-${tab}`)) return;
-  document.querySelectorAll('.main-tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
-  document.querySelectorAll('.main-tab-panel').forEach(p=>p.classList.toggle('active', p.id===`panel-${tab}`));
-}
-
-document.querySelectorAll('.main-tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    showTab(btn.dataset.tab);
-    const hash = '#' + TAB_SLUGS[btn.dataset.tab];
-    if(location.hash !== hash) history.pushState(null, '', hash);
-  });
-});
-
-function applyHash(){
-  const slug = decodeURIComponent(location.hash.replace('#','')).toLowerCase();
-  if(!slug){ showTab('catalogo'); return; }
-  const tab = SLUG_TO_TAB[slug];
-  if(!tab) return;
-  showTab(tab);
-  if(slug === 'vc-form-anchor'){
-    const a = document.getElementById('vc-form-anchor');
-    if(a) a.scrollIntoView({behavior:'smooth'});
-  }
-}
-window.addEventListener('hashchange', applyHash);
-applyHash();
-
-/* ============ VENDE POR CATÁLOGO: calculadora de niveles ============ */
-(function(){
-  const slider = document.getElementById('vcCalcSlider');
-  const sliderVal = document.getElementById('vcCalcSliderVal');
-  const tierTag = document.getElementById('vcCalcTierTag');
-  const resultEl = document.getElementById('vcCalcResult');
-  const resultMonthEl = document.getElementById('vcCalcResultMonth');
-  const tierCards = document.querySelectorAll('#vc-wrap .vc-tier-card');
-  if(!slider || !resultEl) return;
-
-  const AVG_TICKET = 150000; // ticket promedio de referencia por venta
-
-  function paint(){
-    const ventas = Number(slider.value);
-    sliderVal.textContent = ventas;
-
-    let matched = tierCards[0];
-    tierCards.forEach(card=>{
-      const min = Number(card.dataset.min), max = Number(card.dataset.max);
-      card.classList.remove('match');
-      if(ventas >= min && ventas <= max){ matched = card; }
-    });
-    matched.classList.add('match');
-
-    const rate = Number(matched.dataset.rate);
-    const tierName = matched.querySelector('.vc-tier-name').textContent;
-    tierTag.textContent = `${tierName} · ${Math.round(rate*100)}%`;
-
-    const weekly = ventas * AVG_TICKET * rate;
-    resultEl.textContent = `${fmt(weekly)} / semana`;
-    resultMonthEl.textContent = `≈ ${fmt(weekly*4)} al mes`;
-  }
-
-  slider.addEventListener('input', paint);
-  paint();
-})();
-
-/* ============ VENDE POR CATÁLOGO: registro por WhatsApp ============ */
-(function(){
-  const form = document.getElementById('vcForm');
-  if(!form) return;
-  const errorEl = document.getElementById('vcFormError');
-  const successEl = document.getElementById('vcFormSuccess');
-
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-
-    const name = document.getElementById('vcName').value.trim();
-    const email = document.getElementById('vcEmail').value.trim();
-    const phone = document.getElementById('vcPhone').value.trim();
-    const address = document.getElementById('vcAddress').value.trim();
-    const experience = document.getElementById('vcExperience').value.trim();
-    const agree = document.getElementById('vcAgree').checked;
-
-    if(!name || !email || !phone || !address || !experience || !agree){
-      errorEl.style.display = 'block';
-      successEl.style.display = 'none';
-      return;
-    }
-    errorEl.style.display = 'none';
-
-    const lines = [];
-    lines.push("📝 *NUEVO REGISTRO — VENDEDORA POR CATÁLOGO PACIFIC*");
-    lines.push("");
-    lines.push(`Nombre y apellidos: ${name}`);
-    lines.push(`Correo electrónico: ${email}`);
-    lines.push(`WhatsApp: ${phone}`);
-    lines.push(`Ciudad y dirección: ${address}`);
-    lines.push(`¿Ha vendido por catálogo antes?: ${experience}`);
-    lines.push("");
-    lines.push("✅ Leyó el acuerdo de vendedora por comisión y está de acuerdo con las condiciones del acuerdo y de pago semanal.");
-
-    const text = encodeURIComponent(lines.join("\n"));
-    window.open(`https://wa.me/573172335456?text=${text}`, "_blank");
-
-    successEl.style.display = 'block';
-    form.reset();
-  });
-})();
-
-/* ============ INIT ============ */
-buildChips();
-renderGrid();
-renderComplementos();
-renderCart();
-</script>
-</body>
-</html>
+  PC(88,"MANGAS INDIVIDUALES","Mangas de compresión individuales",PRECIO_COMP[88],SIZES_STD,BCN,"VENDE -CATALO
