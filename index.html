@@ -269,9 +269,59 @@ footer{
 @media(max-width:800px){
   .hero{grid-template-columns:1fr; padding-top:36px;}
 }
+
+/* ===== BANNER ENVÍO GRATIS ===== */
+.promo-bar{
+  position:relative; overflow:hidden;
+  background:linear-gradient(90deg,#0E2726 0%,#173C3B 50%,#0E2726 100%);
+  color:#F7F5F1; text-align:center;
+  padding:11px 16px; font-family:'Inter',sans-serif;
+  border-bottom:2px solid #C7A86B;
+}
+.promo-bar::after{
+  content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(232,201,106,0.28),transparent);
+  animation:promoShine 3.8s ease-in-out infinite; pointer-events:none;
+}
+@keyframes promoShine{0%{left:-60%;}60%,100%{left:130%;}}
+.promo-inner{
+  position:relative; z-index:1; display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:6px 12px; line-height:1.3;
+}
+.promo-truck{font-size:20px; display:inline-block; animation:promoTruck 1.6s ease-in-out infinite;}
+@keyframes promoTruck{0%,100%{transform:translateX(-3px);}50%{transform:translateX(4px);}}
+.promo-main{font-weight:800; font-size:15px; letter-spacing:1.2px; text-transform:uppercase;}
+.promo-main b{
+  background:linear-gradient(135deg,#C9A84C,#E8C96A,#B8922E); color:#1a1208;
+  padding:3px 10px; border-radius:999px; margin:0 2px; display:inline-block;
+}
+.promo-sub{font-size:13px; font-weight:500; opacity:.92;}
+.promo-sub strong{color:#E8C96A; font-weight:700;}
+.promo-delivery{
+  position:relative; z-index:1; margin-top:4px;
+  font-size:12px; font-weight:500; font-style:italic; letter-spacing:.3px; text-transform:none;
+  color:#E8C96A; opacity:.9;
+}
+@media(max-width:600px){
+  .promo-delivery{font-size:11px; letter-spacing:.2px;}
+  .promo-main{font-size:13px; letter-spacing:.6px;}
+  .promo-sub{font-size:12px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .promo-bar::after,.promo-truck{animation:none;}
+}
 </style>
 </head>
 <body>
+
+<div class="promo-bar" role="banner" aria-label="Promoción de envío gratis">
+  <div class="promo-inner">
+    <span class="promo-truck" aria-hidden="true">🚚</span>
+    <span class="promo-main">¡Envío <b>GRATIS</b> a toda Colombia!</span>
+    <span class="promo-sub">Pide hoy y recibe tu faja <strong>sin pagar el domicilio</strong> ✨</span>
+  </div>
+  <div class="promo-delivery">Entrega de 1 a 5 días &nbsp;·&nbsp; pago contra entrega</div>
+</div>
 
 <header class="top">
   <div class="top-inner">
