@@ -1,0 +1,2505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo - Pacific Fajas</title>
+<meta property="og:title" content="Catálogo - Pacific Fajas">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#ECECEC;
+  --sand-deep:#DCD8D0;
+  --cocoa:#6B6560;
+  --cocoa-dark:#222222;
+  --tide:#173C3B;
+  --tide-deep:#0E2726;
+  --pearl:#F7F5F1;
+  --coral:#C7A86B;
+  --coral-dark:#AD8E56;
+  --ink:#222222;
+  --line:rgba(34,34,34,0.12);
+  --ok:#3F7A5C;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:#FFFFFF;
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+.mono{font-family:'Inter',monospace;}
+
+/* ===== HEADER ===== */
+header.top{
+  position:sticky; top:0; z-index:50;
+  background:var(--tide-deep);
+  color:var(--pearl);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.top-inner{
+  max-width:1240px; margin:0 auto; padding:14px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.brand{display:flex; align-items:baseline; gap:10px;}
+.brand .name{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:0.5px;}
+.brand .tag{font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:0.55;}
+.cart-btn{
+  display:flex; align-items:center; gap:8px;
+  background:linear-gradient(135deg,#C9A84C,#E8C96A,#B8922E); color:#1a1208; border:none; border-radius:999px;
+  padding:10px 18px; font-family:'Inter',sans-serif; font-weight:700; font-size:14px;
+  cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 2px 10px rgba(200,160,60,0.4);
+}
+.cart-btn:hover{background:linear-gradient(135deg,#D4B45A,#F0D97A,#C9A840); transform:translateY(-1px); box-shadow:0 4px 16px rgba(200,160,60,0.55);}
+.cart-count{
+  background:rgba(0,0,0,0.25); border-radius:999px; padding:1px 8px; font-size:12px; font-family:'Inter',monospace;
+}
+
+/* Tide progress bar */
+.tide-wrap{max-width:1240px; margin:0 auto; padding:0 24px 14px;}
+.tide-label{
+  display:flex; justify-content:space-between; font-size:12px; letter-spacing:0.5px;
+  color:rgba(251,248,242,0.65); margin-bottom:6px; font-family:'Inter',monospace;
+}
+.tide-track{
+  position:relative; height:10px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden;
+}
+.tide-fill{
+  position:absolute; left:0; top:0; height:100%; border-radius:999px;
+  background:linear-gradient(90deg,#3A6B7A,#5FA3A8,#E8C77E);
+  transition:width .4s ease;
+  width:0%;
+}
+.tide-marks{position:relative; height:16px; margin-top:2px;}
+.tide-mark{
+  position:absolute; top:0; transform:translateX(-50%);
+  font-size:10px; color:rgba(251,248,242,0.5); font-family:'Inter',monospace; white-space:nowrap;
+}
+
+/* ===== HERO ===== */
+.hero{
+  max-width:1240px; margin:0 auto; padding:56px 24px 40px;
+}
+.hero h1{font-size:clamp(34px,5vw,58px); line-height:1.02; margin:0 0 14px; font-weight:600; letter-spacing:-0.5px;}
+.hero h1 em{font-style:italic; color:var(--coral);}
+.hero p{font-size:16px; line-height:1.6; color:rgba(34,34,34,0.72); max-width:480px; margin:0;}
+
+/* ===== FILTER BAR ===== */
+.main-tabs{
+  max-width:1240px; margin:0 auto; padding:0 24px 20px;
+  display:flex; gap:10px; flex-wrap:wrap;
+}
+.main-tab-btn{
+  border:1px solid var(--line); background:#fff; color:var(--ink);
+  border-radius:999px; padding:10px 20px; font-size:14px; font-weight:600; cursor:pointer;
+  font-family:'Inter',sans-serif; transition:all .15s ease; white-space:nowrap;
+}
+.main-tab-btn.active{background:var(--tide); color:var(--pearl); border-color:var(--tide);}
+.main-tab-btn:hover:not(.active){border-color:var(--tide);}
+.main-tab-panel{display:none;}
+.main-tab-panel.active{display:block;}
+.tallas-outer{max-width:1240px; margin:0 auto; padding:0 24px 60px;}
+
+.filters{
+  max-width:1240px; margin:0 auto; padding:0 24px 24px;
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+}
+.filters input[type="search"]{
+  flex:1; min-width:200px; border:1px solid var(--line); background:#fff;
+  border-radius:999px; padding:10px 18px; font-size:14px; font-family:'Inter',sans-serif;
+  outline:none;
+}
+.filters input[type="search"]:focus{border-color:var(--coral);}
+.chip{
+  border:1px solid var(--line); background:#fff; color:var(--ink);
+  border-radius:999px; padding:8px 16px; font-size:13px; cursor:pointer;
+  font-family:'Inter',sans-serif; transition:all .15s ease; white-space:nowrap;
+}
+.chip.active{background:var(--tide); color:var(--pearl); border-color:var(--tide);}
+.chip:hover{border-color:var(--tide);}
+a.chip{text-decoration:none; display:inline-block;}
+.copy-link{font-family:'Inter',sans-serif; font-size:12px; font-weight:500; opacity:.5; margin-left:6px; text-decoration:none; color:inherit; white-space:nowrap;}
+.copy-link:hover{opacity:1;}
+.card{scroll-margin-top:90px;}
+.card.flash{animation:cardFlash 2.2s ease;}
+@keyframes cardFlash{0%,65%{box-shadow:0 0 0 3px var(--coral);}100%{box-shadow:0 0 0 0 transparent;}}
+
+/* ===== GRID ===== */
+.grid-wrap{max-width:1240px; margin:0 auto; padding:0 24px 80px;}
+.section-title{
+  font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--cocoa);
+  margin:38px 0 16px; display:flex; align-items:center; gap:12px;
+}
+.section-title::after{content:''; flex:1; height:1px; background:var(--line);}
+.grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:18px;
+}
+.card{
+  background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  display:flex; flex-direction:column; transition:box-shadow .2s ease, transform .2s ease;
+}
+.card:hover{box-shadow:0 12px 28px -12px rgba(23,60,59,0.25); transform:translateY(-2px);}
+.card-swatch{
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-start; padding:10px 14px;
+  background:var(--sand);
+}
+.card-swatch img{
+  width:100%; height:auto; display:block; object-fit:contain;
+}
+.card-swatch .id{position:absolute; top:10px; left:14px; z-index:2; font-family:'Inter',monospace; font-size:11px; color:rgba(255,255,255,0.9); background:rgba(0,0,0,0.4); padding:2px 8px; border-radius:999px;}
+.card-body{padding:16px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.card-body h3{font-size:16px; margin:0; font-weight:600; line-height:1.25;}
+.card-body .desc{font-size:12.5px; color:rgba(34,34,34,0.65); line-height:1.4; margin:0;}
+.price-line{display:flex; align-items:baseline; gap:8px; margin-top:2px;}
+.price-line .now{font-family:'Playfair Display',serif; font-weight:600; font-size:19px;}
+.price-line .was{font-family:'Inter',monospace; font-size:12px; text-decoration:line-through; opacity:0.4;}
+.price-line .save{font-size:11px; color:var(--ok); font-weight:600;}
+
+.tier-divider{
+  display:flex; align-items:center; gap:8px;
+  font-size:10px; letter-spacing:1.2px; text-transform:uppercase;
+  color:rgba(34,34,34,0.55); font-weight:700; margin-top:6px;
+}
+.tier-divider::after{content:""; flex:1; height:1px; background:var(--line);}
+
+.tier-table{
+  border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:2px;
+}
+.tier-table .trow{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:6px 10px; font-size:11.5px; border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.tier-table .trow:last-child{border-bottom:none;}
+.tier-table .trow.active{background:var(--sand); font-weight:600;}
+.tier-table .trow .tname{color:rgba(34,34,34,0.7);}
+.tier-table .trow .trange{font-family:'Inter',monospace; font-size:10px; color:rgba(34,34,34,0.45); margin-left:4px;}
+.tier-table .trow .tprice{font-family:'Inter',monospace; font-size:12.5px;}
+
+.opt-label{font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color:rgba(34,34,34,0.5); margin-top:4px;}
+.opt-row{display:flex; gap:6px; flex-wrap:wrap;}
+.opt-btn{
+  border:1px solid var(--line); background:var(--pearl); border-radius:8px; padding:5px 9px;
+  font-size:12px; cursor:pointer; font-family:'Inter',sans-serif; color:var(--ink);
+}
+.opt-btn.sel{background:var(--tide); color:var(--pearl); border-color:var(--tide);}
+.swatch-btn{
+  width:24px; height:24px; border-radius:50%; border:2px solid transparent; cursor:pointer; position:relative;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.15);
+}
+.swatch-btn.sel{border-color:var(--coral);}
+.swatch-btn.sel::after{content:''; position:absolute; inset:-4px; border:1px solid var(--coral); border-radius:50%;}
+
+.qty-row{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; padding-top:8px;}
+.stepper{display:flex; align-items:center; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+.stepper button{border:none; background:var(--pearl); width:28px; height:30px; cursor:pointer; font-size:15px; font-family:'Inter',sans-serif;}
+.stepper span{width:32px; text-align:center; font-family:'Inter',monospace; font-size:13px;}
+.add-btn{
+  background:var(--tide); color:#fff; border:none; border-radius:8px; padding:8px 14px;
+  font-size:13px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  transition:background .15s ease;
+}
+.add-btn:hover{background:var(--coral);}
+.add-btn.added{background:var(--ok);}
+
+/* ===== CART DRAWER ===== */
+.overlay{
+  position:fixed; inset:0; background:rgba(14,39,38,0.45); z-index:90; opacity:0; pointer-events:none;
+  transition:opacity .25s ease;
+}
+.overlay.show{opacity:1; pointer-events:auto;}
+.drawer{
+  position:fixed; top:0; right:0; height:100%; width:min(420px,92vw); background:var(--pearl); z-index:100;
+  transform:translateX(100%); transition:transform .3s ease; display:flex; flex-direction:column;
+  box-shadow:-20px 0 50px -20px rgba(0,0,0,0.3);
+}
+.drawer.show{transform:translateX(0);}
+.drawer-head{
+  padding:20px 22px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;
+  background:var(--tide-deep); color:var(--pearl);
+}
+.drawer-head h2{margin:0; font-size:19px;}
+.close-btn{background:none; border:none; color:var(--pearl); font-size:22px; cursor:pointer; opacity:0.7;}
+.close-btn:hover{opacity:1;}
+.drawer-tier{
+  padding:14px 22px; background:var(--sand); font-size:13px; display:flex; flex-direction:column; gap:6px;
+  border-bottom:1px solid var(--line);
+}
+.drawer-tier .msg{font-weight:600;}
+.mini-track{height:6px; border-radius:999px; background:rgba(34,34,34,0.12); overflow:hidden;}
+.mini-fill{height:100%; background:var(--coral); transition:width .3s ease;}
+.drawer-items{flex:1; overflow-y:auto; padding:10px 22px;}
+.empty-cart{padding:40px 10px; text-align:center; color:rgba(34,34,34,0.5); font-size:14px;}
+.line-item{
+  display:grid; grid-template-columns:1fr auto; gap:4px 10px; padding:14px 0; border-bottom:1px solid var(--line);
+}
+.line-item .li-name{font-weight:600; font-size:13.5px;}
+.line-item .li-meta{font-size:11.5px; color:rgba(34,34,34,0.55); font-family:'Inter',monospace;}
+.line-item .li-price{text-align:right; font-family:'Inter',monospace; font-size:13px;}
+.line-item .li-remove{grid-column:1/2; font-size:11px; color:var(--coral); cursor:pointer; background:none; border:none; padding:0; text-align:left; width:fit-content;}
+.li-qty-ctrl{display:flex; align-items:center; gap:6px; margin-top:4px;}
+.drawer-foot{padding:18px 22px 24px; border-top:1px solid var(--line); background:#fff;}
+.foot-row{display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px;}
+.foot-row.total{font-size:19px; font-family:'Playfair Display',serif; font-weight:600; margin-top:8px;}
+.warn-box{
+  background:#FBEAE1; border:1px solid #E7B79B; color:var(--cocoa-dark); font-size:12.5px;
+  border-radius:10px; padding:10px 12px; margin:10px 0; line-height:1.5;
+}
+.ok-box{
+  background:#E7F1EA; border:1px solid #B9DAC4; color:#2C5A41; font-size:12.5px;
+  border-radius:10px; padding:10px 12px; margin:10px 0; line-height:1.5;
+}
+.whatsapp-btn{
+  width:100%; background:#1DA851; color:#fff; border:none; border-radius:10px; padding:14px;
+  font-size:15px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;
+  font-family:'Inter',sans-serif; transition:background .15s ease;
+}
+.whatsapp-btn:hover{background:#178f45;}
+.whatsapp-btn:disabled{background:#B7B2AA; cursor:not-allowed;}
+.customer-fields{display:flex; flex-direction:column; gap:8px; margin-bottom:10px;}
+.customer-fields input{
+  border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:13px; font-family:'Inter',sans-serif;
+}
+
+footer{
+  text-align:center; padding:30px 20px 50px; color:rgba(34,34,34,0.45); font-size:12px;
+}
+
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr; padding-top:36px;}
+}
+
+/* ===== BANNER ENVÍO GRATIS ===== */
+.promo-bar{
+  position:relative; overflow:hidden;
+  background:linear-gradient(90deg,#0E2726 0%,#173C3B 50%,#0E2726 100%);
+  color:#F7F5F1; text-align:center;
+  padding:11px 16px; font-family:'Inter',sans-serif;
+  border-bottom:2px solid #C7A86B;
+}
+.promo-bar::after{
+  content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(232,201,106,0.28),transparent);
+  animation:promoShine 3.8s ease-in-out infinite; pointer-events:none;
+}
+@keyframes promoShine{0%{left:-60%;}60%,100%{left:130%;}}
+.promo-inner{
+  position:relative; z-index:1; display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:6px 12px; line-height:1.3;
+}
+.promo-truck{font-size:20px; display:inline-block; animation:promoTruck 1.6s ease-in-out infinite;}
+@keyframes promoTruck{0%,100%{transform:translateX(-3px);}50%{transform:translateX(4px);}}
+.promo-main{font-weight:800; font-size:15px; letter-spacing:1.2px; text-transform:uppercase;}
+.promo-main b{
+  background:linear-gradient(135deg,#C9A84C,#E8C96A,#B8922E); color:#1a1208;
+  padding:3px 10px; border-radius:999px; margin:0 2px; display:inline-block;
+}
+.promo-sub{font-size:13px; font-weight:500; opacity:.92;}
+.promo-sub strong{color:#E8C96A; font-weight:700;}
+.promo-delivery{
+  position:relative; z-index:1; margin-top:4px;
+  font-size:12px; font-weight:500; font-style:italic; letter-spacing:.3px; text-transform:none;
+  color:#E8C96A; opacity:.9;
+}
+@media(max-width:600px){
+  .promo-delivery{font-size:11px; letter-spacing:.2px;}
+  .promo-main{font-size:13px; letter-spacing:.6px;}
+  .promo-sub{font-size:12px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .promo-bar::after,.promo-truck{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="promo-bar" role="banner" aria-label="Promoción de envío gratis">
+  <div class="promo-inner">
+    <span class="promo-truck" aria-hidden="true">🚚</span>
+    <span class="promo-main">¡Envío <b>GRATIS</b> a toda Colombia!</span>
+    <span class="promo-sub">Pide hoy y recibe tu faja <strong>sin pagar el domicilio</strong> ✨</span>
+  </div>
+  <div class="promo-delivery">Entrega de 1 a 5 días &nbsp;·&nbsp; pago contra entrega</div>
+</div>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="name">CATÁLOGO PACIFIC FAJAS</span>
+      <span class="tag">Tienda Online</span>
+    </div>
+    <button class="cart-btn" id="openCart">
+      Pedido <span class="cart-count" id="cartCount">0 uds</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Catálogo <em>Pacific Fajas</em></h1>
+    <h1 style="font-size:clamp(20px,2.6vw,28px); margin-top:-6px; font-weight:500; color:var(--cocoa);">Tienda Online</h1>
+    <p>Compra directo de fábrica, sin intermediarios. Elige tu talla, tu color y recibe en la puerta de tu casa con envíos a toda Colombia y al mundo. <strong>Miles de mujeres ya transformaron su figura con Pacific Fajas</strong> — haz tu pedido hoy mismo y recíbelo esta semana.</p>
+  </div>
+</section>
+
+<div class="main-tabs">
+  <button class="main-tab-btn" data-tab="quienes">Quiénes somos</button>
+  <button class="main-tab-btn active" data-tab="catalogo">Catálogo</button>
+  <button class="main-tab-btn" data-tab="complementos">Complementos</button>
+  <button class="main-tab-btn" data-tab="tallas">Guía de tallas</button>
+  <button class="main-tab-btn" data-tab="mayorista">Conviértete en Mayorista</button>
+  <button class="main-tab-btn" data-tab="vende">Vende por Catálogo</button>
+  <button class="main-tab-btn" data-tab="politicas">Políticas</button>
+</div>
+
+<div class="main-tab-panel" id="panel-quienes">
+  <div class="tallas-outer">
+    <div id="qs-wrap">
+      <style>
+        #qs-wrap{
+          font-family:'Inter',sans-serif;
+          background:var(--sand);
+          color:var(--ink);
+          border-radius:20px;
+          padding:40px 26px 46px;
+          max-width:920px;
+          margin:0 auto;
+          box-sizing:border-box;
+        }
+        #qs-wrap *{box-sizing:border-box;}
+        #qs-wrap .qs-eyebrow{
+          display:inline-block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+          color:var(--tide); border:1px solid var(--tide); padding:4px 12px; border-radius:999px; margin-bottom:16px;
+        }
+        #qs-wrap h2{font-family:'Playfair Display',serif; font-size:clamp(24px,3.4vw,34px); margin:0 0 14px; line-height:1.15; color:var(--tide-deep);}
+        #qs-wrap h2 em{font-style:italic; color:var(--coral);}
+        #qs-wrap p.qs-lead{font-size:15px; line-height:1.7; color:rgba(34,34,34,0.75); max-width:680px; margin:0 0 32px;}
+        #qs-wrap .qs-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:36px;}
+        @media(min-width:640px){#qs-wrap .qs-grid{grid-template-columns:repeat(4,1fr);}}
+        #qs-wrap .qs-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 16px; text-align:center;}
+        #qs-wrap .qs-icon{font-size:26px; margin-bottom:8px;}
+        #qs-wrap .qs-card h3{font-size:13px; font-weight:700; margin:0 0 4px; color:var(--ink);}
+        #qs-wrap .qs-card p{font-size:11.5px; color:rgba(34,34,34,0.6); line-height:1.5; margin:0;}
+        #qs-wrap .qs-story{background:var(--tide-deep); color:var(--pearl); border-radius:16px; padding:28px 24px; margin-bottom:28px;}
+        #qs-wrap .qs-story h3{font-family:'Playfair Display',serif; font-size:19px; margin:0 0 10px; color:#fff;}
+        #qs-wrap .qs-story p{font-size:13.5px; line-height:1.7; color:rgba(251,248,242,0.8); margin:0 0 10px;}
+        #qs-wrap .qs-story p:last-child{margin-bottom:0;}
+        #qs-wrap .qs-nums{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:30px;}
+        #qs-wrap .qs-num{text-align:center; background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 10px;}
+        #qs-wrap .qs-num-val{font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(22px,3.5vw,30px); color:var(--coral);}
+        #qs-wrap .qs-num-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:rgba(34,34,34,0.55); margin-top:4px;}
+        #qs-wrap .qs-cta{text-align:center;}
+        #qs-wrap .qs-cta p{font-size:13.5px; color:rgba(34,34,34,0.6); margin:0 0 14px;}
+        #qs-wrap .qs-btn{
+          display:inline-flex; align-items:center; gap:10px; background:var(--tide); color:#fff; font-weight:700;
+          font-size:14px; padding:15px 30px; border-radius:12px; text-decoration:none; transition:all .2s ease;
+        }
+        #qs-wrap .qs-btn:hover{background:var(--coral); transform:translateY(-2px);}
+      </style>
+
+      <span class="qs-eyebrow">✦ Nuestra historia</span>
+      <h2>Moldeamos confianza,<br>no solo <em>siluetas</em></h2>
+      <p class="qs-lead">Pacific Fajas nace en Cali, Valle del Cauca, con un propósito claro: crear fajas colombianas de calidad de fábrica, a precios justos, para que cada mujer se sienta segura de su cuerpo desde el primer uso.</p>
+
+      <div class="qs-grid">
+        <div class="qs-card">
+          <div class="qs-icon">🏭</div>
+          <h3>Fabricación propia</h3>
+          <p>Producción 100% colombiana con control de calidad en cada prenda.</p>
+        </div>
+        <div class="qs-card">
+          <div class="qs-icon">🧵</div>
+          <h3>Diseño y confort</h3>
+          <p>Moldeamos con materiales de alta compresión y acabados cómodos para uso diario.</p>
+        </div>
+        <div class="qs-card">
+          <div class="qs-icon">🚚</div>
+          <h3>Envíos a todo el mundo</h3>
+          <p>Despachamos desde Cali a toda Colombia y también hacemos envíos internacionales.</p>
+        </div>
+        <div class="qs-card">
+          <div class="qs-icon">💳</div>
+          <h3>Pagos seguros</h3>
+          <p>Nequi, Bancolombia, tarjeta, PSE y confirmación directa por WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="qs-story">
+        <h3>Más que una marca de fajas</h3>
+        <p>Detrás de cada prenda Pacific hay un equipo que cree que verte y sentirte bien no debería costar una fortuna ni depender de intermediarios. Por eso vendemos directo de fábrica: al cliente final, a nuestras embajadoras, a nuestros mayoristas y a quienes venden por catálogo.</p>
+        <p>Hoy acompañamos a cientos de mujeres que además de comprar sus fajas, han encontrado en Pacific una forma real de generar ingresos extra revendiendo nuestros productos.</p>
+      </div>
+
+      <div class="qs-nums">
+        <div class="qs-num">
+          <div class="qs-num-val">80+</div>
+          <div class="qs-num-label">Referencias disponibles</div>
+        </div>
+        <div class="qs-num">
+          <div class="qs-num-val">100%</div>
+          <div class="qs-num-label">Fabricación colombiana</div>
+        </div>
+        <div class="qs-num">
+          <div class="qs-num-val">🌎</div>
+          <div class="qs-num-label">Envíos nacionales e internacionales</div>
+        </div>
+      </div>
+
+      <div class="qs-cta">
+        <p>¿Quieres conocer más sobre nosotras o resolver una duda antes de comprar?</p>
+        <a href="https://wa.me/573172335456" target="_blank" class="qs-btn">Escríbenos por WhatsApp&nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-tab-panel active" id="panel-catalogo">
+  <div class="filters">
+    <input type="search" id="searchBox" placeholder="Buscar por nombre o referencia...">
+    <div id="chipRow" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+  </div>
+
+  <div class="grid-wrap" id="gridWrap"></div>
+</div>
+
+<div class="main-tab-panel" id="panel-complementos">
+  <div class="filters">
+    <div class="ok-box" style="margin:0; width:100%;">
+      Los complementos tienen <strong>5% de descuento llevando 2 o más unidades</strong>. No aplican los descuentos por volumen del resto del catálogo.
+    </div>
+  </div>
+  <div class="grid-wrap" id="gridComplementos"></div>
+</div>
+
+<div class="main-tab-panel" id="panel-tallas">
+  <div class="tallas-outer">
+<div id="pf-tallas-wrap">
+<style>
+#pf-tallas-wrap{
+  /* Se modificó el color de fondo a un verde más claro */
+  --pf-green-dark:#173C3B; 
+  --pf-green:#0E2726;
+  --pf-green-soft:#1F4E4C;
+  --pf-sage:#E7DFCB;
+  --pf-sage-deep:#C7A86B;
+  --pf-cream:#F7F5F1;
+  --pf-gold:#C7A86B;
+  --pf-ink:#222222;
+  font-family:'Inter',-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--pf-green-dark);
+  color:var(--pf-cream);
+  padding:36px 18px 44px;
+  border-radius:18px;
+  max-width:880px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+#pf-tallas-wrap *{box-sizing:border-box;}
+#pf-tallas-wrap .pf-serif{font-family:'Playfair Display',Georgia,serif;}
+#pf-tallas-wrap .pf-eyebrow{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--pf-sage);
+  border:1px solid var(--pf-sage-deep);
+  padding:4px 12px;
+  border-radius:999px;
+  margin-bottom:14px;
+}
+#pf-tallas-wrap h2{
+  font-size:30px;
+  margin:0 0 6px;
+  line-height:1.15;
+}
+#pf-tallas-wrap p.pf-sub{
+  margin:0 0 22px;
+  color:#d7e3da;
+  font-size:14.5px;
+  max-width:560px;
+}
+
+/* ---- aviso importante (arriba) ---- */
+#pf-tallas-wrap .pf-alert-top{
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+  background:linear-gradient(135deg,rgba(201,168,106,.20),rgba(201,168,106,.06));
+  border:1.5px solid var(--pf-gold);
+  border-radius:14px;
+  padding:16px 18px;
+  margin-bottom:26px;
+}
+#pf-tallas-wrap .pf-alert-icon{
+  font-size:21px;
+  line-height:1;
+  flex-shrink:0;
+  margin-top:1px;
+}
+#pf-tallas-wrap .pf-alert-text{
+  font-size:13.5px;
+  line-height:1.55;
+  color:#f3ecd9;
+}
+#pf-tallas-wrap .pf-alert-text b{color:var(--pf-gold);}
+
+/* ---- calculadora ---- */
+#pf-tallas-wrap .pf-panel{display:none;}
+#pf-tallas-wrap .pf-panel.active{
+  display:block;
+  animation:pfFadeIn .35s ease;
+}
+@keyframes pfFadeIn{
+  from{opacity:0;transform:translateY(5px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+#pf-tallas-wrap .pf-calc{
+  background:var(--pf-cream);
+  color:var(--pf-ink);
+  border-radius:16px;
+  padding:26px 24px 28px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(34,34,34,0.08);
+}
+#pf-tallas-wrap .pf-calc h3{
+  font-size:21px;
+  margin:0 0 4px;
+  color:var(--pf-green);
+}
+#pf-tallas-wrap .pf-calc p.pf-calc-note{
+  font-size:13px;
+  color:#5a6e64;
+  margin:0 0 20px;
+}
+#pf-tallas-wrap .pf-field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:14px;
+}
+#pf-tallas-wrap label{
+  display:block;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  color:var(--pf-green);
+  margin-bottom:6px;
+}
+#pf-tallas-wrap input[type="number"],
+#pf-tallas-wrap select{
+  width:100%;
+  padding:11px 12px;
+  border:1.5px solid #cfd9d1;
+  border-radius:9px;
+  font-size:15px;
+  font-family:inherit;
+  background:#fff;
+  color:var(--pf-ink);
+  transition:border-color .15s,box-shadow .15s;
+}
+#pf-tallas-wrap input[type="number"]:focus,
+#pf-tallas-wrap select:focus{
+  outline:none;
+  border-color:var(--pf-green);
+  box-shadow:0 0 0 3px rgba(14,39,38,.15);
+}
+#pf-tallas-wrap .pf-field-full{margin-bottom:18px;}
+#pf-tallas-wrap .pf-radio-group{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+#pf-tallas-wrap .pf-radio-pill{
+  flex:1;
+  min-width:120px;
+  position:relative;
+}
+#pf-tallas-wrap .pf-radio-pill input{
+  position:absolute;
+  opacity:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  cursor:pointer;
+}
+#pf-tallas-wrap .pf-radio-pill span{
+  display:block;
+  text-align:center;
+  padding:10px 8px;
+  border:1.5px solid #cfd9d1;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:600;
+  color:#4d5d54;
+  transition:.15s;
+}
+#pf-tallas-wrap .pf-radio-pill input:checked + span{
+  background:var(--pf-green);
+  border-color:var(--pf-green);
+  color:#fff;
+}
+#pf-tallas-wrap .pf-radio-pill:hover span{border-color:var(--pf-green-soft);}
+#pf-tallas-wrap button.pf-btn{
+  width:100%;
+  background:var(--pf-green);
+  color:#fff;
+  border:none;
+  padding:14px;
+  border-radius:9px;
+  font-size:15.5px;
+  font-weight:700;
+  letter-spacing:.02em;
+  cursor:pointer;
+  font-family:inherit;
+  transition:background .15s,transform .1s;
+}
+#pf-tallas-wrap button.pf-btn:hover{background:var(--pf-green-soft);}
+#pf-tallas-wrap button.pf-btn:active{transform:scale(.99);}
+#pf-tallas-wrap .pf-error{
+  display:none;
+  background:#fbe9e7;
+  color:#8a3b2f;
+  border:1px solid #e3a99c;
+  border-radius:8px;
+  padding:10px 12px;
+  font-size:13px;
+  margin-top:14px;
+}
+
+/* ---- resultado: etiqueta tipo tag de tela ---- */
+#pf-tallas-wrap .pf-result{
+  display:none;
+  margin-top:24px;
+  background:var(--pf-green-dark);
+  border-radius:14px;
+  padding:22px 22px 20px;
+  position:relative;
+}
+#pf-tallas-wrap .pf-result.pf-show{
+  animation:pfPop .42s cubic-bezier(.16,1,.3,1);
+}
+@keyframes pfPop{
+  0%{opacity:0;transform:scale(.96) translateY(6px);}
+  100%{opacity:1;transform:scale(1) translateY(0);}
+}
+#pf-tallas-wrap .pf-result::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-10px;
+  transform:translateX(-50%);
+  width:2px;
+  height:18px;
+  background:repeating-linear-gradient(180deg,var(--pf-gold) 0 4px,transparent 4px 7px);
+}
+#pf-tallas-wrap .pf-result-tag{
+  background:var(--pf-cream);
+  border-radius:8px;
+  padding:18px 20px;
+  border:1px solid var(--pf-gold);
+  text-align:center;
+}
+#pf-tallas-wrap .pf-result-label{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#74897e;
+  margin-bottom:4px;
+}
+#pf-tallas-wrap .pf-result-size{
+  font-size:46px;
+  font-weight:800;
+  color:var(--pf-green);
+  line-height:1;
+  margin:2px 0 10px;
+}
+#pf-tallas-wrap .pf-result-equiv{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+  border-top:1px solid #d7e0da;
+  padding-top:12px;
+}
+#pf-tallas-wrap .pf-result-equiv div{font-size:13px;color:#46554d;order:2;}
+#pf-tallas-wrap .pf-result-equiv b{
+  display:block;
+  font-size:18px;
+  color:var(--pf-ink);
+}
+#pf-tallas-wrap .pf-result-equiv div.pf-equiv-primary{order:1;}
+#pf-tallas-wrap .pf-result-equiv div.pf-equiv-primary b{
+  font-size:22px;
+  color:var(--pf-gold);
+}
+#pf-tallas-wrap .pf-result-msg{
+  font-size:12.5px;
+  color:#e3ecdf;
+  text-align:center;
+  margin-top:14px;
+  line-height:1.5;
+}
+
+/* ---- medidor visual ---- */
+#pf-tallas-wrap .pf-meter-wrap{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  background:rgba(255,255,255,.05);
+  border-radius:10px;
+  padding:14px 16px;
+}
+#pf-tallas-wrap .pf-meter-label{
+  display:flex;
+  justify-content:space-between;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  color:var(--pf-sage);
+  margin-bottom:6px;
+}
+#pf-tallas-wrap .pf-meter-label span:last-child{color:var(--pf-gold);font-weight:800;}
+#pf-tallas-wrap .pf-meter-track{
+  position:relative;
+  height:6px;
+  border-radius:4px;
+  background:rgba(255,255,255,.14);
+  overflow:visible;
+}
+#pf-tallas-wrap .pf-meter-fill{
+  position:absolute;
+  left:0;top:0;
+  height:100%;
+  border-radius:4px;
+  background:linear-gradient(90deg,var(--pf-sage-deep),var(--pf-gold));
+  width:0%;
+  transition:width .55s ease;
+}
+#pf-tallas-wrap .pf-meter-dot{
+  position:absolute;
+  top:50%;
+  left:0%;
+  width:11px;height:11px;
+  border-radius:50%;
+  background:var(--pf-cream);
+  border:2px solid var(--pf-gold);
+  transform:translate(-50%,-50%);
+  transition:left .55s ease;
+}
+
+#pf-tallas-wrap .pf-signature{
+  text-align:center;
+  margin-top:28px;
+  font-family:'Playfair Display',Georgia,serif;
+  font-style:italic;
+  font-size:18px;
+  color:var(--pf-sage);
+}
+
+@media (max-width:560px){
+  #pf-tallas-wrap{padding:26px 14px 32px;}
+  #pf-tallas-wrap h2{font-size:24px;}
+  #pf-tallas-wrap .pf-field-row{grid-template-columns:1fr;}
+  #pf-tallas-wrap .pf-result-size{font-size:38px;}
+  #pf-tallas-wrap .pf-alert-top{padding:13px 14px;}
+}
+</style>
+
+<span class="pf-eyebrow">Pacific Fajas · Guía de tallas</span>
+<h2 class="pf-serif">¿Cómo tomarte las medidas correctamente?</h2>
+<p class="pf-sub">Sigue estas recomendaciones y luego usa la calculadora para encontrar tu talla exacta, en minutos y desde tu casa.</p>
+
+<div class="pf-alert-top">
+  <div class="pf-alert-icon">⚠️</div>
+  <div class="pf-alert-text">
+    <b>Ten en cuenta:</b> cada marca de fajas y moldeadores maneja su propia tabla de tallas — una talla "M" en Pacific Fajas puede no ser igual a una "M" de otra marca o de tu ropa habitual. Por eso, te recomendamos guiarte siempre por tus medidas en centímetros (cintura y cadera) y no por la talla que usas normalmente en ropa o en otras marcas.
+  </div>
+</div>
+
+<div class="pf-panel active" id="pf-panel-calc">
+  <div class="pf-calc">
+    <h3 class="pf-serif">📏 Calculadora de talla</h3>
+    <p class="pf-calc-note">Ingresa tus medidas en centímetros y te decimos tu talla Pacific Fajas, con su equivalencia en Colombia y USA.</p>
+
+    <div class="pf-field-row">
+      <div>
+        <label for="pf-cintura">Cintura (cm)</label>
+        <input type="number" id="pf-cintura" min="40" max="160" placeholder="Ej: 72">
+      </div>
+      <div>
+        <label for="pf-cadera">Cadera (cm)</label>
+        <input type="number" id="pf-cadera" min="50" max="170" placeholder="Ej: 98">
+      </div>
+    </div>
+
+    <div class="pf-field-full">
+      <label>¿Cuál es tu situación actual?</label>
+      <div class="pf-radio-group">
+        <label class="pf-radio-pill">
+          <input type="radio" name="pf-tipo" value="sin" checked>
+          <span>Uso diario / Moldeadora</span>
+        </label>
+        <label class="pf-radio-pill">
+          <input type="radio" name="pf-tipo" value="post">
+          <span>Postquirúrgica</span>
+        </label>
+        <label class="pf-radio-pill">
+          <input type="radio" name="pf-tipo" value="postparto">
+          <span>Postparto</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="pf-field-full">
+      <label>¿En qué sistema prefieres ver tu talla primero?</label>
+      <div class="pf-radio-group">
+        <label class="pf-radio-pill">
+          <input type="radio" name="pf-sistema" value="col" checked>
+          <span>Colombia</span>
+        </label>
+        <label class="pf-radio-pill">
+          <input type="radio" name="pf-sistema" value="usa">
+          <span>USA</span>
+        </label>
+      </div>
+    </div>
+
+    <button class="pf-btn" id="pf-calcular">Calcular mi talla</button>
+    <div class="pf-error" id="pf-error">Por favor ingresa tu cintura y tu cadera en centímetros para calcular tu talla.</div>
+
+    <div class="pf-result" id="pf-result">
+      <div class="pf-result-tag">
+        <div class="pf-result-label">Tu talla Pacific Fajas</div>
+        <div class="pf-result-size" id="pf-res-talla">—</div>
+        <div class="pf-result-equiv">
+          <div id="pf-equiv-col">Colombia<b id="pf-res-col">—</b></div>
+          <div id="pf-equiv-usa">USA<b id="pf-res-usa">—</b></div>
+        </div>
+      </div>
+      <div class="pf-result-msg" id="pf-res-msg"></div>
+
+      <div class="pf-meter-wrap">
+        <div>
+          <div class="pf-meter-label"><span>Cintura</span><span id="pf-meter-cintura-val">—</span></div>
+          <div class="pf-meter-track">
+            <div class="pf-meter-fill" id="pf-meter-cintura-fill"></div>
+            <div class="pf-meter-dot" id="pf-meter-cintura-dot"></div>
+          </div>
+        </div>
+        <div>
+          <div class="pf-meter-label"><span>Cadera</span><span id="pf-meter-cadera-val">—</span></div>
+          <div class="pf-meter-track">
+            <div class="pf-meter-fill" id="pf-meter-cadera-fill"></div>
+            <div class="pf-meter-dot" id="pf-meter-cadera-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pf-signature">Verse bien, para sentirse bien.</div>
+</div>
+
+<script>
+(function(){
+  // Tabla base = tallas de USO DIARIO / MOLDEADORA.
+  // Postquirúrgica y postparto se calculan una talla más arriba (ver calcularTalla).
+  var sizes = [
+    {talla:"XS",  col:"4",  usa:"0 - 2", cMin:60,  cMax:65,  hMin:87,  hMax:92},
+    {talla:"S",   col:"6",  usa:"4",     cMin:66,  cMax:70,  hMin:93,  hMax:97},
+    {talla:"M",   col:"8",  usa:"6",     cMin:71,  cMax:75,  hMin:97,  hMax:102},
+    {talla:"L",   col:"10", usa:"8",     cMin:76,  cMax:81,  hMin:102, hMax:107},
+    {talla:"XL",  col:"12", usa:"10",    cMin:82,  cMax:86,  hMin:108, hMax:112},
+    {talla:"2XL", col:"14", usa:"12",    cMin:87,  cMax:91,  hMin:113, hMax:117},
+    {talla:"3XL", col:"16", usa:"14",    cMin:92,  cMax:96,  hMin:118, hMax:122},
+    {talla:"4XL", col:"18", usa:"16",    cMin:96,  cMax:101, hMin:123, hMax:127},
+    {talla:"5XL", col:"20", usa:"18",    cMin:102, cMax:107, hMin:128, hMax:132}
+  ];
+
+  function findIndexByValue(value, field){
+    var minKey = field === 'cintura' ? 'cMin' : 'hMin';
+    var maxKey = field === 'cintura' ? 'cMax' : 'hMax';
+
+    if(value < sizes[0][minKey]) return 0;
+    if(value > sizes[sizes.length-1][maxKey]) return sizes.length-1; 
+
+    for(var i=0; i<sizes.length; i++){
+      if(value >= sizes[i][minKey] && value <= sizes[i][maxKey]){
+        return i;
+      }
+    }
+    return sizes.length-1;
+  }
+
+  function resolveBoundary(value, field, baseIndex){
+    // Si el valor cae justo en el límite compartido por dos tallas (ej: 96 cm
+    // de cintura, que es el máximo de 3XL y el mínimo de 4XL), nos quedamos
+    // con la talla más pequeña de las dos por defecto.
+    return baseIndex;
+  }
+
+  function calcularTalla(){
+    var cintura = parseFloat(document.getElementById('pf-cintura').value);
+    var cadera = parseFloat(document.getElementById('pf-cadera').value);
+    var errorBox = document.getElementById('pf-error');
+    var resultBox = document.getElementById('pf-result');
+
+    if(isNaN(cintura) || isNaN(cadera) || cintura <= 0 || cadera <= 0){
+      errorBox.style.display = 'block';
+      resultBox.style.display = 'none';
+      return;
+    }
+    errorBox.style.display = 'none';
+
+    var tipo = document.querySelector('input[name="pf-tipo"]:checked').value;
+    var sistema = document.querySelector('input[name="pf-sistema"]:checked').value;
+
+    var idxCintura = findIndexByValue(cintura, 'cintura');
+    idxCintura = resolveBoundary(cintura, 'cintura', idxCintura);
+
+    var idxCadera = findIndexByValue(cadera, 'cadera');
+    idxCadera = resolveBoundary(cadera, 'cadera', idxCadera);
+
+    // La tabla base representa la talla de USO DIARIO / MOLDEADORA.
+    // Si cintura y cadera caen en tallas distintas, nos guiamos por la más grande.
+    var distintas = idxCintura !== idxCadera;
+    var usoDiarioIndex = distintas ? Math.max(idxCintura, idxCadera) : idxCadera;
+
+    // Postquirúrgica y postparto: una talla más que la de uso diario.
+    var finalIndex = usoDiarioIndex;
+    var tallaSubida = false;
+    if(tipo === 'post' || tipo === 'postparto'){
+      if(usoDiarioIndex < sizes.length - 1){
+        finalIndex = usoDiarioIndex + 1;
+        tallaSubida = true;
+      }
+    }
+    var s = sizes[finalIndex];
+
+    document.getElementById('pf-res-talla').textContent = s.talla;
+    document.getElementById('pf-res-col').textContent = s.col;
+    document.getElementById('pf-res-usa').textContent = s.usa;
+
+    // ---- orden y énfasis según el sistema preferido (Colombia / USA) ----
+    var colWrap = document.getElementById('pf-equiv-col');
+    var usaWrap = document.getElementById('pf-equiv-usa');
+    colWrap.classList.toggle('pf-equiv-primary', sistema === 'col');
+    usaWrap.classList.toggle('pf-equiv-primary', sistema === 'usa');
+
+    var msg = '';
+    if(cadera > sizes[sizes.length-1].hMax || cintura > sizes[sizes.length-1].cMax){
+      msg = 'Tu medida supera nuestra tabla estándar. Escríbenos por WhatsApp y te ayudamos a encontrar la opción ideal.';
+    } else if(cadera < sizes[0].hMin || cintura < sizes[0].cMin){
+      msg = 'Tu medida está por debajo de la tabla estándar. Escríbenos por WhatsApp para confirmar tu talla.';
+    } else if(distintas){
+      msg = 'Tu cintura corresponde a talla ' + sizes[idxCintura].talla + ', pero tu cadera corresponde a talla ' + sizes[idxCadera].talla + '. Te recomendamos guiarte por la talla más grande de las dos' + (tallaSubida ? ', y por ser uso ' + (tipo === 'post' ? 'postquirúrgico' : 'postparto') + ' subimos una talla adicional para mayor comodidad: ' + s.talla + '.' : ': ' + s.talla + '.');
+    } else if(tipo === 'post'){
+      msg = tallaSubida ? 'Por ser uso postquirúrgico, te recomendamos una talla más que la de uso diario, priorizando una compresión segura y cómoda.' : 'Por ser uso postquirúrgico, te recomendamos esta talla priorizando una compresión segura y cómoda.';
+    } else if(tipo === 'postparto'){
+      msg = tallaSubida ? 'Para etapa postparto, te recomendamos una talla más que la de uso diario, para un soporte adecuado sin quedar demasiado ajustada.' : 'Para etapa postparto, esta talla te dará el soporte adecuado sin quedar demasiado ajustada.';
+    } else {
+      msg = 'Recuerda: si estás entre dos tallas y es una prenda moldeadora, puedes elegir la más ajustada si la toleras bien.';
+    }
+    document.getElementById('pf-res-msg').textContent = msg;
+
+    // ---- medidor visual ----
+    var overallCMin = sizes[0].cMin, overallCMax = sizes[sizes.length-1].cMax;
+    var overallHMin = sizes[0].hMin, overallHMax = sizes[sizes.length-1].hMax;
+    var pctC = Math.min(100, Math.max(0, (cintura - overallCMin) / (overallCMax - overallCMin) * 100));
+    var pctH = Math.min(100, Math.max(0, (cadera - overallHMin) / (overallHMax - overallHMin) * 100));
+    document.getElementById('pf-meter-cintura-val').textContent = cintura + ' cm';
+    document.getElementById('pf-meter-cadera-val').textContent = cadera + ' cm';
+    document.getElementById('pf-meter-cintura-fill').style.width = pctC + '%';
+    document.getElementById('pf-meter-cintura-dot').style.left = pctC + '%';
+    document.getElementById('pf-meter-cadera-fill').style.width = pctH + '%';
+    document.getElementById('pf-meter-cadera-dot').style.left = pctH + '%';
+
+    resultBox.style.display = 'block';
+    resultBox.classList.remove('pf-show');
+    void resultBox.offsetWidth; 
+    resultBox.classList.add('pf-show');
+  }
+
+  document.getElementById('pf-calcular').addEventListener('click', function(){
+    calcularTalla();
+    document.getElementById('pf-result').scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+
+  document.querySelectorAll('input[name="pf-tipo"]').forEach(function(radio){
+    radio.addEventListener('change', function(){
+      if(document.getElementById('pf-result').style.display === 'block'){
+        calcularTalla();
+      }
+    });
+  });
+
+  document.querySelectorAll('input[name="pf-sistema"]').forEach(function(radio){
+    radio.addEventListener('change', function(){
+      if(document.getElementById('pf-result').style.display === 'block'){
+        calcularTalla();
+      }
+    });
+  });
+
+})();
+</script>
+  </div>
+</div>
+
+<div class="main-tab-panel" id="panel-mayorista">
+<style>
+  .pf-wrap{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a202c;overflow-x:hidden;margin:0}
+
+  /* HERO */
+  .pf-hero{background:linear-gradient(150deg,#0E2726 0%,#173C3B 55%,#1F4E4C 100%);padding:60px 20px 52px;text-align:center;position:relative}
+  .pf-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+  .pf-logo-circle{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:12px}
+  .pf-logo-name{color:#fff;font-weight:900;font-size:17px}
+  .pf-badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#E9D6B0;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;padding:5px 14px;border-radius:20px;margin-bottom:18px}
+  .pf-hero h2{font-size:clamp(28px,6vw,50px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:14px}
+  .pf-hero h2 span{color:#C7A86B}
+  .pf-hero p{font-size:clamp(14px,2.5vw,17px);color:rgba(255,255,255,.75);max-width:460px;margin:0 auto 36px;line-height:1.65}
+
+  /* PILLS DESCUENTO */
+  .pf-pills-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#E9D6B0;margin:0 0 14px}
+  .pf-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+  .pf-pill{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 18px;text-align:center;min-width:100px}
+  .pf-pill-pct{font-size:26px;font-weight:900;color:#C7A86B;line-height:1}
+  .pf-pill-label{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+  .pf-pill-range{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+
+  /* BOTÓN PRINCIPAL */
+  .pf-btn-main{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#173C3B;font-weight:900;font-size:15px;padding:17px 32px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.2);transition:all .2s;text-decoration:none;cursor:pointer}
+  .pf-btn-main:hover{background:#F7F5F1;transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.28)}
+  .pf-hint{font-size:11px;color:rgba(255,255,255,.35);margin-top:12px}
+
+  /* FEATURES */
+  .pf-features{background:#fafafa;padding:56px 20px}
+  .pf-section-tag{text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#173C3B;margin-bottom:8px}
+  .pf-section-title{text-align:center;font-size:clamp(20px,3.5vw,28px);font-weight:900;color:#1a202c;margin-bottom:32px;line-height:1.3}
+  .pf-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:860px;margin:0 auto}
+  @media(min-width:600px){.pf-feat-grid{grid-template-columns:repeat(4,1fr)}}
+  .pf-feat{background:#fff;border-radius:14px;padding:20px 14px;text-align:center;border:1px solid #e5e7eb;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .pf-feat-icon{font-size:28px;margin-bottom:8px}
+  .pf-feat-title{font-size:12px;font-weight:900;color:#1a202c;margin-bottom:3px}
+  .pf-feat-desc{font-size:10px;color:#6b7280;line-height:1.5}
+
+  /* NÚMEROS */
+  .pf-nums{background:#173C3B;padding:44px 20px}
+  .pf-num-grid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+  .pf-num-val{font-size:clamp(26px,5vw,40px);font-weight:900;color:#C7A86B;line-height:1}
+  .pf-num-label{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
+
+  /* FINAL CTA */
+  .pf-final{background:#fff;padding:56px 20px;text-align:center}
+  .pf-final h2{font-size:clamp(20px,3.5vw,28px);font-weight:900;color:#1a202c;margin-bottom:10px}
+  .pf-final p{font-size:14px;color:#6b7280;max-width:400px;margin:0 auto 28px;line-height:1.65}
+  .pf-btn-green{display:inline-flex;align-items:center;gap:10px;background:#173C3B;color:#fff;font-weight:900;font-size:14px;padding:17px 32px;border-radius:14px;box-shadow:0 6px 20px rgba(23,60,59,.25);transition:all .2s;text-decoration:none}
+  .pf-btn-green:hover{background:#AD8E56;transform:translateY(-2px);box-shadow:0 10px 28px rgba(173,142,86,.35)}
+
+  .pf-footer{background:#0E2726;padding:18px 20px;text-align:center}
+  .pf-footer p{font-size:11px;color:rgba(255,255,255,.3)}
+</style>
+
+<div class="pf-wrap">
+
+  <!-- HERO -->
+  <div class="pf-hero">
+    <div class="pf-logo">
+      <div class="pf-logo-circle">PF</div>
+      <span class="pf-logo-name">PACIFIC FAJAS</span>
+    </div>
+    <div class="pf-badge">✦ Programa Mayoristas 2026</div>
+    <h2>Vende fajas colombianas<br>y <span>gana en grande</span></h2>
+    <p>Precios de fábrica desde 6 unidades. Sin local, sin inversión enorme. Solo tú, tu red y nuestras fajas.</p>
+
+    <p class="pf-pills-title">Niveles de descuento</p>
+    <div class="pf-pills">
+      <div class="pf-pill">
+        <div class="pf-pill-pct">20%</div>
+        <div class="pf-pill-label">Emprendedores</div>
+        <div class="pf-pill-range">de 6 a 24 uds</div>
+      </div>
+      <div class="pf-pill">
+        <div class="pf-pill-pct">25%</div>
+        <div class="pf-pill-label">Mayorista +</div>
+        <div class="pf-pill-range">desde 25 uds</div>
+      </div>
+    </div>
+
+    <a href="https://wa.link/fxv6r9" target="_blank" class="pf-btn-main">
+      Escríbenos por WhatsApp y recibe precios &nbsp;→
+    </a>
+    <p class="pf-hint">Sin registro · Sin compromiso · Respuesta inmediata</p>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="pf-features">
+    <p class="pf-section-tag">¿Por qué Pacific Fajas?</p>
+    <h2 class="pf-section-title">Todo lo que necesitas<br>para emprender con fajas</h2>
+    <div class="pf-feat-grid">
+      <div class="pf-feat">
+        <div class="pf-feat-icon">🏭</div>
+        <div class="pf-feat-title">Fabricación propia</div>
+        <div class="pf-feat-desc">Producción 100% colombiana con control de calidad en cada prenda.</div>
+      </div>
+      <div class="pf-feat">
+        <div class="pf-feat-icon">📦</div>
+        <div class="pf-feat-title">Desde 6 unidades</div>
+        <div class="pf-feat-desc">Empieza sin arriesgar. Surtido libre en referencias y tallas.</div>
+      </div>
+      <div class="pf-feat">
+        <div class="pf-feat-icon">🚚</div>
+        <div class="pf-feat-title">Envíos nacionales e internacionales</div>
+        <div class="pf-feat-desc">Despachamos desde Cali a toda Colombia y el mundo.</div>
+      </div>
+      <div class="pf-feat">
+        <div class="pf-feat-icon">💳</div>
+        <div class="pf-feat-title">Múltiples formas de pago</div>
+        <div class="pf-feat-desc">Nequi, Bancolombia, tarjeta, PSE y confirmación por WhatsApp.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NÚMEROS -->
+  <div class="pf-nums">
+    <div class="pf-num-grid">
+      <div>
+        <div class="pf-num-val">80+</div>
+        <div class="pf-num-label">Referencias disponibles</div>
+      </div>
+      <div>
+        <div class="pf-num-val">25%</div>
+        <div class="pf-num-label">Descuento máximo</div>
+      </div>
+      <div>
+        <div class="pf-num-val">🌎</div>
+        <div class="pf-num-label">Envíos internacionales</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="pf-final">
+    <h2>¿Lista para ver cuánto puedes ganar?</h2>
+    <p>Escríbenos por WhatsApp, cuéntanos cuántas unidades quieres manejar y te enviamos tu lista de precios mayoristas al instante.</p>
+    <a href="https://wa.link/fxv6r9" target="_blank" class="pf-btn-green">
+      Quiero ser mayorista — Escríbeme &nbsp;→
+    </a>
+  </div>
+
+  <div class="pf-footer">
+    <p>📍 Pacific Fajas · Cali, Valle del Cauca · Envíos a toda Colombia y el mundo</p>
+  </div>
+
+</div>
+</div>
+
+<div class="main-tab-panel" id="panel-vende">
+  <div class="tallas-outer">
+    <div id="vc-wrap">
+      <style>
+        #vc-wrap{font-family:'Inter',sans-serif; max-width:960px; margin:0 auto; box-sizing:border-box;}
+        #vc-wrap *{box-sizing:border-box;}
+
+        #vc-wrap .vc-hero{
+          background:linear-gradient(150deg, var(--tide-deep) 0%, var(--tide) 100%);
+          border-radius:22px; padding:48px 26px; text-align:center; color:#fff; margin-bottom:18px;
+        }
+        #vc-wrap .vc-badge{
+          display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+          color:#F5C9B4; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.14em;
+          padding:5px 14px; border-radius:20px; margin-bottom:18px;
+        }
+        #vc-wrap .vc-hero h2{font-family:'Playfair Display',serif; font-size:clamp(26px,4.5vw,42px); font-weight:700; line-height:1.15; margin:0 0 14px;}
+        #vc-wrap .vc-hero h2 em{font-style:italic; color:var(--coral);}
+        #vc-wrap .vc-hero p{font-size:14.5px; color:rgba(255,255,255,.78); max-width:480px; margin:0 auto 30px; line-height:1.7;}
+        #vc-wrap .vc-hero-btns{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+        #vc-wrap .vc-btn{
+          display:inline-flex; align-items:center; gap:10px; background:#1DA851; color:#fff; font-weight:700;
+          font-size:14.5px; padding:16px 30px; border-radius:12px; text-decoration:none; transition:all .2s ease;
+          box-shadow:0 8px 24px rgba(0,0,0,.25); border:none; cursor:pointer; font-family:'Inter',sans-serif;
+        }
+        #vc-wrap .vc-btn:hover{background:#178f45; transform:translateY(-2px);}
+        #vc-wrap .vc-btn.outline{background:transparent; border:1.5px solid rgba(255,255,255,.5); box-shadow:none;}
+        #vc-wrap .vc-btn.outline:hover{background:rgba(255,255,255,.12); transform:translateY(-2px);}
+        #vc-wrap .vc-hint{font-size:11px; color:rgba(255,255,255,.45); margin-top:12px;}
+
+        #vc-wrap .vc-section-tag{text-align:center; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--coral); margin:34px 0 6px;}
+        #vc-wrap .vc-section-title{text-align:center; font-family:'Playfair Display',serif; font-size:clamp(19px,3vw,25px); font-weight:700; color:var(--ink); margin:0 0 26px;}
+
+        /* pasos */
+        #vc-wrap .vc-steps{display:grid; grid-template-columns:1fr; gap:14px; margin-bottom:10px;}
+        @media(min-width:700px){#vc-wrap .vc-steps{grid-template-columns:repeat(3,1fr);}}
+        #vc-wrap .vc-step{background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px 18px; text-align:center; position:relative;}
+        #vc-wrap .vc-step-num{
+          display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%;
+          background:var(--tide); color:#fff; font-family:'Playfair Display',serif; font-weight:700; font-size:16px; margin-bottom:12px;
+        }
+        #vc-wrap .vc-step h4{font-size:14.5px; margin:0 0 6px; color:var(--ink);}
+        #vc-wrap .vc-step p{font-size:12px; color:rgba(34,34,34,0.62); line-height:1.55; margin:0;}
+
+        /* ventajas */
+        #vc-wrap .vc-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:10px;}
+        @media(min-width:600px){#vc-wrap .vc-grid{grid-template-columns:repeat(4,1fr);}}
+        #vc-wrap .vc-card{background:var(--sand); border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;}
+        #vc-wrap .vc-icon{font-size:26px; margin-bottom:8px;}
+        #vc-wrap .vc-card h3{font-size:12.5px; font-weight:700; margin:0 0 4px; color:var(--ink);}
+        #vc-wrap .vc-card p{font-size:11px; color:rgba(34,34,34,0.62); line-height:1.5; margin:0;}
+
+        /* calculadora */
+        #vc-wrap .vc-calc{background:linear-gradient(150deg, var(--tide-deep) 0%, var(--tide) 100%); border-radius:20px; padding:34px 22px; text-align:center; color:#fff;}
+        #vc-wrap .vc-calc-label{font-size:13px; color:rgba(255,255,255,.75); margin:0 0 16px;}
+        #vc-wrap .vc-calc-btns{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:22px;}
+        #vc-wrap .vc-calc-btn{
+          background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.35); color:#fff;
+          border-radius:999px; padding:10px 20px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+        }
+        #vc-wrap .vc-calc-btn.active{background:var(--coral); border-color:var(--coral); color:#1a1208;}
+        #vc-wrap .vc-calc-result{font-size:13px; color:rgba(255,255,255,.75); line-height:1.8;}
+        #vc-wrap .vc-calc-result span{display:block; font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,40px); font-weight:700; color:var(--coral); margin-top:4px;}
+        #vc-wrap .vc-calc-note{font-size:10.5px; color:rgba(255,255,255,.4); margin:18px 0 0;}
+
+        /* formulario */
+        #vc-wrap .vc-form-card{background:var(--sand); border:1px solid var(--line); border-radius:18px; padding:30px 24px;}
+        #vc-wrap .vc-form-row{display:grid; grid-template-columns:1fr; gap:14px;}
+        @media(min-width:640px){#vc-wrap .vc-form-row.two{grid-template-columns:1fr 1fr;}}
+        #vc-wrap .vc-field{display:flex; flex-direction:column; gap:6px; margin-bottom:14px;}
+        #vc-wrap .vc-field label{font-size:12px; font-weight:600; color:var(--ink);}
+        #vc-wrap .vc-field label .req{color:var(--coral);}
+        #vc-wrap .vc-field input[type="text"],
+        #vc-wrap .vc-field input[type="email"],
+        #vc-wrap .vc-field input[type="tel"],
+        #vc-wrap .vc-field select,
+        #vc-wrap .vc-field textarea{
+          border:1px solid var(--line); border-radius:10px; padding:11px 13px; font-size:13.5px;
+          font-family:'Inter',sans-serif; background:#fff; outline:none; width:100%;
+        }
+        #vc-wrap .vc-field input:focus,
+        #vc-wrap .vc-field select:focus,
+        #vc-wrap .vc-field textarea:focus{border-color:var(--coral);}
+        #vc-wrap .vc-field textarea{resize:vertical; min-height:64px;}
+        #vc-wrap .vc-check{display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(34,34,34,0.75); line-height:1.5; margin:6px 0 20px;}
+        #vc-wrap .vc-check input{margin-top:3px; flex-shrink:0;}
+        #vc-wrap .vc-form-error{color:#B23B3B; font-size:12px; margin:-8px 0 14px; display:none;}
+        #vc-wrap .vc-form-success{
+          display:none; background:#E7F1EA; border:1px solid #B9DAC4; color:#2C5A41; border-radius:12px;
+          padding:16px 18px; font-size:13px; line-height:1.6; margin-top:6px;
+        }
+
+        /* faq */
+        #vc-wrap .vc-faq{max-width:720px; margin:0 auto;}
+        #vc-wrap .vc-faq details{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px;}
+        #vc-wrap .vc-faq summary{font-size:13.5px; font-weight:600; cursor:pointer; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center;}
+        #vc-wrap .vc-faq summary::-webkit-details-marker{display:none;}
+        #vc-wrap .vc-faq summary::after{content:'+'; font-size:18px; color:var(--coral); font-weight:400;}
+        #vc-wrap .vc-faq details[open] summary::after{content:'–';}
+        #vc-wrap .vc-faq p{font-size:12.5px; color:rgba(34,34,34,0.65); line-height:1.6; margin:10px 0 0;}
+
+        #vc-wrap .vc-final{text-align:center; padding:10px 10px 50px;}
+        #vc-wrap .vc-final h3{font-family:'Playfair Display',serif; font-size:clamp(19px,3vw,25px); margin:0 0 10px; color:var(--ink);}
+        #vc-wrap .vc-final p{font-size:13.5px; color:rgba(34,34,34,0.65); max-width:420px; margin:0 auto 22px; line-height:1.65;}
+        #vc-wrap .vc-final .vc-btn{background:var(--tide);}
+        #vc-wrap .vc-final .vc-btn:hover{background:var(--coral);}
+
+        /* stats bar */
+        #vc-wrap .vc-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:-6px 0 0;}
+        @media(min-width:640px){#vc-wrap .vc-stats{grid-template-columns:repeat(4,1fr);}}
+        #vc-wrap .vc-stat{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 10px; text-align:center;}
+        #vc-wrap .vc-stat .num{font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(19px,3vw,24px); color:var(--tide);}
+        #vc-wrap .vc-stat .lbl{font-size:10.5px; color:rgba(34,34,34,0.55); text-transform:uppercase; letter-spacing:.06em; margin-top:2px;}
+
+        /* testimonios */
+        #vc-wrap .vc-testimonials{display:grid; grid-template-columns:1fr; gap:16px;}
+        @media(min-width:700px){#vc-wrap .vc-testimonials{grid-template-columns:repeat(3,1fr);}}
+        #vc-wrap .vc-testi-card{
+          background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 20px;
+          display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden;
+        }
+        #vc-wrap .vc-testi-card::before{
+          content:'"'; position:absolute; top:-14px; right:14px; font-family:'Playfair Display',serif;
+          font-size:88px; color:var(--sand-deep); line-height:1; z-index:0;
+        }
+        #vc-wrap .vc-testi-head{display:flex; align-items:center; gap:12px; position:relative; z-index:1;}
+        #vc-wrap .vc-testi-avatar{
+          width:44px; height:44px; border-radius:50%; background:var(--tide); color:#fff;
+          display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px;
+          font-family:'Playfair Display',serif; flex-shrink:0;
+        }
+        #vc-wrap .vc-testi-name{font-weight:700; font-size:13.5px; color:var(--ink);}
+        #vc-wrap .vc-testi-city{font-size:11px; color:rgba(34,34,34,0.55);}
+        #vc-wrap .vc-testi-stars{color:var(--coral); font-size:12px; letter-spacing:1px;}
+        #vc-wrap .vc-testi-quote{font-size:12.5px; color:rgba(34,34,34,0.7); line-height:1.6; position:relative; z-index:1; margin:0;}
+
+        /* niveles de comisión */
+        #vc-wrap .vc-tiers{display:grid; grid-template-columns:1fr; gap:14px; margin-bottom:26px;}
+        @media(min-width:700px){#vc-wrap .vc-tiers{grid-template-columns:repeat(3,1fr);}}
+        #vc-wrap .vc-tier-card{
+          background:#fff; border:2px solid var(--line); border-radius:16px; padding:22px 18px; text-align:center;
+          transition:border-color .2s ease, transform .2s ease; position:relative;
+        }
+        #vc-wrap .vc-tier-card.top{border-color:var(--coral);}
+        #vc-wrap .vc-tier-card.match{border-color:var(--tide); transform:translateY(-3px); box-shadow:0 10px 26px -14px rgba(23,60,59,0.35);}
+        #vc-wrap .vc-tier-badge{
+          position:absolute; top:-11px; left:50%; transform:translateX(-50%); background:var(--coral); color:#1a1208;
+          font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; padding:3px 12px; border-radius:999px;
+        }
+        #vc-wrap .vc-tier-name{font-size:13px; font-weight:700; color:var(--ink); margin-top:4px;}
+        #vc-wrap .vc-tier-range{font-size:11.5px; color:rgba(34,34,34,0.55); margin:4px 0 12px;}
+        #vc-wrap .vc-tier-rate{font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(26px,4vw,32px); color:var(--tide);}
+        #vc-wrap .vc-tier-rate span{display:block; font-family:'Inter',sans-serif; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:rgba(34,34,34,0.5); margin-top:2px;}
+
+        #vc-wrap .vc-calc{background:linear-gradient(150deg, var(--tide-deep) 0%, var(--tide) 100%); border-radius:20px; padding:34px 22px; text-align:center; color:#fff;}
+        #vc-wrap .vc-calc-label{font-size:13px; color:rgba(255,255,255,.75); margin:0 0 18px;}
+        #vc-wrap .vc-calc-slider-row{display:flex; align-items:center; gap:14px; max-width:420px; margin:0 auto 22px;}
+        #vc-wrap .vc-calc-slider-row input[type="range"]{flex:1; accent-color:var(--coral); height:4px;}
+        #vc-wrap .vc-calc-slider-val{
+          font-family:'Playfair Display',serif; font-weight:700; font-size:18px; color:var(--coral);
+          min-width:38px; text-align:center;
+        }
+        #vc-wrap .vc-calc-tier-tag{
+          display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+          color:var(--coral); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+          padding:4px 14px; border-radius:999px; margin-bottom:16px;
+        }
+        #vc-wrap .vc-calc-result{font-size:13px; color:rgba(255,255,255,.75); line-height:1.8;}
+        #vc-wrap .vc-calc-result span{display:block; font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,40px); font-weight:700; color:var(--coral); margin-top:4px;}
+        #vc-wrap .vc-calc-result .sub{font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,.6); margin-top:6px;}
+        #vc-wrap .vc-calc-note{font-size:10.5px; color:rgba(255,255,255,.4); margin:18px 0 0;}
+      </style>
+
+      <div class="vc-hero">
+        <div class="vc-badge">✦ Sin inversión · Sin inventario</div>
+        <h2>Vende por catálogo<br>y genera tus <em>propios ingresos</em></h2>
+        <p>No necesitas comprar stock ni tener un local. Comparte nuestro catálogo, toma pedidos y gana dinero desde tu celular, a tu ritmo y desde cualquier ciudad.</p>
+        <div class="vc-hero-btns">
+          <a href="#vc-form-anchor" class="vc-btn">📝 Regístrate ahora &nbsp;→</a>
+          <a href="https://wa.link/gd45f7" target="_blank" class="vc-btn outline">💬 Prefiero escribir por WhatsApp</a>
+        </div>
+        <p class="vc-hint">Respuesta inmediata por WhatsApp · Sin costo de inscripción</p>
+      </div>
+
+      <div class="vc-stats">
+        <div class="vc-stat"><div class="num">10–20%</div><div class="lbl">Comisión por venta</div></div>
+        <div class="vc-stat"><div class="num">$0</div><div class="lbl">Inversión inicial</div></div>
+        <div class="vc-stat"><div class="num">Cada sábado</div><div class="lbl">Te pagamos</div></div>
+        <div class="vc-stat"><div class="num">82+</div><div class="lbl">Referencias en catálogo</div></div>
+      </div>
+
+      <p class="vc-section-tag">¿Cómo funciona?</p>
+      <h3 class="vc-section-title">Empieza en 3 pasos simples</h3>
+      <div class="vc-steps">
+        <div class="vc-step">
+          <span class="vc-step-num">1</span>
+          <h4>Regístrate</h4>
+          <p>Diligencia el formulario aquí mismo con tus datos. Te confirmamos por WhatsApp en minutos.</p>
+        </div>
+        <div class="vc-step">
+          <span class="vc-step-num">2</span>
+          <h4>Comparte el catálogo</h4>
+          <p>Te enviamos fotos, videos y guía de tallas para que muestres los productos por WhatsApp o redes.</p>
+        </div>
+        <div class="vc-step">
+          <span class="vc-step-num">3</span>
+          <h4>Recibe tus ganancias</h4>
+          <p>Toma pedidos, compras a precio de vendedora y cada sábado te pagamos tus comisiones.</p>
+        </div>
+      </div>
+
+      <p class="vc-section-tag">Ventajas</p>
+      <h3 class="vc-section-title">Una forma real de generar ingreso extra</h3>
+      <div class="vc-grid">
+        <div class="vc-card">
+          <div class="vc-icon">🚫📦</div>
+          <h3>Sin comprar inventario</h3>
+          <p>Vendes con fotos y catálogo digital. Compras solo lo que ya vendiste.</p>
+        </div>
+        <div class="vc-card">
+          <div class="vc-icon">📱</div>
+          <h3>Desde tu celular</h3>
+          <p>Comparte el catálogo por WhatsApp, Instagram o Facebook cuando quieras.</p>
+        </div>
+        <div class="vc-card">
+          <div class="vc-icon">💰</div>
+          <h3>Gana comisiones cada semana</h3>
+          <p>Compras a precio normal y cada sábado recibimos y te pagamos las comisiones de todas tus ventas de la semana. Sin pedido mínimo: desde tu primera venta ya generas ingresos.</p>
+        </div>
+        <div class="vc-card">
+          <div class="vc-icon">🤝</div>
+          <h3>Acompañamiento real</h3>
+          <p>Te damos fotos, videos y guía de tallas para que vendas con seguridad.</p>
+        </div>
+      </div>
+
+      <p class="vc-section-tag">Testimonios</p>
+      <h3 class="vc-section-title">Historias reales de nuestras embajadoras</h3>
+      <div class="vc-testimonials">
+        <div class="vc-testi-card">
+          <div class="vc-testi-head">
+            <div class="vc-testi-avatar">M</div>
+            <div>
+              <div class="vc-testi-name">María, embajadora</div>
+              <div class="vc-testi-city">Bogotá</div>
+            </div>
+          </div>
+          <div class="vc-testi-stars">★★★★★</div>
+          <p class="vc-testi-quote">Empecé compartiendo el catálogo con mis contactos y en el primer mes ya tenía clientas fijas. Ahora vendo desde el celular en mis tiempos libres.</p>
+        </div>
+        <div class="vc-testi-card">
+          <div class="vc-testi-head">
+            <div class="vc-testi-avatar">C</div>
+            <div>
+              <div class="vc-testi-name">Carolina, embajadora +10</div>
+              <div class="vc-testi-city">Medellín</div>
+            </div>
+          </div>
+          <div class="vc-testi-stars">★★★★★</div>
+          <p class="vc-testi-quote">Lo que más me gusta es que no tengo que invertir en inventario. Subí de nivel en pocas semanas y ahora mi comisión es más alta.</p>
+        </div>
+        <div class="vc-testi-card">
+          <div class="vc-testi-head">
+            <div class="vc-testi-avatar">D</div>
+            <div>
+              <div class="vc-testi-name">Daniela, Top Embajadora</div>
+              <div class="vc-testi-city">Cali</div>
+            </div>
+          </div>
+          <div class="vc-testi-stars">★★★★★</div>
+          <p class="vc-testi-quote">Pacific me acompañó desde el primer día con fotos y guía de tallas. Hoy vender por catálogo es mi ingreso extra de cada semana.</p>
+        </div>
+      </div>
+
+      <p class="vc-section-tag">Niveles de embajadora</p>
+      <h3 class="vc-section-title">Entre más vendes, más ganas</h3>
+      <div class="vc-tiers">
+        <div class="vc-tier-card" data-min="1" data-max="9" data-rate="0.10">
+          <div class="vc-tier-name">Embajadora</div>
+          <div class="vc-tier-range">1 a 9 ventas / semana</div>
+          <div class="vc-tier-rate">10%<span>Comisión</span></div>
+        </div>
+        <div class="vc-tier-card" data-min="10" data-max="19" data-rate="0.15">
+          <div class="vc-tier-name">Embajadora +10</div>
+          <div class="vc-tier-range">10 a 19 ventas / semana</div>
+          <div class="vc-tier-rate">15%<span>Comisión</span></div>
+        </div>
+        <div class="vc-tier-card top" data-min="20" data-max="9999" data-rate="0.20">
+          <div class="vc-tier-badge">🔥 Mejor nivel</div>
+          <div class="vc-tier-name">Top Embajadora</div>
+          <div class="vc-tier-range">Desde 20 ventas / semana</div>
+          <div class="vc-tier-rate">20%<span>Comisión</span></div>
+        </div>
+      </div>
+
+      <div class="vc-calc">
+        <p class="vc-calc-label">¿Cuántas ventas haces (o quieres hacer) a la semana?</p>
+        <div class="vc-calc-slider-row">
+          <input type="range" id="vcCalcSlider" min="1" max="40" value="10">
+          <div class="vc-calc-slider-val"><span id="vcCalcSliderVal">10</span></div>
+        </div>
+        <div class="vc-calc-tier-tag" id="vcCalcTierTag">Embajadora · 10%</div>
+        <div class="vc-calc-result">
+          Tu comisión estimada sería de
+          <span id="vcCalcResult">$150.000 / semana</span>
+          <div class="sub" id="vcCalcResultMonth">≈ $600.000 al mes</div>
+        </div>
+        <p class="vc-calc-note">*Cálculo de referencia con un ticket promedio de venta de $150.000. Tu ganancia real depende de los productos y cantidades que vendas.</p>
+      </div>
+
+      <div id="vc-form-anchor"></div>
+      <p class="vc-section-tag">Registro</p>
+      <h3 class="vc-section-title">Diligencia tus datos para empezar</h3>
+      <div class="vc-form-card">
+        <form id="vcForm">
+          <div class="vc-form-row two">
+            <div class="vc-field">
+              <label>Nombre y apellidos <span class="req">*</span></label>
+              <input type="text" id="vcName" required>
+            </div>
+            <div class="vc-field">
+              <label>Correo electrónico <span class="req">*</span></label>
+              <input type="email" id="vcEmail" required>
+            </div>
+          </div>
+          <div class="vc-form-row two">
+            <div class="vc-field">
+              <label>Número de WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="vcPhone" placeholder="Ej: 3001234567" required>
+            </div>
+            <div class="vc-field">
+              <label>Ciudad y dirección <span class="req">*</span></label>
+              <input type="text" id="vcAddress" required>
+            </div>
+          </div>
+          <div class="vc-field">
+            <label>¿Has vendido por catálogo antes? ¿Qué marcas? <span class="req">*</span></label>
+            <textarea id="vcExperience" required></textarea>
+          </div>
+          <label class="vc-check">
+            <input type="checkbox" id="vcAgree" required>
+            <span>He leído el acuerdo de vendedora por comisión y estoy de acuerdo con las condiciones del acuerdo y de pago semanal.</span>
+          </label>
+          <p class="vc-form-error" id="vcFormError">Por favor completa todos los campos obligatorios.</p>
+          <button type="submit" class="vc-btn" style="width:100%; justify-content:center; background:var(--tide);">💬 Enviar registro por WhatsApp &nbsp;→</button>
+          <div class="vc-form-success" id="vcFormSuccess">✅ ¡Listo! Se abrió WhatsApp con tu registro. Solo dale enviar y te confirmamos muy pronto.</div>
+        </form>
+      </div>
+
+      <p class="vc-section-tag">Preguntas frecuentes</p>
+      <h3 class="vc-section-title">Resolvemos tus dudas</h3>
+      <div class="vc-faq">
+        <details>
+          <summary>¿Cuánto tengo que invertir para empezar?</summary>
+          <p>Nada. No hay costo de inscripción ni pedido mínimo: compras a precio de vendedora solo lo que ya vendiste.</p>
+        </details>
+        <details>
+          <summary>¿Cuándo recibo mis ganancias?</summary>
+          <p>Cada sábado hacemos el corte y te pagamos las comisiones de todas las ventas de la semana.</p>
+        </details>
+        <details>
+          <summary>¿Necesito experiencia previa vendiendo por catálogo?</summary>
+          <p>No es necesario. Te acompañamos con fotos, videos y guía de tallas para que vendas con seguridad desde el primer día.</p>
+        </details>
+        <details>
+          <summary>¿Desde qué ciudad puedo vender?</summary>
+          <p>Desde cualquier ciudad de Colombia. Todo el proceso lo haces desde tu celular por WhatsApp.</p>
+        </details>
+      </div>
+
+      <div class="vc-final">
+        <h3>¿Lista para empezar a vender?</h3>
+        <p>Diligencia el formulario de arriba o escríbenos ahora mismo y te explicamos todo el proceso para que hagas tu primera venta esta semana.</p>
+        <a href="https://wa.link/gd45f7" target="_blank" class="vc-btn">💬 Escríbenos por WhatsApp &nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-tab-panel" id="panel-politicas">
+  <div class="tallas-outer">
+    <div id="pol-wrap">
+      <style>
+        #pol-wrap{font-family:'Inter',sans-serif; max-width:860px; margin:0 auto; box-sizing:border-box; color:var(--ink);}
+        #pol-wrap *{box-sizing:border-box;}
+        #pol-wrap .pol-head{background:var(--tide-deep); color:var(--pearl); border-radius:20px; padding:36px 26px; margin-bottom:18px;}
+        #pol-wrap .pol-eyebrow{display:inline-block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--coral); border:1px solid var(--coral); padding:4px 12px; border-radius:999px; margin-bottom:14px;}
+        #pol-wrap .pol-head h2{font-family:'Playfair Display',serif; font-size:clamp(24px,3.6vw,34px); line-height:1.15; margin:0 0 12px; color:#fff;}
+        #pol-wrap .pol-head p{font-size:14px; line-height:1.7; color:rgba(251,248,242,0.82); margin:0 0 8px;}
+        #pol-wrap .pol-head p:last-child{margin-bottom:0;}
+        #pol-wrap .pol-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px 22px; margin-bottom:14px;}
+        #pol-wrap .pol-card h3{font-family:'Playfair Display',serif; font-size:18px; margin:0 0 14px; color:var(--tide-deep); display:flex; align-items:center; gap:12px;}
+        #pol-wrap .pol-num{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--tide); color:#fff; font-family:'Inter',sans-serif; font-weight:700; font-size:14px; flex-shrink:0;}
+        #pol-wrap .pol-card p{font-size:13.5px; line-height:1.75; color:rgba(34,34,34,0.8); margin:0 0 12px;}
+        #pol-wrap .pol-card p:last-child{margin-bottom:0;}
+        #pol-wrap .pol-card ul, #pol-wrap .pol-card ol{margin:0 0 12px; padding-left:22px; font-size:13.5px; line-height:1.75; color:rgba(34,34,34,0.8);}
+        #pol-wrap .pol-card li{margin-bottom:5px;}
+        #pol-wrap .pol-card a{color:var(--tide); font-weight:600;}
+        #pol-wrap .pol-note{background:var(--sand); border-left:4px solid var(--coral); border-radius:10px; padding:12px 14px; font-size:13px; line-height:1.65; color:var(--ink); margin:0 0 12px;}
+        #pol-wrap .pol-contact{display:grid; grid-template-columns:1fr; gap:10px; margin:0 0 12px;}
+        @media(min-width:640px){#pol-wrap .pol-contact{grid-template-columns:1fr 1fr;}}
+        #pol-wrap .pol-contact a.pol-wa{display:flex; flex-direction:column; gap:2px; background:#1DA851; color:#fff; text-decoration:none; border-radius:12px; padding:14px 16px; font-size:12px;}
+        #pol-wrap .pol-contact a.pol-wa b{font-size:17px; font-weight:700;}
+        #pol-wrap .pol-contact a.pol-wa:hover{background:#178f45;}
+        #pol-wrap .pol-sign{text-align:center; padding:26px 10px 10px;}
+        #pol-wrap .pol-sign strong{display:block; font-family:'Playfair Display',serif; font-size:18px; letter-spacing:1px; color:var(--tide-deep); margin-bottom:6px;}
+        #pol-wrap .pol-sign span{font-size:13px; color:rgba(34,34,34,0.6);}
+      </style>
+
+      <div class="pol-head">
+        <span class="pol-eyebrow">✦ Pacific Fajas</span>
+        <h2>Políticas de cambios, devoluciones y garantías</h2>
+        <p>En Pacific Fajas trabajamos para ofrecer productos de calidad y una experiencia de compra clara y segura. Debido a que comercializamos fajas y prendas de uso íntimo, establecemos las siguientes políticas para cambios, devoluciones y garantías.</p>
+        <p>Te invitamos a leerlas cuidadosamente antes de realizar tu compra.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">1</span> Política de cambios y devoluciones</h3>
+        <p>Por tratarse de prendas de uso íntimo y contacto directo con el cuerpo, <strong>Pacific Fajas no acepta cambios ni devoluciones por motivos de talla, color, referencia, ajuste, preferencia personal o cambio de opinión</strong>, salvo en los casos en los que la legislación colombiana reconozca expresamente un derecho al consumidor.</p>
+        <p>En las compras realizadas en nuestro punto físico, recomendamos a nuestros clientes verificar cuidadosamente la talla, el ajuste y la referencia antes de efectuar el pago.</p>
+        <p>Si el cliente se mide o se prueba una faja antes de comprarla y decide adquirirla, se entiende que tuvo la oportunidad de verificar el ajuste de la prenda. Por este motivo, no se aceptan cambios voluntarios posteriores por talla o preferencia personal.</p>
+        <p>Esta política no limita los derechos que correspondan al consumidor por garantía legal, defectos de fabricación ni otras situaciones protegidas por la legislación colombiana.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">2</span> Cambios de talla en fajas de talla estándar</h3>
+        <p>Como excepción a nuestra política general, Pacific Fajas permite solicitar <strong>un único cambio de talla en determinadas fajas de talla estándar</strong>, siempre que se cumplan todas las siguientes condiciones:</p>
+        <ul>
+          <li>El cambio se permite únicamente por una talla inmediatamente superior o inferior a la adquirida.</li>
+          <li>Se autoriza un solo cambio por producto.</li>
+          <li>La faja debe estar completamente nueva, sin uso, sin lavar, sin manchas, sin olores y sin modificaciones.</li>
+          <li>Debe conservar sus etiquetas, marquillas y empaque original.</li>
+          <li>El producto debe entregarse en nuestro punto físico para su revisión.</li>
+          <li>Los gastos de transporte y envío relacionados con el cambio voluntario serán asumidos por el cliente.</li>
+          <li>El cambio estará sujeto a la disponibilidad de la talla solicitada y a la verificación del estado de la prenda.</li>
+          <li>Este beneficio no aplica a productos personalizados, prendas alteradas ni referencias que no estén habilitadas para cambios de talla.</li>
+        </ul>
+        <div class="pol-note"><strong>Importante:</strong> este beneficio comercial no aplica a las compras en las que el cliente se haya probado la faja en nuestro punto físico antes de comprarla.</div>
+        <p>Las condiciones anteriores corresponden a cambios voluntarios por talla y no limitan los derechos legales del consumidor cuando proceda una reclamación por garantía u otra causa prevista en la ley.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">3</span> Garantía por defectos en costuras</h3>
+        <p>Pacific Fajas solicita a sus clientes reportar las novedades visibles en las costuras dentro de los <strong>tres (3) días calendario siguientes a la entrega de la faja</strong>, para facilitar su revisión oportuna.</p>
+        <p>Para realizar el reporte, el cliente debe:</p>
+        <ol>
+          <li>Comunicarse con nuestro equipo de atención a través de los canales oficiales.</li>
+          <li>Presentar el comprobante de compra o los datos del pedido.</li>
+          <li>Enviar fotografías o videos claros que permitan identificar la novedad.</li>
+          <li>Seguir las indicaciones de nuestro equipo para la revisión del producto.</li>
+        </ol>
+        <p>La solicitud será evaluada para determinar si corresponde a un defecto de fabricación o si el daño fue ocasionado por uso, manipulación, lavado, estiramiento excesivo o cuidado inadecuado.</p>
+        <p>El plazo de tres días corresponde al procedimiento de reporte inicial de novedades visibles y <strong>no elimina ni reduce la garantía legal que corresponda</strong> por defectos de calidad, fabricación o idoneidad, conforme a la legislación colombiana.</p>
+        <p>Cuando proceda una reclamación de garantía, Pacific Fajas aplicará la solución legal correspondiente según la naturaleza del defecto y las circunstancias del caso.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">4</span> Situaciones que no corresponden a defectos de fabricación</h3>
+        <p>En Pacific Fajas trabajamos con insumos de calidad para ofrecer prendas resistentes y funcionales. Sin embargo, algunos componentes requieren un manejo y cuidado adecuados para conservar su buen estado.</p>
+        <div class="pol-note"><strong>Los cierres, encajes y demás elementos delicados de la prenda no cuentan con garantía comercial por daños ocasionados por mal uso, manipulación inadecuada, colocación o retiro incorrectos, o lavado inadecuado.</strong></div>
+        <p>Estos componentes deben tratarse con cuidado, siguiendo las recomendaciones de uso y mantenimiento de la prenda.</p>
+        <p>No se consideran automáticamente defectos de fabricación los daños derivados de:</p>
+        <ul>
+          <li>Forzar los cierres al subirlos o bajarlos.</li>
+          <li>Tirar, estirar excesivamente o manipular bruscamente los encajes.</li>
+          <li>Elegir una talla inadecuada que genere tensión excesiva sobre la prenda o sus componentes.</li>
+          <li>Usar la faja de manera diferente a la recomendada.</li>
+          <li>Lavar o cuidar la prenda de forma inadecuada.</li>
+          <li>Realizar arreglos, modificaciones o intervenciones no autorizadas.</li>
+          <li>El desgaste normal derivado del uso.</li>
+        </ul>
+        <p>Cada caso será evaluado de acuerdo con las características del producto y las circunstancias del daño.</p>
+        <p>Estas exclusiones no aplican cuando se determine que existe un defecto de fabricación o de calidad cubierto por la garantía legal. La garantía legal no puede excluirse únicamente por tratarse de cierres, encajes u otros componentes de la prenda.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">5</span> Recomendaciones antes de comprar</h3>
+        <p>Para ayudarte a elegir la faja adecuada, te recomendamos:</p>
+        <ul>
+          <li>Tomar correctamente las medidas de tu cuerpo.</li>
+          <li>Consultar nuestra guía de tallas antes de comprar.</li>
+          <li>Informar a nuestra asesora si tienes dudas sobre el ajuste.</li>
+          <li>Confirmar cuidadosamente la referencia, el color y la talla antes de realizar el pago.</li>
+        </ul>
+        <p>Consulta nuestra <a href="https://www.pacificfajas.com/#guiadetallas" target="_blank" rel="noopener">Guía de tallas</a> y utiliza el calculador para elegir la talla más adecuada según tus medidas.</p>
+        <p>La elección correcta de la talla ayuda a mejorar el ajuste de la prenda y a evitar tensiones excesivas en las costuras, cierres y encajes.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">6</span> Derecho de retracto y derechos del consumidor</h3>
+        <p>Las compras realizadas por internet y otros medios a distancia están sujetas a las disposiciones del Estatuto del Consumidor colombiano.</p>
+        <p>La legislación contempla excepciones al derecho de retracto, entre ellas la adquisición de bienes de uso personal, cuya aplicación depende de la naturaleza del producto y las circunstancias de la compra.</p>
+        <p>Por tratarse de prendas de uso íntimo, las solicitudes de retracto se evaluarán teniendo en cuenta las excepciones legales aplicables.</p>
+        <p>Esta política no limita los derechos del consumidor por garantía legal, defectos de fabricación ni otros derechos irrenunciables reconocidos por la legislación colombiana.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">7</span> Canales oficiales de atención</h3>
+        <p>Para resolver dudas sobre tu compra, reportar novedades o solicitar una revisión de tu producto, comunícate con nuestro equipo a través de los siguientes canales oficiales de WhatsApp:</p>
+        <div class="pol-contact">
+          <a class="pol-wa" href="https://wa.me/573172335456" target="_blank" rel="noopener">WhatsApp 1<b>317 233 5456</b></a>
+          <a class="pol-wa" href="https://wa.me/573167311556" target="_blank" rel="noopener">WhatsApp 2<b>316 731 1556</b></a>
+        </div>
+        <p><strong>Sitio web:</strong> <a href="https://www.pacificfajas.com/" target="_blank" rel="noopener">https://www.pacificfajas.com/</a></p>
+        <p><strong>Guía de tallas:</strong> <a href="https://www.pacificfajas.com/#guiadetallas" target="_blank" rel="noopener">https://www.pacificfajas.com/#guiadetallas</a></p>
+        <p>Nuestro equipo te brindará orientación sobre el procedimiento correspondiente a tu solicitud.</p>
+      </div>
+
+      <div class="pol-card">
+        <h3><span class="pol-num">8</span> Marco legal</h3>
+        <p>Estas políticas se interpretan de conformidad con el Estatuto del Consumidor colombiano, especialmente la Ley 1480 de 2011, sus modificaciones y las demás disposiciones aplicables.</p>
+        <p>En caso de contradicción entre alguna condición aquí descrita y una norma de obligatorio cumplimiento, prevalecerá la disposición legal aplicable.</p>
+      </div>
+
+      <div class="pol-sign">
+        <strong>PACIFIC FAJAS</strong>
+        <span>Gracias por elegirnos y confiar en nuestros productos.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Catálogo Pacific Fajas · Tienda Online · Pedidos por WhatsApp +57 317 233 5456</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2>Tu pedido</h2>
+    <button class="close-btn" id="closeCart">&times;</button>
+  </div>
+  <div class="drawer-items" id="drawerItems">
+    <div class="empty-cart">Tu pedido está vacío.<br>Agrega productos desde el catálogo.</div>
+  </div>
+  <div class="drawer-foot">
+    <div class="foot-row"><span>Unidades totales</span><span id="footUnits" class="mono">0</span></div>
+    <div class="foot-row total"><span>Total</span><span id="footTotal" class="mono">$0</span></div>
+    <div class="customer-fields">
+      <input type="text" id="custName" placeholder="Tu nombre">
+      <input type="text" id="custCity" placeholder="Ciudad de envío">
+    </div>
+    <button class="whatsapp-btn" id="sendBtn">Enviar pedido por WhatsApp</button>
+  </div>
+</aside>
+
+<script>
+/* ============ DATA ============ */
+const COLORS = {
+  BEIGE:"#D9BFA0", COCOA:"#6B4630", NEGRO:"#1C1C1C", BLANCO:"#F5F1EA"
+};
+const SIZES_STD = ["S","M","L","XL","2XL"];
+const SIZES_3XL = ["S","M","L","XL","2XL","3XL"];
+
+function P(id,name,desc,cat,detal,p20,p25,p28,colors,sizes,img){
+  return {id,name,desc,cat,colors,sizes:sizes||SIZES_STD,img:img||null,hasVariant:false,
+    variants:[{key:"unico",label:null,detal,p20,p25,p28}]};
+}
+// Producto con dos opciones de cierre (cierre / abrochadura), cada una con su propio precio
+function PV(id,name,desc,cat,cierre,abrochadura,colors,sizes,img){
+  return {id,name,desc,cat,colors,sizes:sizes||SIZES_STD,img:img||null,hasVariant:true,
+    variants:[
+      {key:"cierre",label:"Cierre",detal:cierre[0],p20:cierre[1],p25:cierre[2],p28:cierre[3]},
+      {key:"abrochadura",label:"Abrochadura",detal:abrochadura[0],p20:abrochadura[1],p25:abrochadura[2],p28:abrochadura[3]}
+    ]};
+}
+
+// ⚠️ PON AQUÍ LOS PRECIOS AL DETAL DE LOS COMPLEMENTOS (83 al 88)
+const PRECIO_COMP = {83:25000, 84:37000, 85:37000, 86:57000, 87:57000, 88:67000, 89:89000};
+
+// Complemento: un solo precio (detal) y solo 5% por llevar 2+ complementos.
+// No participa en los descuentos por volumen del resto del catálogo.
+function PC(id,name,desc,detal,sizes,colors,img){
+  return {id,name,desc,cat:"Complementos",colors,sizes,img:img||null,hasVariant:false,comp:true,
+    variants:[{key:"unico",label:null,detal,p20:detal,p25:detal,p28:detal}]};
+}
+
+const BCN = ["BEIGE","COCOA","NEGRO"];
+const BC  = ["BEIGE","COCOA"];
+const BCNW= ["BEIGE","COCOA","NEGRO","BLANCO"];
+const N   = ["NEGRO"];
+
+const CATS = [
+  "Línea Reloj de Arena","Fajas Largas","Fajas Media Pierna","Fajas Panty",
+  "Cinturillas y Chalecos","Short Levantacola","Línea Postquirúrgica",
+  "Brassier Postquirúrgico","Fajas para Hombre","Línea Deportiva"
+];
+
+const PRODUCTS = [
+  P(1,"PACIFIC PERLA","Faja Reloj de arena con brassier media pierna",CATS[0],267000,213600,200250,192240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/8.jpeg"),
+  P(2,"PACIFIC PERLA NEGRA","Faja reloj de arena larga con brassier",CATS[0],282475,225980,211856,203382,BCN,null,"VENDE -CATALOGO Edición mundial 2026/9.jpeg"),
+  P(3,"ESMERALDA","Faja reloj de arena media pierna",CATS[0],257725,206180,193294,185562,BCN,null,"VENDE -CATALOGO Edición mundial 2026/10.jpeg"),
+  P(4,"PACIFIC CORAL","Faja reloj de arena 2 en 1 media pierna",CATS[0],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/12.jpeg"),
+  P(5,"PACIFIC MARFIL","Faja reloj de arena larga",CATS[0],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/11.jpeg"),
+
+  PV(6,"PACIFIC NACÁR","Faja moldeadora 3/4",CATS[1],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,SIZES_3XL,"VENDE -CATALOGO Edición mundial 2026/14.jpeg"),
+  PV(8,"PACIFIC ZAFIRO","Faja moldeadora larga con brassier",CATS[1],[237000,189600,177750,170640],[237000,189600,177750,170640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/15.jpeg"),
+  PV(10,"PACIFIC JADE","Faja moldeadora larga tira ancha",CATS[1],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/16.jpeg"),
+  PV(12,"PACIFIC CRISTAL","Faja moldeadora larga tira removible",CATS[1],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/17.jpeg"),
+  PV(14,"PACIFIC DIAMANTE","Faja moldeadora larga con mangas",CATS[1],[237000,189600,177750,170640],[237000,189600,177750,170640],BCN,null,"VENDE -CATALOGO Edición mundial 2026/18.jpeg"),
+  PV(16,"PACIFIC MAREA","Faja moldeadora con mangas y brassier",CATS[1],[277000,221600,207750,199440],[271675,217340,203756,195606],BCN,null,"VENDE -CATALOGO Edición mundial 2026/19.jpeg"),
+
+  PV(18,"PACIFIC BRISA","Faja media pierna tira ancha",CATS[2],[227000,181600,170250,163440],[217000,173600,162750,156240],BCN,null,"VENDE -CATALOGO Edición mundial 2026/20.jpeg"),
+  PV(20,"PACIFIC BAHÍA","Faja moldeadora strapless",CATS[2],[207000,165600,155250,149040],[207000,165600,155250,149040],BCNW,SIZES_3XL,"VENDE -CATALOGO Edición mundial 2026/21.jpeg"),
+  PV(22,"PACIFIC OLEAJE","Faja tira removible",CATS[2],[227000,181600,170250,163440],[217000,173600,162750,156240],BCN,null,"VENDE -CATALOGO Edición mundial 2026/22.jpeg"),
+  PV(24,"PACIFIC AURORA","Faja corta con brassier",CATS[2],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/23.jpeg"),
+  P(26,"PACIFIC MAREJADA","Faja corta con brassier y mangas · abrochadura",CATS[2],267000,213600,200250,192240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/24.jpeg"),
+  PV(27,"PACIFIC OCÉANO","Faja corta con mangas",CATS[2],[237000,189600,177750,170640],[227000,181600,170250,163440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/25.jpeg"),
+  PV(29,"PACIFIC AMANECER","Faja corta brassier y manga corta",CATS[2],[257000,205600,192750,185040],[247000,197600,185250,177840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/26.jpeg"),
+  P(31,"PACIFIC SIRENA","Faja body cachetera · cierre o abrochadura",CATS[2],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/27.jpeg"),
+
+  P(32,"PACIFIC EMPERATRIZ","Panty faja control abdomen",CATS[3],187000,149600,140250,134640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/28.jpeg"),
+  P(33,"PACIFIC ESTRELLA","Faja cachetera con brassier",CATS[3],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/29.jpeg"),
+  P(34,"PACIFIC TESORO","Panty faja postquirúrgico",CATS[3],157000,125600,117750,113040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/30.jpeg"),
+  P(35,"PACIFIC DELFINA","Faja brasilera estraple",CATS[3],167000,133600,125250,120240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/31.jpeg"),
+
+  PV(36,"PACIFIC JAGUAR","Cinturilla moldeadora",CATS[4],[182700,146160,137025,131544],[180200,144160,135150,129744],BCN,null,"VENDE -CATALOGO Edición mundial 2026/33.jpeg"),
+  P(38,"PACIFIC COLIBRÍ","Chaleco reloj de arena con brassier",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/34.jpeg"),
+  P(39,"PACIFIC MARIPOSA","Chaleco reloj de arena 2 en 1 con brassier",CATS[4],227000,181600,170250,163440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/35.jpeg"),
+  P(40,"PACIFIC PANTERA","Cinturilla látex",CATS[4],147000,117600,110250,105840,N,null,"VENDE -CATALOGO Edición mundial 2026/36.jpeg"),
+  P(41,"PACIFIC TUCÁN","Chaleco moldeador con mangas",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/37.jpeg"),
+  PV(42,"PACIFIC GARZA","Chaleco tira removible",CATS[4],[207000,165600,155250,149040],[197000,157600,147750,141840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/38.jpeg"),
+  P(44,"PACIFIC QUETZAL","Cinturilla 2 en 1 reloj de arena",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/39.jpeg"),
+  PV(45,"PACIFIC DANTA","Chaleco corrector de postura",CATS[4],[207000,165600,155250,149040],[197000,157600,147750,141840],BCN,null,"VENDE -CATALOGO Edición mundial 2026/40.jpeg"),
+  P(47,"PACIFIC TIGRESA","Chaleco moldeador tira ancha",CATS[4],207000,165600,155250,149040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/41.jpeg"),
+  P(48,"PACIFIC TIGRESA","Chaleco moldeador tira ancha (variante)",CATS[4],197000,157600,147750,141840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/41.jpeg"),
+  P(49,"PACIFIC PUMA","Chaleco 2 en 1 reloj de arena",CATS[4],217000,173600,162750,156240,BCN,null,"VENDE -CATALOGO Edición mundial 2026/42.jpeg"),
+
+  P(50,"PACIFIC ORQUÍDEA","Short levantacola cachetero",CATS[5],137000,109600,102750,98640,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/44.jpeg"),
+  P(51,"PACIFIC AZUCENA","Short levantacola control abdomen",CATS[5],157000,125600,117750,113040,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/45.jpeg"),
+  P(52,"PACIFIC MAGNOLIA","Short levantacola con abrochadura",CATS[5],167000,133600,125250,120240,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/46.jpeg"),
+  P(53,"PACIFIC CAMELIA","Short levantacola",CATS[5],137000,109600,102750,98640,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/47.jpeg"),
+  P(54,"PACIFIC ROSA","Short levantacola pescador",CATS[5],167000,133600,125250,120240,BCNW,null,"VENDE -CATALOGO Edición mundial 2026/48.jpeg"),
+
+  P(55,"PACIFIC MORPHO","Faja postquirúrgica larga con brassier",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/50.jpeg"),
+  P(56,"PACIFIC LIBÉLULA","Faja de descanso",CATS[6],177000,141600,132750,127440,BCN,null,"VENDE -CATALOGO Edición mundial 2026/51.jpeg"),
+  P(57,"PACIFIC CEIBA","Faja postquirúrgica corta con brassier",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/52.jpeg"),
+  P(58,"PACIFIC YARUMO","Faja postquirúrgica larga con brassier y mangas",CATS[6],267000,213600,200250,192240,BC,null,"VENDE -CATALOGO Edición mundial 2026/53.jpeg"),
+  P(59,"PACIFIC TIGRILLO","Faja postquirúrgica larga",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/54.jpeg"),
+  P(60,"PACIFIC GARCETA","Faja postquirúrgica corta tira ancha",CATS[6],227000,181600,170250,163440,BC,null,"VENDE -CATALOGO Edición mundial 2026/55.jpeg"),
+  P(61,"PACIFIC HALCÓN","Faja postquirúrgica corta tira removible",CATS[6],227000,181600,170250,163440,BC,null,"VENDE -CATALOGO Edición mundial 2026/56.jpeg"),
+  P(62,"PACIFIC TÁNGARA","Faja postquirúrgica larga · cierre atrás",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/57.jpeg"),
+  P(63,"PACIFIC LUCIÉRNAGA","Faja postquirúrgica larga con mangas",CATS[6],237000,189600,177750,170640,BC,null,"VENDE -CATALOGO Edición mundial 2026/58.jpeg"),
+
+  P(64,"REF 0110","Brassier postquirúrgico tira removible",CATS[7],192950,154360,144712,138924,BCN,null,"VENDE -CATALOGO Edición mundial 2026/60.jpeg"),
+  P(65,"REF 0106","Brassier postquirúrgico",CATS[7],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/61.jpeg"),
+  P(66,"REF 01061","Brassier postquirúrgico corrector de postura",CATS[7],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/63.jpeg"),
+  P(67,"REF 0107","Brassier postquirúrgico tira removible",CATS[7],147000,117600,110250,105840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/64.jpeg"),
+  P(68,"REF 0108","Brassier postquirúrgico con mangas",CATS[7],157000,125600,117750,113040,BCN,null,"VENDE -CATALOGO Edición mundial 2026/65.jpeg"),
+
+  P(69,"REF 2018","Cinturilla deportiva hombre",CATS[8],180200,144160,135150,129744,N,null,"VENDE -CATALOGO Edición mundial 2026/67.jpeg"),
+  PV(70,"REF 2016 / 2017","Cinturilla men",CATS[8],[180200,144160,135150,129744],[157750,126200,118312,113580],BCN,null,"VENDE -CATALOGO Edición mundial 2026/68.jpeg"),
+  PV(72,"PACIFIC OCELOTE","Chaleco moldeador hombre",CATS[8],[187000,149600,140250,134640],[177000,141600,132750,127440],BCN,null,"VENDE -CATALOGO Edición mundial 2026/69.jpeg"),
+  P(74,"REF 2017","Faja postquirúrgica men",CATS[8],247000,197600,185250,177840,BCN,null,"VENDE -CATALOGO Edición mundial 2026/70.jpeg"),
+  P(75,"REF 2019","Fajón abdominal",CATS[8],177700,142160,133275,127944,N,null,"VENDE -CATALOGO Edición mundial 2026/71.jpeg"),
+  P(76,"REF 1252","Chaleco light men",CATS[8],137000,109600,102750,98640,BCN,null,"VENDE -CATALOGO Edición mundial 2026/74.jpeg"),
+  P(77,"REF 2011","Boxer levantacola",CATS[8],148000,118400,111000,106560,BCN,null,"VENDE -CATALOGO Edición mundial 2026/75.jpeg"),
+  P(78,"REF 1255","Chaleco en neopreno men",CATS[8],152750,122200,114562,109980,N,null,"VENDE -CATALOGO Edición mundial 2026/76.jpeg"),
+
+  P(79,"REF 1257","Chaleco dama en neopreno",CATS[9],152750,122200,114562,109980,N,null,"VENDE -CATALOGO Edición mundial 2026/78.jpeg"),
+  P(80,"REF 0726","Cinturilla deportiva mujer",CATS[9],157000,125600,117750,113040,N,null,"VENDE -CATALOGO Edición mundial 2026/79.jpeg"),
+  P(81,"REF 1253","Short deportivo neopreno",CATS[9],147000,117600,110250,105840,N,null,"VENDE -CATALOGO Edición mundial 2026/80.jpeg"),
+  P(82,"REF 1254","Leggins con faja en neopreno",CATS[9],157000,125600,117750,113040,N,null,"VENDE -CATALOGO Edición mundial 2026/81.jpeg"),
+
+  /* ===== COMPLEMENTOS (solo 5% por cantidad, sin descuentos por volumen) ===== */
+  PC(83,"TABLA COXIS","Tabla de compresión para coxis",PRECIO_COMP[83],[],[],"VENDE -CATALOGO Edición mundial 2026/83.jpeg"),
+  PC(84,"TABLA MARIPOSA","Tabla de compresión mariposa",PRECIO_COMP[84],[],[],"VENDE -CATALOGO Edición mundial 2026/84.jpeg"),
+  PC(85,"TABLA PERA","Tabla de compresión pera",PRECIO_COMP[85],[],[],"VENDE -CATALOGO Edición mundial 2026/85.jpeg"),
+  PC(86,"MENTONERA BICHECTOMÍA","Mentonera para postoperatorio de bichectomía",PRECIO_COMP[86],[],[],"VENDE -CATALOGO Edición mundial 2026/86.jpeg"),
+  PC(87,"MENTONERA OTOPLASTIA","Mentonera para postoperatorio de otoplastia",PRECIO_COMP[87],[],[],"VENDE -CATALOGO Edición mundial 2026/87.jpeg"),
+  PC(88,"MANGAS INDIVIDUALES","Mangas de compresión individuales",PRECIO_COMP[88],SIZES_STD,BCN,"VENDE -CATALOGO Edición mundial 2026/88.jpeg"),
+  PC(89,"TABLA EPIFOAM","Tabla de espuma Epifoam",PRECIO_COMP[89],[],[],"VENDE -CATALOGO Edición mundial 2026/89.jpeg"),
+];
+
+/* ============ ENLACES INDIVIDUALES (categorías y productos) ============ */
+function slugify(s){
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
+PRODUCTS.forEach(p=>{ p.slug = slugify(p.name) + '-' + p.id; });   // ej: #pacific-perla-1
+const CAT_SLUG = {};      CATS.forEach(c=>{ CAT_SLUG[c] = slugify(c); });   // ej: #fajas-largas
+const SLUG_TO_CAT = {};   Object.keys(CAT_SLUG).forEach(c=>{ SLUG_TO_CAT[CAT_SLUG[c]] = c; });
+const SLUG_TO_PRODUCT = {}; PRODUCTS.forEach(p=>{ SLUG_TO_PRODUCT[p.slug] = p; });
+
+/* ============ STATE ============ */
+const cardState = {}; // per product: {size, color, qty}
+let cart = []; // {productId, size, color, qty}
+const fmt = n => "$" + Math.round(n).toLocaleString("es-CO");
+
+// Descuento por cantidad total en el carrito (SIN contar complementos):
+// 1 ud      → precio detal (0%)
+// 2–5 uds   → 5% descuento
+// 6–11 uds  → 10% descuento
+// 12–49 uds → 20% descuento
+// 50–100 uds→ 25% descuento
+// +100 uds  → 28% descuento
+const isCompItem = i => !!PRODUCTS.find(x=>x.id===i.productId).comp;
+
+// Unidades que cuentan para los descuentos por volumen (SIN complementos)
+function totalCartQty(){
+  return cart.filter(i=>!isCompItem(i)).reduce((s,i)=>s+i.qty, 0);
+}
+// Unidades de complementos
+function totalCompQty(){
+  return cart.filter(isCompItem).reduce((s,i)=>s+i.qty, 0);
+}
+function getDiscountRate(qty){
+  if(qty >= 101) return 0.28;
+  if(qty >= 50)  return 0.25;
+  if(qty >= 12)  return 0.20;
+  if(qty >= 6)   return 0.10;
+  if(qty >= 2)   return 0.05;
+  return 0;
+}
+function unitPriceInCart(p, item){
+  const v = getVariant(p, item.variant);
+  if(p.comp){
+    // Complementos: solo 5% al llevar 2 o más complementos
+    return v.detal * (totalCompQty() >= 2 ? 0.95 : 1);
+  }
+  const qty = totalCartQty();
+  return v.detal * (1 - getDiscountRate(qty));
+}
+
+/* ============ RENDER CATALOG ============ */
+const gridWrap = document.getElementById('gridWrap');
+const chipRow = document.getElementById('chipRow');
+let activeCat = "Todos";
+let searchTerm = "";
+
+function initCardState(p){
+  if(!cardState[p.id]){
+    cardState[p.id] = {size:p.sizes[0], color:p.colors[0], qty:1, variant:p.variants[0].key};
+  }
+}
+function getVariant(p, variantKey){
+  return p.variants.find(v=>v.key===variantKey) || p.variants[0];
+}
+PRODUCTS.forEach(initCardState);
+
+function buildChips(){
+  const allCats = ["Todos", ...CATS];
+  chipRow.innerHTML = allCats.map(c =>
+    `<a class="chip ${c===activeCat?'active':''}" href="#${c==='Todos'?'catalogo':CAT_SLUG[c]}" data-cat="${c}">${c}</a>`
+  ).join("");
+  chipRow.querySelectorAll('.chip').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      // Si el enlace ya es el actual no hay hashchange: aplicamos el filtro directamente
+      if(location.hash === a.getAttribute('href')){ e.preventDefault(); setCat(a.dataset.cat); }
+    });
+  });
+}
+
+/* ============ IMAGE FALLBACK SYSTEM ============ */
+// Intenta varias combinaciones de carpeta/extensión automáticamente
+// antes de mostrar el color de respaldo. Así no depende de adivinar
+// el nombre exacto de la carpeta o la extensión del archivo.
+function buildCandidates(imgPath){
+  if(!imgPath) return [];
+  const m = imgPath.match(/^(.*)\/(\d+)\.[a-zA-Z]+$/);
+  if(!m) return [imgPath];
+  const folder = m[1], num = m[2];
+  const exts = ['jpeg','jpg','JPEG','JPG','png','PNG','webp'];
+  const cands = [];
+  exts.forEach(e=> cands.push(`${folder}/${num}.${e}`));   // dentro de la carpeta
+  exts.forEach(e=> cands.push(`${num}.${e}`));              // junto al HTML, sin carpeta
+  return cands;
+}
+window.imgFallback = function(img){
+  let candidates;
+  try{ candidates = JSON.parse(img.dataset.candidates); }catch(e){ img.remove(); return; }
+  let idx = parseInt(img.dataset.idx || "0") + 1;
+  if(idx < candidates.length){
+    img.dataset.idx = idx;
+    img.src = candidates[idx];
+  } else {
+    img.remove();
+  }
+};
+
+function renderGrid(){
+  const term = searchTerm.trim().toLowerCase();
+  const filtered = PRODUCTS.filter(p=>{
+    const matchCat = activeCat==="Todos" || p.cat===activeCat;
+    const matchTerm = !term || p.name.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term);
+    return matchCat && matchTerm;
+  });
+
+  const groups = {};
+  filtered.forEach(p=>{ (groups[p.cat] = groups[p.cat]||[]).push(p); });
+
+  let html = "";
+  const catsInOrder = CATS.filter(c=>groups[c]);
+  if(catsInOrder.length===0){ html = `<p style="padding:40px 0; text-align:center; color:rgba(34,34,34,0.5);">Sin resultados para tu búsqueda.</p>`; }
+
+  catsInOrder.forEach(cat=>{
+    html += `<div class="section-title">${cat}</div><div class="grid">`;
+    groups[cat].forEach(p=>{
+      const st = cardState[p.id];
+      const v = getVariant(p, st.variant);
+      const now = v.detal;
+
+      html += `
+      <div class="card" data-id="${p.id}">
+        <div class="card-swatch" style="background-image:linear-gradient(135deg, ${COLORS[st.color]}, ${COLORS[st.color]}CC);">
+          ${p.img ? `<img src="${buildCandidates(p.img)[0]}" data-candidates='${JSON.stringify(buildCandidates(p.img)).replace(/'/g,"&#39;")}' data-idx="0" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">` : ``}
+          <span class="id">#${String(p.id).padStart(2,'0')}</span>
+        </div>
+        <div class="card-body">
+          <h3>${p.name}<a class="copy-link" href="#${p.slug}" data-slug="${p.slug}" title="Copiar enlace de este producto" aria-label="Copiar enlace de ${p.name}">🔗</a></h3>
+          <p class="desc">${p.desc}</p>
+          <div class="price-line">
+            <span class="now mono">${fmt(now)}</span>
+          </div>
+          <div class="gain-line mono" style="font-size:11px; opacity:0.6; letter-spacing:1px;">DETAL</div>
+
+          ${p.hasVariant ? `
+          <div class="opt-row variant-row">
+            ${p.variants.map(vr=>`<button class="opt-btn ${st.variant===vr.key?'sel':''}" data-type="variant" data-val="${vr.key}">${vr.label}</button>`).join("")}
+          </div>` : ``}
+
+          <div class="tier-divider">Precio por cantidad</div>
+          <div class="tier-table">
+            <div class="trow">
+              <span class="tname">Lleva 1</span>
+              <span class="tprice">${fmt(v.detal)}</span>
+            </div>
+            <div class="trow">
+              <span class="tname">Lleva 2 <span class="trange">c/u</span></span>
+              <span class="tprice">${fmt(v.detal * 0.95)}</span>
+            </div>
+          </div>
+
+          <div class="opt-label">Talla</div>
+          <div class="opt-row size-row">
+            ${p.sizes.map(s=>`<button class="opt-btn ${st.size===s?'sel':''}" data-type="size" data-val="${s}">${s}</button>`).join("")}
+          </div>
+
+          <div class="opt-label">Color</div>
+          <div class="opt-row color-row">
+            ${p.colors.map(c=>`<button class="swatch-btn ${st.color===c?'sel':''}" data-type="color" data-val="${c}" style="background:${COLORS[c]}" title="${c}"></button>`).join("")}
+          </div>
+
+          <div class="qty-row">
+            <div class="stepper">
+              <button data-step="-1">−</button>
+              <span class="qty-display">${st.qty}</span>
+              <button data-step="1">+</button>
+            </div>
+            <button class="add-btn">Agregar</button>
+          </div>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  gridWrap.innerHTML = html;
+
+  gridWrap.querySelectorAll('.card').forEach(cardEl=>{
+    const id = Number(cardEl.dataset.id);
+    const p = PRODUCTS.find(x=>x.id===id);
+    const st = cardState[id];
+
+    cardEl.querySelectorAll('[data-type="variant"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ st.variant = btn.dataset.val; updateCardBody(id); });
+    });
+    cardEl.querySelectorAll('[data-type="size"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ st.size = btn.dataset.val; updateCardBody(id); });
+    });
+    cardEl.querySelectorAll('[data-type="color"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ st.color = btn.dataset.val; updateCardBody(id); });
+    });
+    cardEl.querySelectorAll('[data-step]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const delta = Number(btn.dataset.step);
+        st.qty = Math.max(1, st.qty + delta);
+        cardEl.querySelector('.qty-display').textContent = st.qty;
+      });
+    });
+    cardEl.querySelector('.add-btn').addEventListener('click', (e)=>{
+      addToCart(p, st.size, st.color, st.qty, st.variant);
+      e.target.textContent = "Agregado ✓";
+      e.target.classList.add('added');
+      setTimeout(()=>{ e.target.textContent="Agregar"; e.target.classList.remove('added'); }, 900);
+    });
+  });
+}
+
+/* ============ RENDER COMPLEMENTOS ============ */
+const gridComp = document.getElementById('gridComplementos');
+function renderComplementos(){
+  const items = PRODUCTS.filter(p=>p.comp);
+  gridComp.innerHTML = `<div class="section-title">Complementos</div><div class="grid">` + items.map(p=>{
+    const st = cardState[p.id];
+    const v = getVariant(p, st.variant);
+    const bg = COLORS[st.color] ? `background-image:linear-gradient(135deg, ${COLORS[st.color]}, ${COLORS[st.color]}CC);` : "";
+    const sizesHTML = p.sizes.length ? `
+          <div class="opt-label">Talla</div>
+          <div class="opt-row size-row">${p.sizes.map(s=>`<button class="opt-btn ${st.size===s?'sel':''}" data-type="size" data-val="${s}">${s}</button>`).join("")}</div>` : "";
+    const colorsHTML = p.colors.length ? `
+          <div class="opt-label">Color</div>
+          <div class="opt-row color-row">${p.colors.map(c=>`<button class="swatch-btn ${st.color===c?'sel':''}" data-type="color" data-val="${c}" style="background:${COLORS[c]}" title="${c}"></button>`).join("")}</div>` : "";
+    return `
+      <div class="card" data-id="${p.id}">
+        <div class="card-swatch" style="${bg}">
+          ${p.img ? `<img src="${buildCandidates(p.img)[0]}" data-candidates='${JSON.stringify(buildCandidates(p.img)).replace(/'/g,"&#39;")}' data-idx="0" alt="${p.name}" loading="lazy" onerror="imgFallback(this)">` : ``}
+          <span class="id">#${String(p.id).padStart(2,'0')}</span>
+        </div>
+        <div class="card-body">
+          <h3>${p.name}<a class="copy-link" href="#${p.slug}" data-slug="${p.slug}" title="Copiar enlace de este producto" aria-label="Copiar enlace de ${p.name}">🔗</a></h3>
+          <p class="desc">${p.desc}</p>
+          <div class="price-line"><span class="now mono">${fmt(v.detal)}</span></div>
+          <div class="gain-line mono" style="font-size:11px; opacity:0.6; letter-spacing:1px;">DETAL</div>
+          <div class="tier-divider">Precio por cantidad</div>
+          <div class="tier-table">
+            <div class="trow"><span class="tname">Lleva 1</span><span class="tprice">${fmt(v.detal)}</span></div>
+            <div class="trow"><span class="tname">Lleva 2 <span class="trange">c/u</span></span><span class="tprice">${fmt(v.detal*0.95)}</span></div>
+          </div>
+          ${sizesHTML}
+          ${colorsHTML}
+          <div class="qty-row">
+            <div class="stepper">
+              <button data-step="-1">−</button>
+              <span class="qty-display">${st.qty}</span>
+              <button data-step="1">+</button>
+            </div>
+            <button class="add-btn">Agregar</button>
+          </div>
+        </div>
+      </div>`;
+  }).join("") + `</div>`;
+
+  gridComp.querySelectorAll('.card').forEach(cardEl=>{
+    const id = Number(cardEl.dataset.id);
+    const p = PRODUCTS.find(x=>x.id===id);
+    const st = cardState[id];
+    cardEl.querySelectorAll('[data-type="size"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ st.size = btn.dataset.val; updateCardBody(id); });
+    });
+    cardEl.querySelectorAll('[data-type="color"]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ st.color = btn.dataset.val; updateCardBody(id); });
+    });
+    cardEl.querySelectorAll('[data-step]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        st.qty = Math.max(1, st.qty + Number(btn.dataset.step));
+        cardEl.querySelector('.qty-display').textContent = st.qty;
+      });
+    });
+    cardEl.querySelector('.add-btn').addEventListener('click', (e)=>{
+      addToCart(p, st.size, st.color, st.qty, st.variant);
+      e.target.textContent = "Agregado ✓";
+      e.target.classList.add('added');
+      setTimeout(()=>{ e.target.textContent="Agregar"; e.target.classList.remove('added'); }, 900);
+    });
+  });
+}
+
+// Actualiza SOLO la variante/talla/color de una tarjeta puntual,
+// sin reconstruir el grid completo (evita el parpadeo de las imágenes).
+function updateCardBody(id){
+  const cardEl = document.querySelector(`.card[data-id="${id}"]`);
+  if(!cardEl) return;
+  const p = PRODUCTS.find(x=>x.id===id);
+  const st = cardState[id];
+  const v = getVariant(p, st.variant);
+  const now = v.detal;
+
+  const swatchEl = cardEl.querySelector('.card-swatch');
+  if(swatchEl && COLORS[st.color]) swatchEl.style.backgroundImage = `linear-gradient(135deg, ${COLORS[st.color]}, ${COLORS[st.color]}CC)`;
+
+  cardEl.querySelector('.price-line').innerHTML = `<span class="now mono">${fmt(now)}</span>`;
+
+  const qtyPrices = [v.detal, v.detal * 0.95];
+  const trows = cardEl.querySelectorAll('.tier-table .trow');
+  trows.forEach((row,i)=>{
+    const priceSpan = row.querySelector('.tprice');
+    if(priceSpan) priceSpan.textContent = fmt(qtyPrices[i]);
+  });
+
+  cardEl.querySelectorAll('[data-type="variant"]').forEach(btn=>{
+    btn.classList.toggle('sel', btn.dataset.val===st.variant);
+  });
+  cardEl.querySelectorAll('[data-type="size"]').forEach(btn=>{
+    btn.classList.toggle('sel', btn.dataset.val===st.size);
+  });
+  cardEl.querySelectorAll('[data-type="color"]').forEach(btn=>{
+    btn.classList.toggle('sel', btn.dataset.val===st.color);
+  });
+
+  const qtyDisplay = cardEl.querySelector('.qty-display');
+  if(qtyDisplay) qtyDisplay.textContent = st.qty;
+}
+
+// Actualiza todas las tarjetas visibles (usado cuando cambia el nivel de
+// descuento por el carrito) sin reconstruir el grid ni las imágenes.
+function updateAllCardBodies(){
+  PRODUCTS.forEach(p=>{
+    if(document.querySelector(`.card[data-id="${p.id}"]`)) updateCardBody(p.id);
+  });
+}
+
+/* ============ CART LOGIC ============ */
+function addToCart(p, size, color, qty, variant){
+  const existing = cart.find(i=>i.productId===p.id && i.size===size && i.color===color && i.variant===variant);
+  if(existing){ existing.qty += qty; }
+  else{ cart.push({productId:p.id, size, color, qty, variant}); }
+  renderAll();
+}
+function removeFromCart(idx){ cart.splice(idx,1); renderAll(); }
+function changeQty(idx, delta){
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  renderAll();
+}
+
+function renderAll(){
+  updateAllCardBodies();
+  renderCart();
+}
+
+function renderCart(){
+  const itemsWrap = document.getElementById('drawerItems');
+  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
+
+  document.getElementById('cartCount').textContent = `${totalQty} uds`;
+
+  if(cart.length===0){
+    itemsWrap.innerHTML = `<div class="empty-cart">Tu pedido está vacío.<br>Agrega productos desde el catálogo.</div>`;
+  } else {
+    itemsWrap.innerHTML = cart.map((item, idx)=>{
+      const p = PRODUCTS.find(x=>x.id===item.productId);
+      const unit = unitPriceInCart(p, item);
+      const vLabel = p.hasVariant ? ` · ${getVariant(p, item.variant).label}` : "";
+      const meta = [item.size ? `Talla ${item.size}` : "", item.color || ""].filter(Boolean).join(" · ");
+      return `
+      <div class="line-item">
+        <div>
+          <div class="li-name">${p.name}</div>
+          <div class="li-meta">${meta}${vLabel}</div>
+          <div class="li-qty-ctrl">
+            <div class="stepper">
+              <button data-idx="${idx}" data-d="-1">−</button>
+              <span>${item.qty}</span>
+              <button data-idx="${idx}" data-d="1">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="li-price">${fmt(unit*item.qty)}<br><span style="opacity:0.5; font-size:11px;">${fmt(unit)} c/u</span></div>
+        <button class="li-remove" data-remove="${idx}">Quitar</button>
+      </div>`;
+    }).join("");
+
+    itemsWrap.querySelectorAll('[data-d]').forEach(btn=>{
+      btn.addEventListener('click', ()=>changeQty(Number(btn.dataset.idx), Number(btn.dataset.d)));
+    });
+    itemsWrap.querySelectorAll('[data-remove]').forEach(btn=>{
+      btn.addEventListener('click', ()=>removeFromCart(Number(btn.dataset.remove)));
+    });
+  }
+
+  // totals (precio detal, con descuento del 5% en productos con 2+ unidades)
+  const total = cart.reduce((s,i)=>{
+    const p = PRODUCTS.find(x=>x.id===i.productId);
+    return s + unitPriceInCart(p, i)*i.qty;
+  },0);
+
+  document.getElementById('footUnits').textContent = totalQty;
+  document.getElementById('footTotal').textContent = fmt(total);
+
+  document.getElementById('sendBtn').disabled = cart.length===0;
+}
+
+/* ============ WHATSAPP ============ */
+document.getElementById('sendBtn').addEventListener('click', ()=>{
+  if(cart.length===0) return;
+  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
+  const name = document.getElementById('custName').value.trim();
+  const city = document.getElementById('custCity').value.trim();
+
+  let lines = [];
+  lines.push("🛍️ *NUEVO PEDIDO CATALOGO PACIFIC FAJAS*");
+  if(name) lines.push(`Cliente: ${name}`);
+  if(city) lines.push(`Dirección y ciudad: ${city}`);
+  lines.push("");
+  let total = 0;
+  cart.forEach(item=>{
+    const p = PRODUCTS.find(x=>x.id===item.productId);
+    const unit = unitPriceInCart(p, item);
+    const sub = unit*item.qty;
+    total += sub;
+    const parts = [];
+    if(item.size) parts.push(`Talla: ${item.size}`);
+    if(item.color) parts.push(`Color: ${item.color}`);
+    if(p.hasVariant) parts.push(`Opción: ${getVariant(p, item.variant).label}`);
+    parts.push(`Cant: ${item.qty}`);
+    parts.push(`${fmt(unit)} c/u = ${fmt(sub)}`);
+    lines.push(`• ${p.name} (${p.desc})`);
+    lines.push(`   ${parts.join(" | ")}`);
+  });
+  lines.push("");
+  const regQty = totalCartQty();
+  const disc = getDiscountRate(regQty);
+  const discLabel = (disc > 0 ? ` (descuento ${Math.round(disc*100)}% por ${regQty} uds)` : "")
+    + (totalCompQty() >= 2 ? " (complementos con 5% desc.)" : "");
+  lines.push(`Unidades totales: ${totalQty}`);
+  lines.push(`*TOTAL: ${fmt(total)} COP${discLabel}*`);
+
+  const text = encodeURIComponent(lines.join("\n"));
+  window.open(`https://wa.me/573172335456?text=${text}`, "_blank");
+});
+
+/* ============ DRAWER TOGGLE ============ */
+const drawer = document.getElementById('drawer');
+const overlay = document.getElementById('overlay');
+function openDrawer(){ drawer.classList.add('show'); overlay.classList.add('show'); }
+function closeDrawer(){ drawer.classList.remove('show'); overlay.classList.remove('show'); }
+document.getElementById('openCart').addEventListener('click', openDrawer);
+document.getElementById('closeCart').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+
+/* ============ SEARCH ============ */
+document.getElementById('searchBox').addEventListener('input', (e)=>{
+  searchTerm = e.target.value; renderGrid();
+});
+
+/* ============ TABS ============ */
+// Enlace propio de cada pestaña (ej: tusitio.com/#guiadetallas)
+const TAB_SLUGS = {
+  quienes:'quienessomos',
+  catalogo:'catalogo',
+  complementos:'complementos',
+  tallas:'guiadetallas',
+  mayorista:'mayorista',
+  vende:'vendeporcatalogo',
+  politicas:'politicas'
+};
+const SLUG_TO_TAB = {};
+Object.keys(TAB_SLUGS).forEach(t=>{ SLUG_TO_TAB[TAB_SLUGS[t]] = t; });
+SLUG_TO_TAB['vc-form-anchor'] = 'vende'; // el botón "Regístrate ahora" abre la pestaña Vende
+
+function showTab(tab){
+  if(!document.getElementById(`panel-${tab}`)) return;
+  document.querySelectorAll('.main-tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  document.querySelectorAll('.main-tab-panel').forEach(p=>p.classList.toggle('active', p.id===`panel-${tab}`));
+}
+
+document.querySelectorAll('.main-tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    showTab(btn.dataset.tab);
+    const hash = '#' + TAB_SLUGS[btn.dataset.tab];
+    if(location.hash !== hash) history.pushState(null, '', hash);
+  });
+});
+
+function setCat(cat){
+  const hadSearch = !!searchTerm;
+  if(hadSearch){ searchTerm = ''; document.getElementById('searchBox').value = ''; }
+  if(activeCat !== cat || hadSearch){ activeCat = cat; buildChips(); renderGrid(); }
+}
+function goToProduct(p){
+  if(p.comp){
+    showTab('complementos');
+  } else {
+    showTab('catalogo');
+    if(searchTerm){ searchTerm = ''; document.getElementById('searchBox').value = ''; }
+    activeCat = p.cat; buildChips(); renderGrid();
+  }
+  const el = document.querySelector(`.card[data-id="${p.id}"]`);
+  if(!el) return;
+  setTimeout(()=>{
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  }, 250);
+}
+// Botón 🔗 de cada producto: deja el enlace en la barra y lo copia al portapapeles
+document.addEventListener('click', (e)=>{
+  const a = e.target.closest && e.target.closest('a.copy-link');
+  if(!a) return;
+  e.preventDefault();
+  const hash = '#' + a.dataset.slug;
+  const url = location.href.split('#')[0] + hash;
+  try{ history.replaceState(null, '', hash); }catch(_){}
+  const fallback = ()=>{
+    const t = document.createElement('textarea'); t.value = url; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(_){}
+    t.remove();
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).catch(fallback); } else { fallback(); }
+  a.textContent = '✓ Enlace copiado';
+  setTimeout(()=>{ a.textContent = '🔗'; }, 1500);
+});
+
+function applyHash(){
+  const slug = decodeURIComponent(location.hash.replace('#','')).toLowerCase();
+  if(!slug){ showTab('catalogo'); return; }
+  if(SLUG_TO_CAT[slug]){ showTab('catalogo'); setCat(SLUG_TO_CAT[slug]); return; }   // pestaña de categoría
+  if(SLUG_TO_PRODUCT[slug]){ goToProduct(SLUG_TO_PRODUCT[slug]); return; }           // producto individual
+  const tab = SLUG_TO_TAB[slug];
+  if(!tab) return;
+  showTab(tab);
+  if(slug === 'catalogo') setCat('Todos');
+  if(slug === 'vc-form-anchor'){
+    const a = document.getElementById('vc-form-anchor');
+    if(a) a.scrollIntoView({behavior:'smooth'});
+  }
+}
+window.addEventListener('hashchange', applyHash);
+applyHash();
+
+/* ============ VENDE POR CATÁLOGO: calculadora de niveles ============ */
+(function(){
+  const slider = document.getElementById('vcCalcSlider');
+  const sliderVal = document.getElementById('vcCalcSliderVal');
+  const tierTag = document.getElementById('vcCalcTierTag');
+  const resultEl = document.getElementById('vcCalcResult');
+  const resultMonthEl = document.getElementById('vcCalcResultMonth');
+  const tierCards = document.querySelectorAll('#vc-wrap .vc-tier-card');
+  if(!slider || !resultEl) return;
+
+  const AVG_TICKET = 150000; // ticket promedio de referencia por venta
+
+  function paint(){
+    const ventas = Number(slider.value);
+    sliderVal.textContent = ventas;
+
+    let matched = tierCards[0];
+    tierCards.forEach(card=>{
+      const min = Number(card.dataset.min), max = Number(card.dataset.max);
+      card.classList.remove('match');
+      if(ventas >= min && ventas <= max){ matched = card; }
+    });
+    matched.classList.add('match');
+
+    const rate = Number(matched.dataset.rate);
+    const tierName = matched.querySelector('.vc-tier-name').textContent;
+    tierTag.textContent = `${tierName} · ${Math.round(rate*100)}%`;
+
+    const weekly = ventas * AVG_TICKET * rate;
+    resultEl.textContent = `${fmt(weekly)} / semana`;
+    resultMonthEl.textContent = `≈ ${fmt(weekly*4)} al mes`;
+  }
+
+  slider.addEventListener('input', paint);
+  paint();
+})();
+
+/* ============ VENDE POR CATÁLOGO: registro por WhatsApp ============ */
+(function(){
+  const form = document.getElementById('vcForm');
+  if(!form) return;
+  const errorEl = document.getElementById('vcFormError');
+  const successEl = document.getElementById('vcFormSuccess');
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+
+    const name = document.getElementById('vcName').value.trim();
+    const email = document.getElementById('vcEmail').value.trim();
+    const phone = document.getElementById('vcPhone').value.trim();
+    const address = document.getElementById('vcAddress').value.trim();
+    const experience = document.getElementById('vcExperience').value.trim();
+    const agree = document.getElementById('vcAgree').checked;
+
+    if(!name || !email || !phone || !address || !experience || !agree){
+      errorEl.style.display = 'block';
+      successEl.style.display = 'none';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    const lines = [];
+    lines.push("📝 *NUEVO REGISTRO — VENDEDORA POR CATÁLOGO PACIFIC*");
+    lines.push("");
+    lines.push(`Nombre y apellidos: ${name}`);
+    lines.push(`Correo electrónico: ${email}`);
+    lines.push(`WhatsApp: ${phone}`);
+    lines.push(`Ciudad y dirección: ${address}`);
+    lines.push(`¿Ha vendido por catálogo antes?: ${experience}`);
+    lines.push("");
+    lines.push("✅ Leyó el acuerdo de vendedora por comisión y está de acuerdo con las condiciones del acuerdo y de pago semanal.");
+
+    const text = encodeURIComponent(lines.join("\n"));
+    window.open(`https://wa.me/573172335456?text=${text}`, "_blank");
+
+    successEl.style.display = 'block';
+    form.reset();
+  });
+})();
+
+/* ============ INIT ============ */
+buildChips();
+renderGrid();
+renderComplementos();
+renderCart();
+applyHash();
+</script>
+</body>
+</html>
